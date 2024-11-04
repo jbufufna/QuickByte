@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="31dp"
         android:layout_marginBottom="16dp"
-        android:text="Save Changes"
+        android:text="Add to Cart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -43,26 +43,11 @@
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="298dp"
+        android:layout_height="117dp"
         android:text="Item Description:"
-        tools:layout_editor_absoluteX="152dp"
-        tools:layout_editor_absoluteY="391dp" />
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:layout_width="194dp"
-        android:layout_height="41dp"
-        android:hint="Item Name"
-        tools:layout_editor_absoluteX="173dp"
-        tools:layout_editor_absoluteY="283dp" />
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/editText"
-        android:layout_width="194dp"
-        android:layout_height="41dp"
-        android:hint="Item Price"
-        tools:layout_editor_absoluteX="174dp"
-        tools:layout_editor_absoluteY="335dp" />
+        tools:layout_editor_absoluteX="56dp"
+        tools:layout_editor_absoluteY="423dp" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -71,30 +56,5 @@
         tools:layout_editor_absoluteX="102dp"
         tools:layout_editor_absoluteY="56dp"
         tools:srcCompat="@tools:sample/avatars" />
-
-    <EditText
-        android:id="@+id/editTextNumber"
-        android:layout_width="195dp"
-        android:layout_height="41dp"
-        android:ems="10"
-        android:hint="Time in minutes"
-        android:inputType="number"
-        tools:layout_editor_absoluteX="173dp"
-        tools:layout_editor_absoluteY="558dp" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Preparation Time:"
-        tools:layout_editor_absoluteX="46dp"
-        tools:layout_editor_absoluteY="569dp" />
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:layout_width="298dp"
-        android:layout_height="117dp"
-        android:hint="This box will have the description of the item."
-        tools:layout_editor_absoluteX="56dp"
-        tools:layout_editor_absoluteY="423dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
