@@ -10,7 +10,7 @@
           <theme>@style/Theme.QuickByte</theme>
         </config>
       </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/business_incoming_order.xml">
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/business_incoming_orders.xml">
         <config>
           <theme>@style/Theme.QuickByte</theme>
         </config>
@@ -26,6 +26,11 @@
         </config>
       </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/business_modify_menu.xml">
+        <config>
+          <theme>@style/Theme.QuickByte</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/business_modify_section.xml">
         <config>
           <theme>@style/Theme.QuickByte</theme>
         </config>
@@ -51,6 +56,11 @@
         </config>
       </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/customer_home_page.xml">
+        <config>
+          <theme>@style/Theme.QuickByte</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/customer_place_order.xml">
         <config>
           <theme>@style/Theme.QuickByte</theme>
         </config>
@@ -92,10 +102,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4b5a3071-02ec-4917-933d-dc6800ac36e5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/business_modify_section.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/business_incoming_orders.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/business_incoming_order.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/business_modify_menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/business_modify_menu.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/business_view_order.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/business_view_order.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/customer_place_order.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/business_incoming_order.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/business_incoming_orders.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
