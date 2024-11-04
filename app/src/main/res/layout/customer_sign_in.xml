@@ -82,7 +82,7 @@
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Don't Have an Account?"
+        android:text="Don't have an account?"
         tools:layout_editor_absoluteX="132dp"
         tools:layout_editor_absoluteY="70dp" />
 
