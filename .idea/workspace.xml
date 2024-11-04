@@ -10,27 +10,42 @@
           <theme>@style/Theme.QuickByte</theme>
         </config>
       </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/businessUIIncomingOrder.xml">
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/business_incoming_order.xml">
         <config>
           <theme>@style/Theme.QuickByte</theme>
         </config>
       </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/businessUIModifyBusiness.xml">
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/business_modify_business.xml">
         <config>
           <theme>@style/Theme.QuickByte</theme>
         </config>
       </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/businessUIModifyMenu.xml">
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/business_modify_item.xml">
         <config>
           <theme>@style/Theme.QuickByte</theme>
         </config>
       </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/businessUIViewOrder.xml">
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/business_modify_menu.xml">
+        <config>
+          <theme>@style/Theme.QuickByte</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/business_view_order.xml">
         <config>
           <theme>@style/Theme.QuickByte</theme>
         </config>
       </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/content_main.xml">
+        <config>
+          <theme>@style/Theme.QuickByte</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/customer_home_page.xml">
+        <config>
+          <theme>@style/Theme.QuickByte</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/customer_view_item.xml">
         <config>
           <theme>@style/Theme.QuickByte</theme>
         </config>
@@ -41,11 +56,6 @@
         </config>
       </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_second.xml">
-        <config>
-          <theme>@style/Theme.QuickByte</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/home_page.xml">
         <config>
           <theme>@style/Theme.QuickByte</theme>
         </config>
@@ -62,7 +72,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4b5a3071-02ec-4917-933d-dc6800ac36e5" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/businessUIModifyItem.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/businessUI_ModifyItem.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/customer_view_item.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/business_modify_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/business_modify_item.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,21 +149,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Android App.app.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
-    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/joeld/OneDrive/Documents/Github/QuickByte/app/src/main/res/layout&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Android App.app.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/etime/OneDrive/Documents/GitHub/QuickByte/app/src/main/res/layout"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\etime\OneDrive\Documents\GitHub\QuickByte\app\src\main\res\layout" />
       <recent name="C:\Users\joeld\OneDrive\Documents\Github\QuickByte\app\src\main\res\layout" />
     </key>
   </component>
