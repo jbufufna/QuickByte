@@ -45,4 +45,19 @@
         android:name="com.example.quickbyte.UI.Customer.CustomerHomePageFragment"
         android:label="customer_home_page"
         tools:layout="@layout/customer_home_page" />
+    <fragment
+        android:id="@+id/customerPlaceOrderFragment"
+        android:name="com.example.quickbyte.UI.Customer.CustomerPlaceOrderFragment"
+        android:label="customer_place_order"
+        tools:layout="@layout/customer_place_order" />
+    <fragment
+        android:id="@+id/customerSignInFragment"
+        android:name="com.example.quickbyte.UI.Customer.CustomerSignInFragment"
+        android:label="customer_sign_in"
+        tools:layout="@layout/customer_sign_in" />
+    <fragment
+        android:id="@+id/customerViewItemFragment"
+        android:name="com.example.quickbyte.UI.Customer.CustomerViewItemFragment"
+        android:label="customer_view_item"
+        tools:layout="@layout/customer_view_item" />
 </navigation>

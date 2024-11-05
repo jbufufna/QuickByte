@@ -90,6 +90,21 @@
           <theme>@style/Theme.QuickByte</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_customer_place_order.xml">
+        <config>
+          <theme>@style/Theme.QuickByte</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_customer_sign_in.xml">
+        <config>
+          <theme>@style/Theme.QuickByte</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_customer_view_item.xml">
+        <config>
+          <theme>@style/Theme.QuickByte</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_first.xml">
         <config>
           <theme>@style/Theme.QuickByte</theme>
@@ -127,15 +142,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4b5a3071-02ec-4917-933d-dc6800ac36e5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/quickbyte/UI/Customer/CustomerHomePageFragment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/quickbyte/UI/Customer/CustomerPlaceOrderFragment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/quickbyte/UI/Customer/CustomerSignInFragment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/quickbyte/UI/Customer/CustomerViewItemFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/quickbyte/CustomerAccountInformationFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/quickbyte/UI/Customer/CustomerAccountInformationFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/quickbyte/CustomerCreateAccountFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/quickbyte/UI/Customer/CustomerCreateAccountFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/customer_account_information.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/customer_account_information.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/customer_create_account.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/customer_create_account.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/customer_home_page.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/customer_home_page.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_customer_account_information.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_customer_create_account.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/customer_place_order.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/customer_place_order.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/customer_sign_in.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/customer_sign_in.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/customer_view_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/customer_view_item.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/navigation/nav_graph.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/navigation/nav_graph.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
     </list>
@@ -202,7 +215,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="_Designer_Tab" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
