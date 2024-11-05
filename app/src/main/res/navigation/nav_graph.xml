@@ -25,4 +25,19 @@
             android:id="@+id/action_SecondFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/splashScreenFragment"
+        android:name="com.example.quickbyte.UI.SplashScreenFragment"
+        android:label="splash_screen"
+        tools:layout="@layout/splash_screen" />
+    <fragment
+        android:id="@+id/customerAccountInformationFragment"
+        android:name="com.example.quickbyte.CustomerAccountInformationFragment"
+        android:label="fragment_customer_account_information"
+        tools:layout="@layout/fragment_customer_account_information" />
+    <fragment
+        android:id="@+id/customerCreateAccountFragment"
+        android:name="com.example.quickbyte.CustomerCreateAccountFragment"
+        android:label="fragment_customer_create_account"
+        tools:layout="@layout/fragment_customer_create_account" />
 </navigation>
