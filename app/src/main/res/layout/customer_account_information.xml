@@ -90,6 +90,7 @@
         android:layout_width="194dp"
         android:layout_height="48dp"
         android:layout_marginStart="7dp"
+        android:layout_marginTop="-7dp"
         android:hint="Address 2"
         app:layout_constraintStart_toEndOf="@+id/textView10"
         app:layout_constraintTop_toBottomOf="@+id/editText4" />
