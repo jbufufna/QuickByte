@@ -6,16 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".UI.Customer.CustomerHomePageFragment">
 
-    <EditText
-        android:id="@+id/editTextText10"
+    <TextView
+        android:id="@+id/textView28"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_marginStart="100dp"
         android:layout_marginTop="13dp"
-        android:ems="10"
-        android:inputType="text"
+        android:layout_marginEnd="100dp"
         android:text="Home"
-        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -34,63 +34,63 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/editTextText"
+            <TextView
+                android:id="@+id/textView29"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="15"
-                android:inputType="text"
+                android:layout_height="48dp"
                 android:text="SANDWHICHES"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/textView30"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:clickable="true"
+                android:text="Burger"
                 android:textSize="20sp" />
 
-            <EditText
-                android:id="@+id/editTextText2"
+            <TextView
+                android:id="@+id/textView31"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:ems="10"
-                android:inputType="text"
-                android:text="Burger" />
+                android:clickable="true"
+                android:contextClickable="false"
+                android:text="Chicken Sandwhich'"
+                android:textSize="20sp" />
 
-            <EditText
-                android:id="@+id/editTextText3"
+            <TextView
+                android:id="@+id/textView32"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:ems="10"
-                android:inputType="text"
-                android:text="Chicken Sandwhich" />
+                android:clickable="true"
+                android:contextClickable="false"
+                android:text="Fish Sandwhich"
+                android:textSize="20sp" />
 
-            <EditText
-                android:id="@+id/editTextText4"
+            <TextView
+                android:id="@+id/textView33"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:ems="10"
-                android:inputType="text"
-                android:text="Fish Sandwhich" />
-
-            <EditText
-                android:id="@+id/editTextText5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="15"
-                android:inputType="text"
                 android:text="SALADS"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/textView34"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:clickable="true"
+                android:contextClickable="false"
+                android:text="Berry Salad"
                 android:textSize="20sp" />
 
-            <EditText
-                android:id="@+id/editTextText7"
+            <TextView
+                android:id="@+id/textView35"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:ems="10"
-                android:inputType="text"
-                android:text="Berry Salad" />
-
-            <EditText
-                android:id="@+id/editTextText8"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:ems="10"
-                android:inputType="text"
-                android:text="Caesar Salad" />
+                android:clickable="true"
+                android:contextClickable="false"
+                android:text="Caesar Salad"
+                android:textSize="20sp" />
 
         </LinearLayout>
     </ScrollView>
