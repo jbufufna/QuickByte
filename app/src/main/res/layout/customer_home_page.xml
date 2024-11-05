@@ -9,13 +9,15 @@
     <EditText
         android:id="@+id/editTextText10"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="13dp"
         android:ems="10"
         android:inputType="text"
         android:text="Home"
         android:textAlignment="center"
-        tools:layout_editor_absoluteX="100dp"
-        tools:layout_editor_absoluteY="16dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
         android:layout_width="404dp"
@@ -44,7 +46,7 @@
             <EditText
                 android:id="@+id/editTextText2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:ems="10"
                 android:inputType="text"
                 android:text="Burger" />
@@ -52,7 +54,7 @@
             <EditText
                 android:id="@+id/editTextText3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:ems="10"
                 android:inputType="text"
                 android:text="Chicken Sandwhich" />
@@ -60,7 +62,7 @@
             <EditText
                 android:id="@+id/editTextText4"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:ems="10"
                 android:inputType="text"
                 android:text="Fish Sandwhich" />
@@ -77,7 +79,7 @@
             <EditText
                 android:id="@+id/editTextText7"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:ems="10"
                 android:inputType="text"
                 android:text="Berry Salad" />
@@ -85,7 +87,7 @@
             <EditText
                 android:id="@+id/editTextText8"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:ems="10"
                 android:inputType="text"
                 android:text="Caesar Salad" />
