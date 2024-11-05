@@ -7,6 +7,19 @@
     tools:context=".UI.Customer.CustomerPlaceOrderFragment">
 
     <TextView
+        android:id="@+id/textView24"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="100dp"
+        android:text="Order"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
         android:id="@+id/textView18"
         android:layout_width="166dp"
         android:layout_height="27dp"
@@ -65,74 +78,43 @@
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText6">
+        app:layout_constraintTop_toBottomOf="@+id/textView24">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/editTextText"
+            <TextView
+                android:id="@+id/textView40"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="15"
-                android:inputType="text"
-                android:text="Item1"
+                android:layout_height="48dp"
+                android:clickable="true"
+                android:text="Item 1"
                 android:textSize="20sp" />
 
-            <EditText
-                android:id="@+id/editTextText2"
+            <TextView
+                android:id="@+id/textView39"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="text"
-                android:text="Item2"
+                android:layout_height="48dp"
+                android:clickable="true"
+                android:text="Item 2"
                 android:textSize="20sp" />
 
-            <EditText
-                android:id="@+id/editTextText3"
+            <TextView
+                android:id="@+id/textView25"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="text"
-                android:text="Item3"
+                android:layout_height="48dp"
+                android:clickable="true"
+                android:text="Item 3"
                 android:textSize="20sp" />
 
-            <EditText
-                android:id="@+id/editTextText4"
+            <TextView
+                android:id="@+id/textView36"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="text"
-                android:text="Item4"
-                android:textSize="20sp" />
-
-            <EditText
-                android:id="@+id/editTextText5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="15"
-                android:inputType="text"
-                android:text="Item5"
-                android:textSize="20sp" />
-
-            <EditText
-                android:id="@+id/editTextText7"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="text"
-                android:text="Item6"
-                android:textSize="20sp" />
-
-            <EditText
-                android:id="@+id/editTextText8"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="text"
-                android:text="Item7"
+                android:layout_height="48dp"
+                android:clickable="true"
+                android:text="Item 4"
                 android:textSize="20sp" />
 
         </LinearLayout>
@@ -158,18 +140,4 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <EditText
-        android:id="@+id/editTextText6"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="13dp"
-        android:layout_marginEnd="100dp"
-        android:ems="10"
-        android:inputType="text"
-        android:text="Order"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
