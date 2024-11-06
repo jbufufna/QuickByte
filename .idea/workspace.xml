@@ -75,32 +75,27 @@
           <theme>@style/Theme.QuickByte</theme>
         </config>
       </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_customer_account_information.xml">
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_business_incoming_orders.xml">
         <config>
           <theme>@style/Theme.QuickByte</theme>
         </config>
       </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_customer_create_account.xml">
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_business_modify_business.xml">
         <config>
           <theme>@style/Theme.QuickByte</theme>
         </config>
       </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_customer_home_page.xml">
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_business_modify_item.xml">
         <config>
           <theme>@style/Theme.QuickByte</theme>
         </config>
       </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_customer_place_order.xml">
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_business_modify_menu.xml">
         <config>
           <theme>@style/Theme.QuickByte</theme>
         </config>
       </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_customer_sign_in.xml">
-        <config>
-          <theme>@style/Theme.QuickByte</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_customer_view_item.xml">
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_business_view_order.xml">
         <config>
           <theme>@style/Theme.QuickByte</theme>
         </config>
@@ -111,11 +106,6 @@
         </config>
       </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_second.xml">
-        <config>
-          <theme>@style/Theme.QuickByte</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_splash_screen.xml">
         <config>
           <theme>@style/Theme.QuickByte</theme>
         </config>
@@ -142,7 +132,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4b5a3071-02ec-4917-933d-dc6800ac36e5" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/customer_place_order.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/customer_place_order.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/quickbyte/UI/Business/BusinessIncomingOrdersFragment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/quickbyte/UI/Business/BusinessModifyBusinessFragment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/quickbyte/UI/Business/BusinessModifyItemFragment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/quickbyte/UI/Business/BusinessModifyMenuFragment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/quickbyte/UI/Business/BusinessViewOrderFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.9/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.9/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.9/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.9/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/business_incoming_orders.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/business_incoming_orders.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/business_modify_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/business_modify_item.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/navigation/nav_graph.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/navigation/nav_graph.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,7 +154,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\etime\.android\avd\Medium_Phone.avd)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\joeld\.android\avd\Medium_Phone.avd)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -207,7 +209,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="_Designer_Tab" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5

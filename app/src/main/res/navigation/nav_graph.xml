@@ -60,4 +60,29 @@
         android:name="com.example.quickbyte.UI.Customer.CustomerViewItemFragment"
         android:label="customer_view_item"
         tools:layout="@layout/customer_view_item" />
+    <fragment
+        android:id="@+id/businessIncomingOrdersFragment"
+        android:name="com.example.quickbyte.UI.Business.BusinessIncomingOrdersFragment"
+        android:label="business_incoming_orders"
+        tools:layout="@layout/business_incoming_orders" />
+    <fragment
+        android:id="@+id/businessViewOrderFragment"
+        android:name="com.example.quickbyte.UI.Business.BusinessViewOrderFragment"
+        android:label="business_view_order"
+        tools:layout="@layout/business_view_order" />
+    <fragment
+        android:id="@+id/businessModifyMenuFragment"
+        android:name="com.example.quickbyte.UI.Business.BusinessModifyMenuFragment"
+        android:label="business_modify_menu"
+        tools:layout="@layout/business_modify_menu" />
+    <fragment
+        android:id="@+id/businessModifyBusinessFragment"
+        android:name="com.example.quickbyte.UI.Business.BusinessModifyBusinessFragment"
+        android:label="business_modify_business"
+        tools:layout="@layout/business_modify_business" />
+    <fragment
+        android:id="@+id/businessModifyItemFragment"
+        android:name="com.example.quickbyte.UI.Business.BusinessModifyItemFragment"
+        android:label="business_modify_item"
+        tools:layout="@layout/business_modify_item" />
 </navigation>
