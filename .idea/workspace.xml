@@ -85,7 +85,7 @@
           <theme>@style/Theme.QuickByte</theme>
         </config>
       </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/splash_screen.xml">
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/logo_screen.xml">
         <config>
           <theme>@style/Theme.QuickByte</theme>
         </config>
@@ -107,12 +107,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4b5a3071-02ec-4917-933d-dc6800ac36e5" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/quickbyte/UI/LogoScreenFragment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/burger.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.9/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.9/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.9/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.9/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.9/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.9/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.9/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.9/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.9/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.9/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/business_incoming_orders.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/business_incoming_orders.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/business_modify_business.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/business_modify_business.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/business_modify_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/business_modify_item.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/business_modify_menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/business_modify_menu.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/business_view_order.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/business_view_order.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/quickbyte/SecondFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/quickbyte/SecondFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/quickbyte/UI/Customer/CustomerSignInFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/quickbyte/UI/Customer/CustomerSignInFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/quickbyte/UI/SplashScreenFragment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/customer_sign_in.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/customer_sign_in.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/splash_screen.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/logo_screen.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/navigation/nav_graph.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/navigation/nav_graph.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -190,6 +201,7 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;Android App.app.executor&quot;: &quot;Run&quot;,
+    &quot;ResourceManagerPrefKey.ResourceType&quot;: &quot;DRAWABLE&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,

@@ -20,69 +20,140 @@
         android:name="com.example.quickbyte.SecondFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_second">
-
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/action_SecondFragment_to_logoScreenFragment"
+            app:destination="@id/logoScreenFragment" />
     </fragment>
     <fragment
-        android:id="@+id/splashScreenFragment"
-        android:name="com.example.quickbyte.UI.SplashScreenFragment"
-        android:label="splash_screen"
-        tools:layout="@layout/splash_screen" />
+        android:id="@+id/logoScreenFragment"
+        android:name="com.example.quickbyte.UI.LogoScreenFragment"
+        android:label="logo_screen"
+        tools:layout="@layout/logo_screen" >
+        <action
+            android:id="@+id/action_LogoScreenFragment_to_customerSignInFragment"
+            app:destination="@id/customerSignInFragment" />
+    </fragment>
     <fragment
         android:id="@+id/customerAccountInformationFragment"
         android:name="com.example.quickbyte.UI.Customer.CustomerAccountInformationFragment"
         android:label="customer_account_information"
-        tools:layout="@layout/customer_account_information" />
+        tools:layout="@layout/customer_account_information" >
+        <action
+            android:id="@+id/action_customerAccountInformationFragment_to_customerHomePageFragment"
+            app:destination="@id/customerHomePageFragment" />
+    </fragment>
     <fragment
         android:id="@+id/customerCreateAccountFragment"
         android:name="com.example.quickbyte.UI.Customer.CustomerCreateAccountFragment"
         android:label="customer_create_account"
-        tools:layout="@layout/customer_create_account" />
+        tools:layout="@layout/customer_create_account" >
+        <action
+            android:id="@+id/action_customerCreateAccountFragment_to_customerSignInFragment"
+            app:destination="@id/customerSignInFragment" />
+        <action
+            android:id="@+id/action_customerCreateAccountFragment_to_customerHomePageFragment"
+            app:destination="@id/customerHomePageFragment" />
+    </fragment>
     <fragment
         android:id="@+id/customerHomePageFragment"
         android:name="com.example.quickbyte.UI.Customer.CustomerHomePageFragment"
         android:label="customer_home_page"
-        tools:layout="@layout/customer_home_page" />
+        tools:layout="@layout/customer_home_page" >
+        <action
+            android:id="@+id/action_customerHomePageFragment_to_customerAccountInformationFragment"
+            app:destination="@id/customerAccountInformationFragment" />
+        <action
+            android:id="@+id/action_customerHomePageFragment_to_customerPlaceOrderFragment"
+            app:destination="@id/customerPlaceOrderFragment" />
+        <action
+            android:id="@+id/action_customerHomePageFragment_to_customerViewItemFragment"
+            app:destination="@id/customerViewItemFragment" />
+    </fragment>
     <fragment
         android:id="@+id/customerPlaceOrderFragment"
         android:name="com.example.quickbyte.UI.Customer.CustomerPlaceOrderFragment"
         android:label="customer_place_order"
-        tools:layout="@layout/customer_place_order" />
+        tools:layout="@layout/customer_place_order" >
+        <action
+            android:id="@+id/action_customerPlaceOrderFragment_to_customerHomePageFragment"
+            app:destination="@id/customerHomePageFragment" />
+    </fragment>
     <fragment
         android:id="@+id/customerSignInFragment"
         android:name="com.example.quickbyte.UI.Customer.CustomerSignInFragment"
         android:label="customer_sign_in"
-        tools:layout="@layout/customer_sign_in" />
+        tools:layout="@layout/customer_sign_in" >
+        <action
+            android:id="@+id/action_customerSignInFragment_to_customerCreateAccountFragment"
+            app:destination="@id/customerCreateAccountFragment" />
+        <action
+            android:id="@+id/action_customerSignInFragment_to_customerHomePageFragment"
+            app:destination="@id/customerHomePageFragment" />
+        <action
+            android:id="@+id/action_customerSignInFragment_to_businessIncomingOrdersFragment"
+            app:destination="@id/businessIncomingOrdersFragment" />
+    </fragment>
     <fragment
         android:id="@+id/customerViewItemFragment"
         android:name="com.example.quickbyte.UI.Customer.CustomerViewItemFragment"
         android:label="customer_view_item"
-        tools:layout="@layout/customer_view_item" />
+        tools:layout="@layout/customer_view_item" >
+        <action
+            android:id="@+id/action_customerViewItemFragment_to_customerHomePageFragment"
+            app:destination="@id/customerHomePageFragment" />
+    </fragment>
     <fragment
         android:id="@+id/businessIncomingOrdersFragment"
         android:name="com.example.quickbyte.UI.Business.BusinessIncomingOrdersFragment"
         android:label="business_incoming_orders"
-        tools:layout="@layout/business_incoming_orders" />
+        tools:layout="@layout/business_incoming_orders" >
+        <action
+            android:id="@+id/action_businessIncomingOrdersFragment_to_businessModifyBusinessFragment"
+            app:destination="@id/businessModifyBusinessFragment" />
+        <action
+            android:id="@+id/action_businessIncomingOrdersFragment_to_businessViewOrderFragment"
+            app:destination="@id/businessViewOrderFragment" />
+        <action
+            android:id="@+id/action_businessIncomingOrdersFragment_to_businessViewOrderFragment2"
+            app:destination="@id/businessViewOrderFragment" />
+        <action
+            android:id="@+id/action_businessIncomingOrdersFragment_to_businessModifyMenuFragment"
+            app:destination="@id/businessModifyMenuFragment" />
+    </fragment>
     <fragment
         android:id="@+id/businessViewOrderFragment"
         android:name="com.example.quickbyte.UI.Business.BusinessViewOrderFragment"
         android:label="business_view_order"
-        tools:layout="@layout/business_view_order" />
+        tools:layout="@layout/business_view_order" >
+        <action
+            android:id="@+id/action_businessViewOrderFragment_to_businessIncomingOrdersFragment"
+            app:destination="@id/businessIncomingOrdersFragment" />
+    </fragment>
     <fragment
         android:id="@+id/businessModifyMenuFragment"
         android:name="com.example.quickbyte.UI.Business.BusinessModifyMenuFragment"
         android:label="business_modify_menu"
-        tools:layout="@layout/business_modify_menu" />
+        tools:layout="@layout/business_modify_menu" >
+        <action
+            android:id="@+id/action_businessModifyMenuFragment_to_businessModifyItemFragment"
+            app:destination="@id/businessModifyItemFragment" />
+    </fragment>
     <fragment
         android:id="@+id/businessModifyBusinessFragment"
         android:name="com.example.quickbyte.UI.Business.BusinessModifyBusinessFragment"
         android:label="business_modify_business"
-        tools:layout="@layout/business_modify_business" />
+        tools:layout="@layout/business_modify_business" >
+        <action
+            android:id="@+id/action_businessModifyBusinessFragment_to_businessIncomingOrdersFragment"
+            app:destination="@id/businessIncomingOrdersFragment" />
+    </fragment>
     <fragment
         android:id="@+id/businessModifyItemFragment"
         android:name="com.example.quickbyte.UI.Business.BusinessModifyItemFragment"
         android:label="business_modify_item"
-        tools:layout="@layout/business_modify_item" />
+        tools:layout="@layout/business_modify_item" >
+        <action
+            android:id="@+id/action_businessModifyItemFragment_to_businessModifyMenuFragment2"
+            app:destination="@id/businessModifyMenuFragment" />
+    </fragment>
 </navigation>
