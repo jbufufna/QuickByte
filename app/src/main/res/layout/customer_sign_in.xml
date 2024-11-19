@@ -8,19 +8,20 @@
 
     <TextView
         android:id="@+id/textView38"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
+        android:layout_width="162dp"
+        android:layout_height="73dp"
         android:layout_marginStart="100dp"
-        android:layout_marginTop="13dp"
+        android:layout_marginTop="48dp"
         android:layout_marginEnd="100dp"
         android:text="Sign In"
-        android:textSize="20sp"
+        android:textSize="48sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnSigninBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="31dp"
@@ -30,78 +31,84 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="31dp"
-        android:layout_marginBottom="16dp"
-        android:text="Sign In"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <Button
-        android:id="@+id/btnCreateAccount"
+        android:id="@+id/btnSignInSignIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="160dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="160dp"
-        android:text="Create Account"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+        android:layout_marginBottom="368dp"
+        android:text="Sign In"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="72dp"
-        android:layout_height="24dp"
-        android:layout_marginStart="93dp"
-        android:layout_marginTop="105dp"
+        android:layout_width="121dp"
+        android:layout_height="35dp"
+        android:layout_marginEnd="10dp"
         android:text="Username:"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textInputEditText2"
+        app:layout_constraintHorizontal_bias="0.62"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.262" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="99dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginEnd="10dp"
         android:text="Password:"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/editText3"
+        app:layout_constraintHorizontal_bias="0.671"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.343" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/editText3"
         android:layout_width="194dp"
         android:layout_height="48dp"
-        android:layout_marginStart="7dp"
-        android:layout_marginTop="-7dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="452dp"
         android:hint="Password"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/textInputEditText2" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/textInputEditText2"
         android:layout_width="194dp"
         android:layout_height="48dp"
-        android:layout_marginStart="7dp"
-        android:layout_marginTop="89dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="12dp"
         android:hint="Username"
-        app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
+        app:layout_constraintBottom_toTopOf="@+id/editText3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.994" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/textViewAlreadyAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="132dp"
-        android:layout_marginTop="128dp"
-        android:layout_marginEnd="132dp"
+        android:layout_marginBottom="14dp"
         android:text="Don't have an account?"
+        app:layout_constraintBottom_toTopOf="@+id/btnSignInCreateAccount"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView38" />
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnSignInCreateAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="96dp"
+        android:text="Create Account"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

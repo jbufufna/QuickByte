@@ -24,9 +24,19 @@ public class CustomerSignInFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        binding.btnCreateAccount.setOnClickListener(v ->
+        binding.btnSignInCreateAccount.setOnClickListener(v ->
+                NavHostFragment.findNavController(CustomerSignInFragment.this)
+                        .navigate(R.id.action_customerSignInFragment_to_customerCreateAccountFragment)
+        );
+
+        binding.btnSignInSignIn.setOnClickListener(v ->
                 NavHostFragment.findNavController(CustomerSignInFragment.this)
                         .navigate(R.id.action_customerSignInFragment_to_customerHomePageFragment)
+        );
+
+        binding.btnSigninBack.setOnClickListener(v ->
+                NavHostFragment.findNavController(CustomerSignInFragment.this)
+                        .navigate(R.id.action_customerSignInFragment_to_logoScreenFragment)
         );
 
     }

@@ -3,27 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/logoScreenFragment">
 
-    <fragment
-        android:id="@+id/FirstFragment"
-        android:name="com.example.quickbyte.FirstFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
-
-        <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.example.quickbyte.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
-        <action
-            android:id="@+id/action_SecondFragment_to_logoScreenFragment"
-            app:destination="@id/logoScreenFragment" />
-    </fragment>
     <fragment
         android:id="@+id/logoScreenFragment"
         android:name="com.example.quickbyte.UI.LogoScreenFragment"
@@ -53,6 +34,9 @@
         <action
             android:id="@+id/action_customerCreateAccountFragment_to_customerHomePageFragment"
             app:destination="@id/customerHomePageFragment" />
+        <action
+            android:id="@+id/action_customerCreateAccountFragment_to_logoScreenFragment"
+            app:destination="@id/logoScreenFragment" />
     </fragment>
     <fragment
         android:id="@+id/customerHomePageFragment"
@@ -92,6 +76,9 @@
         <action
             android:id="@+id/action_customerSignInFragment_to_businessIncomingOrdersFragment"
             app:destination="@id/businessIncomingOrdersFragment" />
+        <action
+            android:id="@+id/action_customerSignInFragment_to_logoScreenFragment"
+            app:destination="@id/logoScreenFragment" />
     </fragment>
     <fragment
         android:id="@+id/customerViewItemFragment"
