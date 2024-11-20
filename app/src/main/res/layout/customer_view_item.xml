@@ -7,10 +7,10 @@
     tools:context=".UI.Customer.CustomerViewItemFragment">
 
     <Button
-        android:id="@+id/btnSigninBack"
+        android:id="@+id/btnViewItemBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="31dp"
+        android:layout_marginStart="16dp"
         android:layout_marginBottom="16dp"
         android:text="Back"
         app:layout_constraintBottom_toBottomOf="parent"
