@@ -26,7 +26,7 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/editText3"
+        android:id="@+id/editInputPassword"
         android:layout_width="194dp"
         android:layout_height="41dp"
         android:hint="Slogan"

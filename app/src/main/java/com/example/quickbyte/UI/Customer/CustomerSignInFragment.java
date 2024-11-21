@@ -29,15 +29,35 @@ public class CustomerSignInFragment extends Fragment {
                         .navigate(R.id.action_customerSignInFragment_to_customerCreateAccountFragment)
         );
 
-        binding.btnSignInSignIn.setOnClickListener(v ->
+        /*binding.btnSignInSignIn.setOnClickListener(v ->
                 NavHostFragment.findNavController(CustomerSignInFragment.this)
                         .navigate(R.id.action_customerSignInFragment_to_customerHomePageFragment)
-        );
+        );*/
+
+        // Place order button logic with conditional navigation
+        binding.btnSignInSignIn.setOnClickListener(v -> {
+            boolean condition;
+            String userNameInput = binding.textInputUsername.getText().toString();
+            if(userNameInput.equals("admin")) {
+                condition = false;
+            } else {
+                condition = true;
+            }
+
+            if (condition) {
+                // Navigate to Home Page: User logged in
+                NavHostFragment.findNavController(CustomerSignInFragment.this)
+                        .navigate(R.id.action_customerSignInFragment_to_customerHomePageFragment);
+            } else {
+                // Navigate to IncomingOrders: Business/admin logged in
+                NavHostFragment.findNavController(CustomerSignInFragment.this)
+                        .navigate(R.id.action_customerSignInFragment_to_businessIncomingOrdersFragment);
+            }
+        });
 
         binding.btnSigninBack.setOnClickListener(v ->
                 NavHostFragment.findNavController(CustomerSignInFragment.this)
                         .navigate(R.id.action_customerSignInFragment_to_logoScreenFragment)
         );
-
     }
 }
