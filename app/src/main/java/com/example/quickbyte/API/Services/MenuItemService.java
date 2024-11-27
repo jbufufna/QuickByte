@@ -96,6 +96,7 @@ public class MenuItemService {
                 }
             }
 
+
             @Override
             public void onFailure(Call<List<MenuItem>> call, Throwable t) {
                 callback.onError("Network error: " + t.getMessage());
