@@ -114,6 +114,7 @@ public class CustomerHomePageFragment extends Fragment {
         });
     }
 
+
     private void fetchPopularItems() {
         ICustomerMenuService customerMenuService = ApiClient.getRetrofitInstance().create(ICustomerMenuService.class);
         customerMenuService.getPopularItems().enqueue(new Callback<List<MenuItem>>() {
