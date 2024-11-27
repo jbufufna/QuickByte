@@ -6,20 +6,20 @@
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/btnSigninBack"
+        android:id="@+id/btnBizInfoBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="31dp"
+        android:layout_marginStart="44dp"
         android:layout_marginBottom="16dp"
         android:text="Back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/btnCreateAccCreateAcc"
+        android:id="@+id/btnBizInfoSaveChanges"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="31dp"
+        android:layout_marginEnd="44dp"
         android:layout_marginBottom="16dp"
         android:text="Save Changes"
         app:layout_constraintBottom_toBottomOf="parent"

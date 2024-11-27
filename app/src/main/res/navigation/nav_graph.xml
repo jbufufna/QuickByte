@@ -124,6 +124,9 @@
         <action
             android:id="@+id/action_businessModifyMenuFragment_to_businessModifyItemFragment"
             app:destination="@id/businessModifyItemFragment" />
+        <action
+            android:id="@+id/action_businessModifyMenuFragment_to_businessIncomingOrdersFragment"
+            app:destination="@id/businessIncomingOrdersFragment" />
     </fragment>
     <fragment
         android:id="@+id/businessModifyBusinessFragment"

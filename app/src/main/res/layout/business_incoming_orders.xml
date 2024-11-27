@@ -23,7 +23,7 @@
             android:orientation="vertical">
 
             <EditText
-                android:id="@+id/editTextText"
+                android:id="@+id/editOrder1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="15"
@@ -89,20 +89,20 @@
     </ScrollView>
 
     <Button
-        android:id="@+id/btnSigninBack"
+        android:id="@+id/btnIncomingMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="31dp"
+        android:layout_marginStart="36dp"
         android:layout_marginBottom="16dp"
         android:text="Menu"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/btnCreateAccCreateAcc"
+        android:id="@+id/btnIncomingBizSettings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="31dp"
+        android:layout_marginEnd="24dp"
         android:layout_marginBottom="16dp"
         android:text="Business Settings"
         app:layout_constraintBottom_toBottomOf="parent"
