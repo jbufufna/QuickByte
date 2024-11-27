@@ -18,29 +18,56 @@
         android:text="Item Name"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:layout_marginTop="8dp"
-        android:paddingStart="8dp"
-        android:paddingEnd="8dp" />
-
-    <TextView
-        android:id="@+id/textItemPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Price"
-        android:textSize="16sp"
-        android:layout_marginTop="4dp"
-        android:paddingStart="8dp"
-        android:paddingEnd="8dp" />
+        android:layout_marginTop="8dp" />
 
     <TextView
         android:id="@+id/textItemDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Item Description"
+        android:text="Description"
         android:textSize="14sp"
-        android:layout_marginTop="4dp"
-        android:paddingStart="8dp"
-        android:paddingEnd="8dp"
-        android:ellipsize="end"
-        android:maxLines="2" />
+        android:layout_marginTop="4dp" />
+
+    <TextView
+        android:id="@+id/textItemPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$10.99"
+        android:textSize="16sp"
+        android:layout_marginTop="4dp" />
+
+    <Button
+        android:id="@+id/buttonAddToCart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add to Cart"
+        android:layout_marginTop="8dp" />
+
+    <LinearLayout
+        android:id="@+id/layoutQuantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:layout_marginTop="8dp">
+
+        <Button
+            android:id="@+id/buttonDecrement"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:text="-" />
+
+        <TextView
+            android:id="@+id/textQuantity"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:text="0" />
+
+        <Button
+            android:id="@+id/buttonIncrement"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:text="+" />
+    </LinearLayout>
 </LinearLayout>
