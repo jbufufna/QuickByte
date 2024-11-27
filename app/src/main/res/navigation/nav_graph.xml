@@ -143,4 +143,15 @@
             android:id="@+id/action_businessModifyItemFragment_to_businessModifyMenuFragment2"
             app:destination="@id/businessModifyMenuFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.example.quickbyte.UI.SearchFragment"
+        android:label="Search"
+        tools:layout="@layout/fragment_search" />
+
+    <action
+        android:id="@+id/action_customerHomePageFragment_to_searchFragment"
+        app:destination="@id/searchFragment" />
+
 </navigation>

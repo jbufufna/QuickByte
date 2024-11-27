@@ -8,11 +8,15 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface ICustomerMenuService {
 
     @GET("/api/customer/home/categories")
     Call<List<MenuCategory>> getMenuCategories();
+
+    @GET("/api/customer/home/search")
+    Call<List<MenuItem>> searchMenuItems(@Query("query") String query);
 
     // Add this method for fetching items by category
     @GET("/api/customer/home/categories/{categoryId}/items")
