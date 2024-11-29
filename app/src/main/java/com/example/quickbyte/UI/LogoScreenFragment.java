@@ -42,8 +42,8 @@ public class LogoScreenFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         // Apply fade-in animation to the logo
-        Animation fadeAndScaleAnimation = AnimationUtils.loadAnimation(requireContext(), R.anim.fade_and_scale);
-        binding.imageViewLogo.startAnimation(fadeAndScaleAnimation);
+       // Animation fadeAndScaleAnimation = AnimationUtils.loadAnimation(requireContext(), R.anim.fade_and_scale);
+       // binding.imageViewLogo.startAnimation(fadeAndScaleAnimation);
 
         // Navigate to the next screen after 3 seconds
         new Handler().postDelayed(() ->
