@@ -1,10 +1,10 @@
 package com.example.quickbyte.API.Services;
 
 import com.example.quickbyte.API.ApiClient;
+import com.example.quickbyte.API.IServices.IUserService;
 import com.example.quickbyte.API.DTO.LoginRequestDTO;
 import com.example.quickbyte.API.DTO.UserCreationRequestDTO;
 import com.example.quickbyte.API.DTO.UserDTO;
-import com.example.quickbyte.API.IServices.IUserService;
 
 import java.util.List;
 

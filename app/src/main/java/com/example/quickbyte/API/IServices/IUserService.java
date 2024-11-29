@@ -4,10 +4,10 @@ import com.example.quickbyte.API.DTO.LoginRequestDTO;
 import com.example.quickbyte.API.DTO.UserCreationRequestDTO;
 import com.example.quickbyte.API.DTO.UserDTO;
 
-import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.http.*;
+
+import java.util.List;
 
 public interface IUserService {
 
