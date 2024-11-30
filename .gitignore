@@ -32,3 +32,13 @@ google-services.json
 # Android Profiling
 *.hprof
 local.properties
+.gradle/8.9/dependencies-accessors/35aa1710071bb623a732d121a382335a297ab07b/metadata.bin
+.gradle/8.9/executionHistory/executionHistory.bin
+.gradle/8.9/executionHistory/executionHistory.lock
+.gradle/8.9/fileHashes/fileHashes.bin
+.gradle/8.9/fileHashes/fileHashes.lock
+.gradle/8.9/fileHashes/resourceHashesCache.bin
+.gradle/buildOutputCleanup/buildOutputCleanup.lock
+.gradle/buildOutputCleanup/outputFiles.bin
+.gradle/config.properties
+.gradle/file-system.probe
