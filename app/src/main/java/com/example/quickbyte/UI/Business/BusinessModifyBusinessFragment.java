@@ -1,60 +1,110 @@
 package com.example.quickbyte.UI.Business;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
+import com.bumptech.glide.Glide;
+import com.example.quickbyte.API.DTO.BusinessInfoDTO;
+import com.example.quickbyte.API.Services.BusinessInfoService;
 import com.example.quickbyte.R;
 import com.example.quickbyte.databinding.BusinessModifyBusinessBinding;
-import com.example.quickbyte.Facade.Database; // Import the Database class
-
 
 public class BusinessModifyBusinessFragment extends Fragment {
 
     private BusinessModifyBusinessBinding binding;
-    private Database database = new Database();
+    private BusinessInfoService businessInfoService;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        binding = com.example.quickbyte.databinding.BusinessModifyBusinessBinding.inflate(inflater, container, false);
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        binding = BusinessModifyBusinessBinding.inflate(inflater, container, false);
+        businessInfoService = BusinessInfoService.getInstance();
         return binding.getRoot();
     }
 
+    @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        // Fetch and display business information
+        fetchBusinessInfo();
+
         binding.btnBizInfoBack.setOnClickListener(v ->
-                NavHostFragment.findNavController(BusinessModifyBusinessFragment.this)
+                NavHostFragment.findNavController(this)
                         .navigate(R.id.action_businessModifyBusinessFragment_to_businessIncomingOrdersFragment)
         );
 
-        // Action for btnBizInfoSaveChanges
         binding.btnBizInfoSaveChanges.setOnClickListener(v -> {
-            int result1 = 1 + 1; // Add 1 + 1
-            // Optionally log the result for debugging
-            System.out.println("Result of 1 + 1: " + result1);
-
-            database.putBusinessName("Database Name");
+            if (validateInput()) {
+                saveBusinessInfo();
+            }
         });
 
-        // Action for btnBizInfoSaveChanges
-        binding.btnBizInfoGetChanges.setOnClickListener(v -> {
-            int result2 = 2 + 2; // Add 2 + 2
-            // Optionally log the result for debugging
-            System.out.println("Result of 2 + 2: " + result2);
+        binding.btnBizInfoGetChanges.setOnClickListener(v -> fetchBusinessInfo());
+    }
 
-            System.out.println(database.getBusinessName());
+    private void fetchBusinessInfo() {
+        int businessId = 1;
+        businessInfoService.getBusinessInfo(businessId, new BusinessInfoService.ApiCallback<BusinessInfoDTO>() {
+            @Override
+            public void onSuccess(BusinessInfoDTO result) {
+                populateUI(result);
+            }
 
-
+            @Override
+            public void onError(String errorMessage) {
+                Toast.makeText(getContext(), "Error fetching business info: " + errorMessage, Toast.LENGTH_SHORT).show();
+            }
         });
+    }
 
+    private void populateUI(BusinessInfoDTO businessInfo) {
+        binding.textInputEditTextBizName.setText(businessInfo.getBusinessName());
+        binding.textInputEditTextBizName3.setText(businessInfo.getSlogan());
+        Glide.with(requireContext())
+                .load(businessInfo.getLogoUrl())
+                .placeholder(R.drawable.error_image)
+                .error(R.drawable.error_image) // Error drawable
+                .into(binding.imageViewBizImage);
+    }
 
+    private void saveBusinessInfo() {
+        BusinessInfoDTO businessInfo = new BusinessInfoDTO(
+                binding.textInputEditTextBizName.getText().toString(),
+                "http://example.com/logo.png", // Actual URL
+                binding.textInputEditTextBizName3.getText().toString(),
+                "#FF5733", // Primary color
+                "#33FF57"  // Secondary color
+        );
+
+        businessInfoService.updateBusinessInfo(1, businessInfo, new BusinessInfoService.ApiCallback<BusinessInfoDTO>() {
+            @Override
+            public void onSuccess(BusinessInfoDTO result) {
+                Toast.makeText(getContext(), "Business information saved.", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onError(String errorMessage) {
+                Toast.makeText(getContext(), "Error saving business info: " + errorMessage, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private boolean validateInput() {
+        if (binding.textInputEditTextBizName.getText().toString().trim().isEmpty()) {
+            Toast.makeText(getContext(), "Business name is required.", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (binding.textInputEditTextBizName3.getText().toString().trim().isEmpty()) {
+            Toast.makeText(getContext(), "Slogan is required.", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
     }
 }
