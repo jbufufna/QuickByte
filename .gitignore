@@ -42,3 +42,4 @@ local.properties
 .gradle/buildOutputCleanup/outputFiles.bin
 .gradle/config.properties
 .gradle/file-system.probe
+/.gradle
