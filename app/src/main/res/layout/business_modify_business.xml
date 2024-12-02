@@ -62,7 +62,7 @@
         app:layout_constraintVertical_bias="0.471" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/textViewItemName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Business Logo:"
@@ -104,7 +104,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.3"
-        app:layout_constraintStart_toEndOf="@+id/textView5"
+        app:layout_constraintStart_toEndOf="@+id/textViewItemName"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.192"
         tools:srcCompat="@tools:sample/avatars" />

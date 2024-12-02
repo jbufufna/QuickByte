@@ -34,9 +34,6 @@
         <action
             android:id="@+id/action_customerCreateAccountFragment_to_customerHomePageFragment"
             app:destination="@id/customerHomePageFragment" />
-        <action
-            android:id="@+id/action_customerCreateAccountFragment_to_logoScreenFragment"
-            app:destination="@id/logoScreenFragment" />
     </fragment>
     <fragment
         android:id="@+id/customerHomePageFragment"
@@ -76,9 +73,6 @@
         <action
             android:id="@+id/action_customerSignInFragment_to_businessIncomingOrdersFragment"
             app:destination="@id/businessIncomingOrdersFragment" />
-        <action
-            android:id="@+id/action_customerSignInFragment_to_logoScreenFragment"
-            app:destination="@id/logoScreenFragment" />
     </fragment>
     <fragment
         android:id="@+id/customerViewItemFragment"

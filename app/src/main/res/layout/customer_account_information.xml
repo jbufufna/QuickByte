@@ -10,239 +10,173 @@
 
     <TextView
         android:id="@+id/textView26"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="13dp"
-        android:layout_marginEnd="100dp"
+        android:layout_width="380dp"
+        android:layout_height="53dp"
         android:text="Account Information"
-        android:textSize="20sp"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.053" />
 
     <Button
         android:id="@+id/btnAccInfoBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="16dp"
         android:layout_marginBottom="16dp"
         android:text="Back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/btnCreateAccCreateAcc"
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/editTextAccInfoPassword"
+        android:layout_width="194dp"
+        android:layout_height="48dp"
+        android:hint="Password"
+        app:layout_constraintEnd_toEndOf="@+id/editTextAccInfoUsername"
+        app:layout_constraintStart_toStartOf="@+id/editTextAccInfoUsername"
+        app:layout_constraintTop_toBottomOf="@+id/editTextAccInfoUsername" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/editTextAccInfoEmail"
+        android:layout_width="194dp"
+        android:layout_height="48dp"
+        android:hint="Email"
+        app:layout_constraintEnd_toEndOf="@+id/editTextAccInfoPassword"
+        app:layout_constraintStart_toStartOf="@+id/editTextAccInfoPassword"
+        app:layout_constraintTop_toBottomOf="@+id/editTextAccInfoPassword" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/editTextAccInfoCCName"
+        android:layout_width="194dp"
+        android:layout_height="48dp"
+        android:hint="Name on Card"
+        app:layout_constraintEnd_toEndOf="@+id/editTextAccInfoEmail"
+        app:layout_constraintStart_toStartOf="@+id/editTextAccInfoEmail"
+        app:layout_constraintTop_toBottomOf="@+id/editTextAccInfoEmail" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/editTextAccInfoUsername"
+        android:layout_width="194dp"
+        android:layout_height="48dp"
+        android:editable="false"
+        android:hint="Username"
+        tools:layout_editor_absoluteX="189dp"
+        tools:layout_editor_absoluteY="120dp" />
+
+    <TextView
+        android:id="@+id/textViewAccInfoCCNum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="132dp"
-        android:layout_marginEnd="132dp"
-        android:layout_marginBottom="216dp"
-        android:text="Save Changes"
+        android:text="Credit Card #:"
+        android:textAlignment="textEnd"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextAccInfoCCNum"
+        app:layout_constraintEnd_toEndOf="@+id/textViewAccInfoCardName"
+        app:layout_constraintTop_toBottomOf="@+id/editTextAccInfoCCName" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/editTextAccInfoCCNum"
+        android:layout_width="194dp"
+        android:layout_height="48dp"
+        android:hint="Credit Card #"
+        app:layout_constraintEnd_toEndOf="@+id/editTextAccInfoCCName"
+        app:layout_constraintStart_toStartOf="@+id/editTextAccInfoCCName"
+        app:layout_constraintTop_toBottomOf="@+id/editTextAccInfoCCName" />
+
+    <TextView
+        android:id="@+id/textViewAccInfoCCExpDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Exp Date:"
+        android:textAlignment="textEnd"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextAccInfoCCExpDate"
+        app:layout_constraintEnd_toEndOf="@+id/textViewAccInfoCCNum"
+        app:layout_constraintTop_toBottomOf="@+id/editTextAccInfoCCNum" />
+
+    <TextView
+        android:id="@+id/textViewAccInfoCCCSV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CSV:"
+        android:textAlignment="textEnd"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextAccInfoCCCSV"
+        app:layout_constraintEnd_toEndOf="@+id/textViewAccInfoCCExpDate"
+        app:layout_constraintTop_toBottomOf="@+id/editTextAccInfoCCExpDate" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/editTextAccInfoCCExpDate"
+        android:layout_width="194dp"
+        android:layout_height="48dp"
+        android:hint="Exp Date"
+        app:layout_constraintEnd_toEndOf="@+id/editTextAccInfoCCNum"
+        app:layout_constraintStart_toStartOf="@+id/editTextAccInfoCCNum"
+        app:layout_constraintTop_toBottomOf="@+id/editTextAccInfoCCNum" />
+
+    <TextView
+        android:id="@+id/textViewAccInfoOrderHistory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Order History"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.737" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/editText2"
+        android:id="@+id/editTextAccInfoCCCSV"
         android:layout_width="194dp"
         android:layout_height="48dp"
-        android:layout_marginStart="7dp"
-        android:layout_marginTop="2dp"
-        android:hint="Password"
-        app:layout_constraintStart_toEndOf="@+id/textView8"
-        app:layout_constraintTop_toBottomOf="@+id/textView26" />
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="98dp"
-        android:layout_marginTop="35dp"
-        android:text="Address 1:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/editText4"
-        android:layout_width="194dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="7dp"
-        android:layout_marginTop="6dp"
-        android:hint="Address 1"
-        app:layout_constraintStart_toEndOf="@+id/textView9"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
-
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="98dp"
-        android:layout_marginTop="23dp"
-        android:text="Address 2:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/editText5"
-        android:layout_width="194dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="7dp"
-        android:layout_marginTop="-7dp"
-        android:hint="Address 2"
-        app:layout_constraintStart_toEndOf="@+id/textView10"
-        app:layout_constraintTop_toBottomOf="@+id/editText4" />
-
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="137dp"
-        android:layout_marginTop="24dp"
-        android:text="City:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/editText6"
-        android:layout_width="194dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="-7dp"
-        android:hint="City"
-        app:layout_constraintStart_toEndOf="@+id/textView11"
-        app:layout_constraintTop_toBottomOf="@+id/editText5" />
-
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="129dp"
-        android:layout_marginTop="18dp"
-        android:text="State:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView11" />
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/editText7"
-        android:layout_width="194dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="7dp"
-        android:layout_marginTop="-7dp"
-        android:hint="State"
-        app:layout_constraintStart_toEndOf="@+id/textView12"
-        app:layout_constraintTop_toBottomOf="@+id/editText6" />
-
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="142dp"
-        android:layout_marginTop="20dp"
-        android:text="Zip:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView12" />
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/editText8"
-        android:layout_width="194dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="7dp"
-        android:layout_marginTop="-7dp"
-        android:hint="Zip"
-        app:layout_constraintStart_toEndOf="@+id/textView13"
-        app:layout_constraintTop_toBottomOf="@+id/editText7" />
-
-    <TextView
-        android:id="@+id/textView14"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="78dp"
-        android:layout_marginTop="38dp"
-        android:text="Credit Card #:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView13" />
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/editText9"
-        android:layout_width="194dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="7dp"
-        android:hint="Credit Card #"
-        app:layout_constraintStart_toEndOf="@+id/textView14"
-        app:layout_constraintTop_toBottomOf="@+id/editText8" />
-
-    <TextView
-        android:id="@+id/textView15"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="106dp"
-        android:layout_marginTop="20dp"
-        android:text="Exp Date:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView14" />
-
-    <TextView
-        android:id="@+id/textView17"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="136dp"
-        android:layout_marginTop="23dp"
-        android:text="CSV:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView15" />
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/editText10"
-        android:layout_width="194dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="-7dp"
-        android:hint="Exp Date"
-        app:layout_constraintStart_toEndOf="@+id/textView15"
-        app:layout_constraintTop_toBottomOf="@+id/editText9" />
-
-    <TextView
-        android:id="@+id/textView16"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="164dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="164dp"
-        android:text="Order History"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnCreateAccCreateAcc" />
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/editText11"
-        android:layout_width="194dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="6dp"
-        android:layout_marginTop="-7dp"
         android:hint="CSV"
-        app:layout_constraintStart_toEndOf="@+id/textView17"
-        app:layout_constraintTop_toBottomOf="@+id/editText10" />
+        app:layout_constraintEnd_toEndOf="@+id/editTextAccInfoCCExpDate"
+        app:layout_constraintStart_toStartOf="@+id/editTextAccInfoCCExpDate"
+        app:layout_constraintTop_toBottomOf="@+id/editTextAccInfoCCExpDate" />
 
     <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="99dp"
-        android:layout_marginTop="18dp"
+        android:id="@+id/textViewAccInfoPassword"
+        android:layout_width="72dp"
+        android:layout_height="25dp"
         android:text="Password:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView26" />
+        android:textAlignment="textEnd"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextAccInfoPassword"
+        app:layout_constraintEnd_toEndOf="@+id/textViewAccInfoUsername"
+        app:layout_constraintTop_toTopOf="@+id/editTextAccInfoPassword" />
+
+    <TextView
+        android:id="@+id/textViewAccInfoEmail"
+        android:layout_width="65dp"
+        android:layout_height="23dp"
+        android:text="Email:"
+        android:textAlignment="textEnd"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextAccInfoEmail"
+        app:layout_constraintEnd_toEndOf="@+id/textViewAccInfoPassword"
+        app:layout_constraintTop_toBottomOf="@+id/editTextAccInfoPassword" />
+
+    <TextView
+        android:id="@+id/textViewAccInfoUsername"
+        android:layout_width="75dp"
+        android:layout_height="26dp"
+        android:layout_marginEnd="24dp"
+        android:text="Username:"
+        android:textAlignment="textEnd"
+        app:layout_constraintBottom_toTopOf="@+id/editTextAccInfoPassword"
+        app:layout_constraintEnd_toStartOf="@+id/editTextAccInfoUsername"
+        app:layout_constraintTop_toTopOf="@+id/editTextAccInfoUsername"
+        app:layout_constraintVertical_bias="0.5" />
 
     <ScrollView
-        android:layout_width="403dp"
-        android:layout_height="97dp"
-        android:layout_marginTop="16dp"
+        android:id="@+id/scrollView6"
+        android:layout_width="346dp"
+        android:layout_height="113dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintHorizontal_bias="0.569"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView16">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.896">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -269,5 +203,33 @@
 
         </LinearLayout>
     </ScrollView>
+
+    <Button
+        android:id="@+id/btnAccInfoSaveChanges"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save Changes"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.686" />
+
+    <TextView
+        android:id="@+id/textViewAccInfoCardName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name on Card:"
+        android:textAlignment="textEnd"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextAccInfoCCName"
+        app:layout_constraintEnd_toEndOf="@+id/textViewAccInfoEmail"
+        app:layout_constraintTop_toBottomOf="@+id/editTextAccInfoEmail" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
+        android:layout_width="273dp"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="137dp"
+        tools:layout_editor_absoluteY="138dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

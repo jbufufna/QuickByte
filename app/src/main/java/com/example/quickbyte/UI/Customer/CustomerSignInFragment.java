@@ -29,11 +29,6 @@ public class CustomerSignInFragment extends Fragment {
                         .navigate(R.id.action_customerSignInFragment_to_customerCreateAccountFragment)
         );
 
-        /*binding.btnSignInSignIn.setOnClickListener(v ->
-                NavHostFragment.findNavController(CustomerSignInFragment.this)
-                        .navigate(R.id.action_customerSignInFragment_to_customerHomePageFragment)
-        );*/
-
         // Place order button logic with conditional navigation
         binding.btnSignInSignIn.setOnClickListener(v -> {
             boolean condition;
@@ -54,10 +49,5 @@ public class CustomerSignInFragment extends Fragment {
                         .navigate(R.id.action_customerSignInFragment_to_businessIncomingOrdersFragment);
             }
         });
-
-        binding.btnSigninBack.setOnClickListener(v ->
-                NavHostFragment.findNavController(CustomerSignInFragment.this)
-                        .navigate(R.id.action_customerSignInFragment_to_logoScreenFragment)
-        );
     }
 }

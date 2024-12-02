@@ -27,7 +27,7 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/textViewItemName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="88dp"
@@ -36,7 +36,7 @@
         tools:layout_editor_absoluteY="293dp" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/textViewItemPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="92dp"
@@ -61,7 +61,7 @@
         app:layout_constraintBottom_toTopOf="@+id/editText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/textView5" />
+        app:layout_constraintStart_toEndOf="@+id/textViewItemName" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/editText"
@@ -71,7 +71,7 @@
         android:layout_marginEnd="44dp"
         android:hint="Item Price"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView6"
+        app:layout_constraintStart_toEndOf="@+id/textViewItemPrice"
         tools:layout_editor_absoluteY="335dp" />
 
     <ImageView

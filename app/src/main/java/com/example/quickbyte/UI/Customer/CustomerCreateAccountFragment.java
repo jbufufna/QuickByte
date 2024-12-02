@@ -39,10 +39,5 @@ public class CustomerCreateAccountFragment extends Fragment {
                         .navigate(R.id.action_customerCreateAccountFragment_to_customerSignInFragment)
         );
 
-        binding.btnCreateAccBack.setOnClickListener(v ->
-                NavHostFragment.findNavController(CustomerCreateAccountFragment.this)
-                        .navigate(R.id.action_customerCreateAccountFragment_to_logoScreenFragment)
-        );
-
     }
 }

@@ -45,7 +45,7 @@
         tools:layout_editor_absoluteY="302dp" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/textViewItemPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Number of Items:"
@@ -61,7 +61,7 @@
         tools:layout_editor_absoluteY="354dp" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/textViewItemName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Section Name:"

@@ -11,74 +11,70 @@
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_marginStart="100dp"
-        android:layout_marginTop="13dp"
         android:layout_marginEnd="100dp"
         android:text="Order"
-        android:textSize="20sp"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.048" />
 
     <TextView
-        android:id="@+id/textView18"
-        android:layout_width="166dp"
-        android:layout_height="27dp"
-        android:layout_marginStart="122dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="122dp"
-        android:text="Time Estimate: XX:XX"
+        android:id="@+id/textViewPlaceOrderEstimate"
+        android:layout_width="113dp"
+        android:layout_height="22dp"
+        android:text="Time Estimate:"
+        android:textAlignment="textEnd"
         android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.318"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.679" />
 
     <TextView
-        android:id="@+id/textView19"
-        android:layout_width="136dp"
+        android:id="@+id/textViewPlaceOrderSubtotal"
+        android:layout_width="71dp"
         android:layout_height="25dp"
-        android:layout_marginStart="137dp"
-        android:layout_marginTop="47dp"
-        android:layout_marginEnd="137dp"
-        android:text="Subtotal: $XX.XX"
+        android:text="Subtotal:"
+        android:textAlignment="textEnd"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView18" />
+        app:layout_constraintEnd_toEndOf="@+id/textViewPlaceOrderEstimate"
+        app:layout_constraintTop_toBottomOf="@+id/textViewPlaceOrderEstimate" />
 
     <TextView
-        android:id="@+id/textView20"
-        android:layout_width="136dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="137dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="137dp"
-        android:text="Tax: $XX.XX"
+        android:id="@+id/textViewPlaceOrderTax"
+        android:layout_width="45dp"
+        android:layout_height="22dp"
+        android:text="Tax:"
+        android:textAlignment="textEnd"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView19" />
+        app:layout_constraintEnd_toEndOf="@+id/textViewPlaceOrderSubtotal"
+        app:layout_constraintTop_toBottomOf="@+id/textViewPlaceOrderSubtotal" />
 
     <TextView
-        android:id="@+id/textView21"
-        android:layout_width="136dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="137dp"
-        android:layout_marginTop="13dp"
-        android:layout_marginEnd="137dp"
-        android:text="Total: $XX.XX"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView20" />
+        android:id="@+id/textViewPlaceOrderTotal"
+        android:layout_width="70dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="24dp"
+        android:text="Total:"
+        android:textAlignment="textEnd"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/textViewPlaceOrderTax"
+        app:layout_constraintTop_toBottomOf="@+id/textViewPlaceOrderTax" />
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="399dp"
-        android:layout_height="347dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="380dp"
+        android:layout_height="287dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias=".5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView24">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.229">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -139,5 +135,45 @@
         android:text="Place Order"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewPlaceOrderEstimateNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0 min"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewPlaceOrderEstimate"
+        app:layout_constraintTop_toTopOf="@+id/textViewPlaceOrderEstimate"
+        app:layout_constraintVertical_bias="0.5"
+        tools:layout_editor_absoluteX="248dp" />
+
+    <TextView
+        android:id="@+id/textViewPlaceOrderTotalNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewPlaceOrderTotal"
+        app:layout_constraintStart_toStartOf="@+id/textViewPlaceOrderTaxNumber"
+        app:layout_constraintTop_toTopOf="@+id/textViewPlaceOrderTotal"
+        tools:text="$00.00" />
+
+    <TextView
+        android:id="@+id/textViewPlaceOrderSubtotalNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$00.00"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewPlaceOrderSubtotal"
+        app:layout_constraintStart_toStartOf="@+id/textViewPlaceOrderEstimateNumber"
+        app:layout_constraintTop_toTopOf="@+id/textViewPlaceOrderSubtotal" />
+
+    <TextView
+        android:id="@+id/textViewPlaceOrderTaxNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$00.00"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewPlaceOrderTax"
+        app:layout_constraintStart_toStartOf="@+id/textViewPlaceOrderSubtotalNumber"
+        app:layout_constraintTop_toTopOf="@+id/textViewPlaceOrderTax"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
