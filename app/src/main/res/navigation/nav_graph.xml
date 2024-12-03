@@ -140,4 +140,9 @@
             android:id="@+id/action_businessModifyItemFragment_to_businessModifyMenuFragment2"
             app:destination="@id/businessModifyMenuFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/testFragment"
+        android:name="com.example.quickbyte.TestFragment"
+        android:label="fragment_test"
+        tools:layout="@layout/fragment_test" />
 </navigation>
