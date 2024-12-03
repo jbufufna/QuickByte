@@ -13,7 +13,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import com.bumptech.glide.Glide;
 import com.example.quickbyte.API.DTO.BusinessInfoDTO;
 import com.example.quickbyte.API.Services.BusinessInfoService;
-import com.example.quickbyte.Facade.Database;
+import com.example.quickbyte.Facade.Facade;
 import com.example.quickbyte.R;
 import com.example.quickbyte.databinding.BusinessModifyBusinessBinding;
 
@@ -21,12 +21,12 @@ public class BusinessModifyBusinessFragment extends Fragment {
 
     private BusinessModifyBusinessBinding binding;
     private BusinessInfoService businessInfoService;
-    private Database database;
+    private Facade facade;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = BusinessModifyBusinessBinding.inflate(inflater, container, false);
-        database = Database.getInstance();
+        facade = Facade.getInstance();
         return binding.getRoot();
     }
 
@@ -53,7 +53,7 @@ public class BusinessModifyBusinessFragment extends Fragment {
 
     private void fetchBusinessInfo() {
         int businessId = 1;
-        database.getBusinessInfo(businessId, new Database.DatabaseCallback<BusinessInfoDTO>() {
+        facade.getBusinessInfo(businessId, new Facade.DatabaseCallback<BusinessInfoDTO>() {
             @Override
             public void onSuccess(BusinessInfoDTO result) {
                 populateUI(result);
@@ -68,7 +68,7 @@ public class BusinessModifyBusinessFragment extends Fragment {
 
     private void populateUI(BusinessInfoDTO businessInfo) {
         binding.textInputEditTextBizName.setText(businessInfo.getBusinessName());
-        binding.textInputEditTextBizName3.setText(businessInfo.getSlogan());
+        binding.textInputEditTextBizSlogan.setText(businessInfo.getSlogan());
         Glide.with(requireContext())
                 .load(businessInfo.getLogoUrl())
                 .placeholder(R.drawable.error_image)
@@ -80,12 +80,12 @@ public class BusinessModifyBusinessFragment extends Fragment {
         BusinessInfoDTO businessInfo = new BusinessInfoDTO(
                 binding.textInputEditTextBizName.getText().toString(),
                 "http://example.com/logo.png", // Actual URL
-                binding.textInputEditTextBizName3.getText().toString(),
+                binding.textInputEditTextBizSlogan.getText().toString(),
                 "#FF5733", // Primary color
                 "#33FF57"  // Secondary color
         );
 
-        database.saveBusinessInfo(businessInfo, new Database.DatabaseCallback<BusinessInfoDTO>() {
+        facade.saveBusinessInfo(businessInfo, new Facade.DatabaseCallback<BusinessInfoDTO>() {
             @Override
             public void onSuccess(BusinessInfoDTO result) {
                 Toast.makeText(getContext(), "Business information saved.", Toast.LENGTH_SHORT).show();
@@ -103,7 +103,7 @@ public class BusinessModifyBusinessFragment extends Fragment {
             Toast.makeText(getContext(), "Business name is required.", Toast.LENGTH_SHORT).show();
             return false;
         }
-        if (binding.textInputEditTextBizName3.getText().toString().trim().isEmpty()) {
+        if (binding.textInputEditTextBizSlogan.getText().toString().trim().isEmpty()) {
             Toast.makeText(getContext(), "Slogan is required.", Toast.LENGTH_SHORT).show();
             return false;
         }
