@@ -13,6 +13,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import com.bumptech.glide.Glide;
 import com.example.quickbyte.API.DTO.BusinessInfoDTO;
 import com.example.quickbyte.API.Services.BusinessInfoService;
+import com.example.quickbyte.Facade.Database;
 import com.example.quickbyte.R;
 import com.example.quickbyte.databinding.BusinessModifyBusinessBinding;
 
@@ -20,11 +21,12 @@ public class BusinessModifyBusinessFragment extends Fragment {
 
     private BusinessModifyBusinessBinding binding;
     private BusinessInfoService businessInfoService;
+    private Database database;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = BusinessModifyBusinessBinding.inflate(inflater, container, false);
-        businessInfoService = BusinessInfoService.getInstance();
+        database = Database.getInstance();
         return binding.getRoot();
     }
 
@@ -51,7 +53,7 @@ public class BusinessModifyBusinessFragment extends Fragment {
 
     private void fetchBusinessInfo() {
         int businessId = 1;
-        businessInfoService.getBusinessInfo(businessId, new BusinessInfoService.ApiCallback<BusinessInfoDTO>() {
+        database.getBusinessInfo(businessId, new Database.DatabaseCallback<BusinessInfoDTO>() {
             @Override
             public void onSuccess(BusinessInfoDTO result) {
                 populateUI(result);
@@ -83,7 +85,7 @@ public class BusinessModifyBusinessFragment extends Fragment {
                 "#33FF57"  // Secondary color
         );
 
-        businessInfoService.updateBusinessInfo(1, businessInfo, new BusinessInfoService.ApiCallback<BusinessInfoDTO>() {
+        database.saveBusinessInfo(businessInfo, new Database.DatabaseCallback<BusinessInfoDTO>() {
             @Override
             public void onSuccess(BusinessInfoDTO result) {
                 Toast.makeText(getContext(), "Business information saved.", Toast.LENGTH_SHORT).show();
