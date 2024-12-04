@@ -43,39 +43,24 @@ public class BusinessInfoService {
         });
     }
 
-    public void saveBusinessInfo(BusinessInfoDTO businessInfoDTO, final ApiCallback<BusinessInfoDTO> callback) {
-        Call<BusinessInfoDTO> call = businessInfoService.saveBusinessInfo(businessInfoDTO);
+    public void saveOrUpdateBusinessInfo(BusinessInfoDTO businessInfoDTO, final ApiCallback<BusinessInfoDTO> callback) {
+        // Make a single API call to the saveOrUpdate endpoint
+        Call<BusinessInfoDTO> call = businessInfoService.saveOrUpdateBusinessInfo(businessInfoDTO);
         call.enqueue(new Callback<BusinessInfoDTO>() {
             @Override
             public void onResponse(Call<BusinessInfoDTO> call, Response<BusinessInfoDTO> response) {
                 if (response.isSuccessful()) {
+                    // Pass the response to the callback on success
                     callback.onSuccess(response.body());
                 } else {
-                    callback.onError("Failed to save business info: " + response.message());
+                    // Handle error cases with the response message
+                    callback.onError("Failed to save or update business info: " + response.message());
                 }
             }
 
             @Override
             public void onFailure(Call<BusinessInfoDTO> call, Throwable t) {
-                callback.onError("Network error: " + t.getMessage());
-            }
-        });
-    }
-
-    public void updateBusinessInfo(int id, BusinessInfoDTO businessInfoDTO, final ApiCallback<BusinessInfoDTO> callback) {
-        Call<BusinessInfoDTO> call = businessInfoService.updateBusinessInfo(id, businessInfoDTO);
-        call.enqueue(new Callback<BusinessInfoDTO>() {
-            @Override
-            public void onResponse(Call<BusinessInfoDTO> call, Response<BusinessInfoDTO> response) {
-                if (response.isSuccessful()) {
-                    callback.onSuccess(response.body());
-                } else {
-                    callback.onError("Failed to update business info: " + response.message());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<BusinessInfoDTO> call, Throwable t) {
+                // Handle network or other errors
                 callback.onError("Network error: " + t.getMessage());
             }
         });

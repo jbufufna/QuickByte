@@ -83,7 +83,7 @@ public class Facade {
     }
 
     public void saveBusinessInfo(BusinessInfoDTO businessInfo, final DatabaseCallback<BusinessInfoDTO> callback) {
-        businessInfoService.updateBusinessInfo(1, businessInfo, new BusinessInfoService.ApiCallback<BusinessInfoDTO>() {
+        businessInfoService.saveOrUpdateBusinessInfo(businessInfo, new BusinessInfoService.ApiCallback<BusinessInfoDTO>() {
             @Override
             public void onSuccess(BusinessInfoDTO result) {
                 updateLocalBusinessInfoData(result);

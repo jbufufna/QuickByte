@@ -84,6 +84,25 @@ public class MenuItemService {
         });
     }
 
+    public void getAllItems(final ApiCallback<List<MenuItem>> callback) {
+        Call<List<MenuItem>> call = customerMenuService.getAllItems();
+        call.enqueue(new Callback<List<MenuItem>>() {
+            @Override
+            public void onResponse(Call<List<MenuItem>> call, Response<List<MenuItem>> response) {
+                if (response.isSuccessful()) {
+                    callback.onSuccess(response.body());
+                } else {
+                    callback.onError("Failed to load items: " + response.message());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<MenuItem>> call, Throwable t) {
+                callback.onError("Network error: " + t.getMessage());
+            }
+        });
+    }
+
     public void searchMenuItems(String query, final ApiCallback<List<MenuItem>> callback) {
         Call<List<MenuItem>> call = customerMenuService.searchMenuItems(query);
         call.enqueue(new Callback<List<MenuItem>>() {

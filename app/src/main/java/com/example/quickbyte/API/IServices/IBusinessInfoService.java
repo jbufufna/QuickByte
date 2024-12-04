@@ -14,8 +14,6 @@ public interface IBusinessInfoService {
     Call<BusinessInfoDTO> getBusinessInfo(@Path("id") int id);
 
     @POST("/api/business-info")
-    Call<BusinessInfoDTO> saveBusinessInfo(@Body BusinessInfoDTO businessInfoDTO);
+    Call<BusinessInfoDTO> saveOrUpdateBusinessInfo(@Body BusinessInfoDTO businessInfoDTO);
 
-    @PUT("/api/business-info/{id}")
-    Call<BusinessInfoDTO> updateBusinessInfo(@Path("id") int id, @Body BusinessInfoDTO businessInfoDTO);
 }

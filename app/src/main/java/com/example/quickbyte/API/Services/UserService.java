@@ -27,6 +27,25 @@ public class UserService {
         return instance;
     }
 
+    public void getUserById(int userId, final ApiCallback<UserDTO> callback) {
+        Call<UserDTO> call = _userService.getUserById(userId);
+        call.enqueue(new Callback<UserDTO>() {
+            @Override
+            public void onResponse(Call<UserDTO> call, Response<UserDTO> response) {
+                if (response.isSuccessful()) {
+                    callback.onSuccess(response.body());
+                } else {
+                    callback.onError("Failed to get user: " + response.message());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UserDTO> call, Throwable t) {
+                callback.onError("Network error: " + t.getMessage());
+            }
+        });
+    }
+
     public void loginUser(String username, String password, final ApiCallback<UserDTO> callback) {
         LoginRequestDTO loginRequest = new LoginRequestDTO(username, password);
         Call<UserDTO> call = _userService.loginUser(loginRequest);

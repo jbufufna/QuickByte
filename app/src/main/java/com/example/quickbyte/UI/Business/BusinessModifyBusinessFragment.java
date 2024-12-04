@@ -78,6 +78,7 @@ public class BusinessModifyBusinessFragment extends Fragment {
 
     private void saveBusinessInfo() {
         BusinessInfoDTO businessInfo = new BusinessInfoDTO(
+                "1", // Owner ID
                 binding.textInputEditTextBizName.getText().toString(),
                 "http://example.com/logo.png", // Actual URL
                 binding.textInputEditTextBizSlogan.getText().toString(),

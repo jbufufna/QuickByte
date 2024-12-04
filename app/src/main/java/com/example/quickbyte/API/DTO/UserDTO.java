@@ -9,15 +9,21 @@ public class UserDTO {
     private String firstName;
     private String lastName;
     private String phoneNumber;
-    //private LocalDateTime createdAt;
+    private LocalDateTime createdAt;
     private Boolean isActive;
+    private int LoyaltyPoints;
+    private String CardNumber;
+    private int ExpiryMonth;
+    private int ExpiryYear;
+    private  int cvv;
+    private Boolean IsDefaultCard;
 
     // Default constructor
     public UserDTO() {}
 
     // Constructor with all fields
     public UserDTO(Integer userId, String username, String email, String firstName, String lastName,
-                   String phoneNumber, LocalDateTime createdAt, Boolean isActive) {
+                   String phoneNumber, LocalDateTime createdAt, Boolean isActive, int LoyaltyPoints, String CardNumber, int ExpiryMonth, int ExpiryYear, Boolean IsDefaultCard, int cvv) {
         this.userId = userId;
         this.username = username;
         this.email = email;
@@ -26,6 +32,12 @@ public class UserDTO {
         this.phoneNumber = phoneNumber;
         // this.createdAt = createdAt;
         this.isActive = isActive;
+        this.LoyaltyPoints = LoyaltyPoints;
+        this.CardNumber = CardNumber;
+        this.ExpiryMonth = ExpiryMonth;
+        this.ExpiryYear = ExpiryYear;
+        this.cvv = cvv;
+        this.IsDefaultCard = IsDefaultCard;
     }
 
     // Getters and setters
@@ -91,5 +103,53 @@ public class UserDTO {
 
     public void setIsActive(Boolean isActive) {
         this.isActive = isActive;
+    }
+
+    public int getLoyaltyPoints() {
+        return LoyaltyPoints;
+    }
+
+    public void setLoyaltyPoints(int LoyaltyPoints) {
+        this.LoyaltyPoints = LoyaltyPoints;
+    }
+
+    public String getCardNumber() {
+        return CardNumber;
+    }
+
+    public void setCardNumber(String CardNumber) {
+        this.CardNumber = CardNumber;
+    }
+
+    public int getExpiryMonth() {
+        return ExpiryMonth;
+    }
+
+    public void setExpiryMonth(int ExpiryMonth) {
+        this.ExpiryMonth = ExpiryMonth;
+    }
+
+    public int getExpiryYear() {
+        return ExpiryYear;
+    }
+
+    public void setExpiryYear(int ExpiryYear) {
+        this.ExpiryYear = ExpiryYear;
+    }
+
+    public Boolean getIsDefaultCard() {
+        return IsDefaultCard;
+    }
+
+    public void setIsDefaultCard(Boolean IsDefaultCard) {
+        this.IsDefaultCard = IsDefaultCard;
+    }
+
+    public int getCvv() {
+        return cvv;
+    }
+
+    public void setCvv(int cvv) {
+        this.cvv = cvv;
     }
 }

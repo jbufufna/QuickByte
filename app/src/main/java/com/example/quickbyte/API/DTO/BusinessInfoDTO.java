@@ -2,6 +2,7 @@ package com.example.quickbyte.API.DTO;
 
 public class BusinessInfoDTO {
 
+    private String ownerId;
     private String businessName;
     private String logoUrl;
     private String slogan;
@@ -10,12 +11,13 @@ public class BusinessInfoDTO {
 
     public BusinessInfoDTO() {}
 
-    public BusinessInfoDTO(String businessName, String logoUrl, String slogan, String primaryColor, String secondaryColor) {
+    public BusinessInfoDTO(String businessName, String logoUrl, String slogan, String primaryColor, String secondaryColor, String ownerId) {
         this.businessName = businessName;
         this.logoUrl = logoUrl;
         this.slogan = slogan;
         this.primaryColor = primaryColor;
         this.secondaryColor = secondaryColor;
+        this.ownerId = ownerId;
     }
 
     // Getters and Setters
@@ -33,4 +35,9 @@ public class BusinessInfoDTO {
 
     public String getSecondaryColor() { return secondaryColor; }
     public void setSecondaryColor(String secondaryColor) { this.secondaryColor = secondaryColor; }
+
+    public String getOwnerId() { return ownerId; }
+
+    public void setOwnerId(String ownerId) { this.ownerId = ownerId; }
+
 }

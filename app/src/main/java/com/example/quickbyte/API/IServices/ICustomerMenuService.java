@@ -24,4 +24,7 @@ public interface ICustomerMenuService {
 
     @GET("/api/customer/home/popular-items")
     Call<List<MenuItem>> getPopularItems();
+
+    @GET("/api/customer/home/items")
+    Call<List<MenuItem>> getAllItems();
 }
