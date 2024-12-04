@@ -21,6 +21,11 @@ public class CustomerViewItemFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = com.example.quickbyte.databinding.CustomerViewItemBinding.inflate(inflater, container, false);
+
+        //TODO: On page loading load current amount for item into amount
+        // TODO: amount should always start as whatever is in the singleton (default = 0)
+
+
         return binding.getRoot();
     }
 
@@ -35,6 +40,8 @@ public class CustomerViewItemFragment extends Fragment {
         binding.btnViewItemAddToCart.setOnClickListener(v ->
                 NavHostFragment.findNavController(CustomerViewItemFragment.this)
                         .navigate(R.id.action_customerViewItemFragment_to_customerHomePageFragment)
+
+                //TODO: when add to cart pressed, take new amount and replace it in current order singleton.
         );
     }
 }
