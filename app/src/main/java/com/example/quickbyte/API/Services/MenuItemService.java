@@ -123,6 +123,25 @@ public class MenuItemService {
         });
     }
 
+    public void getItemById(int itemId, final ApiCallback<MenuItem> callback) {
+        Call<MenuItem> call = customerMenuService.getItemById(itemId);
+        call.enqueue(new Callback<MenuItem>() {
+            @Override
+            public void onResponse(Call<MenuItem> call, Response<MenuItem> response) {
+                if (response.isSuccessful()) {
+                    callback.onSuccess(response.body());
+                } else {
+                    callback.onError("Failed to load item: " + response.message());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<MenuItem> call, Throwable t) {
+                callback.onError("Network error: " + t.getMessage());
+            }
+        });
+    }
+
     public interface ApiCallback<T> {
         void onSuccess(T result);
         void onError(String errorMessage);

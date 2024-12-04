@@ -27,4 +27,7 @@ public interface ICustomerMenuService {
 
     @GET("/api/customer/home/items")
     Call<List<MenuItem>> getAllItems();
+
+    @GET("/api/customer/home/items/{itemId}")
+    Call<MenuItem> getItemById(@Path("itemId") int itemId);
 }
