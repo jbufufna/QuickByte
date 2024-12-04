@@ -59,4 +59,5 @@ public class MenuItem {
     public void setAvailable(boolean available) {
         isAvailable = available;
     }
+
 }
