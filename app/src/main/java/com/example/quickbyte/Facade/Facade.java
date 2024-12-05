@@ -4,6 +4,7 @@ import com.example.quickbyte.API.DTO.BusinessInfoDTO;
 import com.example.quickbyte.API.DTO.CreateMenuItemDTO;
 import com.example.quickbyte.API.DTO.MenuItem;
 import com.example.quickbyte.API.DTO.MenuItemDTO;
+import com.example.quickbyte.API.DTO.UserDTO;
 import com.example.quickbyte.API.Services.BusinessInfoService;
 import com.example.quickbyte.API.Services.ManageMenuItemService;
 import com.example.quickbyte.API.Services.MenuItemService;
@@ -32,6 +33,7 @@ public class Facade {
 
     // User Information
     private UserService userService;
+    private UserDTO loggedInUser;
 
 
     private Facade() {
@@ -71,6 +73,8 @@ public class Facade {
     }
 
     public List<MenuItem> getFullMenu() {return fullMenu;}
+
+    public UserDTO getLoggedInUser() {return loggedInUser;}
 
 
     public void getBusinessInfo(int businessId, final DatabaseCallback<BusinessInfoDTO> callback) {
@@ -173,7 +177,24 @@ public class Facade {
     }
 
 
-    
+    public void loginUser(String username, String password, final UserService.ApiCallback<UserDTO> callback)
+    {
+        userService.loginUser(username, password, new UserService.ApiCallback<UserDTO>() {
+            @Override
+            public void onSuccess(UserDTO result) {
+                loggedInUser = result;
+                callback.onSuccess(result);
+            }
+
+            @Override
+            public void onError(String errorMessage) {
+                callback.onError(errorMessage);
+            }
+        });
+    }
+
+
+
 
 
     public interface DatabaseCallback<T> {
