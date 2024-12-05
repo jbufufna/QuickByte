@@ -10,7 +10,7 @@ public class Facade {
 
     private static Facade instance;
 
-    
+
     // Business Information
     private BusinessInfoService businessInfoService;
     private String businessName;
@@ -117,6 +117,25 @@ public class Facade {
         this.businessPrimColor = businessInfo.getPrimaryColor();
         this.businessSecColor = businessInfo.getSecondaryColor();
     }
+
+
+    public void getAllItems(final MenuItemService.ApiCallback<List<MenuItem>> callback) {
+        menuItemService.getAllItems(new MenuItemService.ApiCallback<List<MenuItem>>() {
+            @Override
+            public void onSuccess(List<MenuItem> result) {
+                fullMenu = result;
+                callback.onSuccess(result);
+            }
+
+            @Override
+            public void onError(String errorMessage) {
+                callback.onError(errorMessage);
+            }
+        });
+
+    }
+
+
 
     public interface DatabaseCallback<T> {
         void onSuccess(T result);
