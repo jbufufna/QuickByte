@@ -160,7 +160,7 @@ public class Facade {
     }
 
 
-    public void updateMenuItem(MenuItemDTO menuItemDTO, final ApiCallback<MenuItemDTO> callback) {
+    public void updateMenuItem(MenuItemDTO menuItemDTO, final ManageMenuItemService.ApiCallback<MenuItemDTO> callback) {
         manageMenuItemService.updateMenuItem(menuItemDTO, new ManageMenuItemService.ApiCallback<MenuItemDTO>() {
             @Override
             public void onSuccess(MenuItemDTO result) {
@@ -175,7 +175,7 @@ public class Facade {
     }
 
 
-    public void deleteMenuItem(int itemId, final ApiCallback<Void> callback) {
+    public void deleteMenuItem(int itemId, final MenuItemService.ApiCallback<Void> callback) {
         manageMenuItemService.deleteMenuItem(itemId, new ManageMenuItemService.ApiCallback<Void>() {
             @Override
             public void onSuccess(Void result) {
