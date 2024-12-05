@@ -1,11 +1,17 @@
 package com.example.quickbyte.Facade;
 
 import com.example.quickbyte.API.DTO.BusinessInfoDTO;
+import com.example.quickbyte.API.DTO.MenuItem;
 import com.example.quickbyte.API.Services.BusinessInfoService;
+import com.example.quickbyte.API.Services.MenuItemService;
+import java.util.*;
 
 public class Facade {
 
     private static Facade instance;
+
+    
+    // Business Information
     private BusinessInfoService businessInfoService;
     private String businessName;
     private String businessSlogan;
@@ -13,8 +19,15 @@ public class Facade {
     private String businessPrimColor;
     private String businessSecColor;
 
+
+    // Menu Item Information
+    private MenuItemService menuItemService;
+    private List<MenuItem> fullMenu;
+
+
     private Facade() {
         businessInfoService = BusinessInfoService.getInstance();
+        menuItemService = MenuItemService.getInstance();
     }
 
     public static synchronized Facade getInstance() {

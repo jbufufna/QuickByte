@@ -11,6 +11,19 @@ public class MenuItem {
     private String imageUrl;
     private boolean isAvailable;
 
+
+
+    public MenuItem() {}
+
+    public MenuItem(int itemId, String name, String description, BigDecimal price, String imageUrl, boolean isAvailable) {
+        this.itemId = itemId;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.imageUrl = imageUrl;
+        this.isAvailable = isAvailable;
+    }
+
     // Getters and Setters
     public int getItemId() {
         return itemId;
