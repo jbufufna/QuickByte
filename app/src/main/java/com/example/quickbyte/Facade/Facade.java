@@ -1,8 +1,11 @@
 package com.example.quickbyte.Facade;
 
 import com.example.quickbyte.API.DTO.BusinessInfoDTO;
+import com.example.quickbyte.API.DTO.CreateMenuItemDTO;
 import com.example.quickbyte.API.DTO.MenuItem;
+import com.example.quickbyte.API.DTO.MenuItemDTO;
 import com.example.quickbyte.API.Services.BusinessInfoService;
+import com.example.quickbyte.API.Services.ManageMenuItemService;
 import com.example.quickbyte.API.Services.MenuItemService;
 import java.util.*;
 
@@ -22,12 +25,16 @@ public class Facade {
 
     // Menu Item Information
     private MenuItemService menuItemService;
+
+    private ManageMenuItemService manageMenuItemService;
+
     private List<MenuItem> fullMenu;
 
 
     private Facade() {
         businessInfoService = BusinessInfoService.getInstance();
         menuItemService = MenuItemService.getInstance();
+        manageMenuItemService = ManageMenuItemService.getInstance();
     }
 
     public static synchronized Facade getInstance() {
@@ -119,6 +126,8 @@ public class Facade {
     }
 
 
+    public List<MenuItem> getFullMenu() {return fullMenu;}
+
     public void getAllItems(final MenuItemService.ApiCallback<List<MenuItem>> callback) {
         menuItemService.getAllItems(new MenuItemService.ApiCallback<List<MenuItem>>() {
             @Override
@@ -135,6 +144,50 @@ public class Facade {
 
     }
 
+
+    public void createMenuItem(CreateMenuItemDTO createMenuItemDTO, final ManageMenuItemService.ApiCallback<MenuItemDTO> callback) {
+        manageMenuItemService.createMenuItem(createMenuItemDTO, new ManageMenuItemService.ApiCallback<MenuItemDTO>() {
+            @Override
+            public void onSuccess(MenuItemDTO result) {
+                callback.onSuccess(result);
+            }
+
+            @Override
+            public void onError(String errorMessage) {
+                callback.onError(errorMessage);
+            }
+        });
+    }
+
+
+    public void updateMenuItem(MenuItemDTO menuItemDTO, final ApiCallback<MenuItemDTO> callback) {
+        manageMenuItemService.updateMenuItem(menuItemDTO, new ManageMenuItemService.ApiCallback<MenuItemDTO>() {
+            @Override
+            public void onSuccess(MenuItemDTO result) {
+                callback.onSuccess(result);
+            }
+
+            @Override
+            public void onError(String errorMessage) {
+                callback.onError(errorMessage);
+            }
+        });
+    }
+
+
+    public void deleteMenuItem(int itemId, final ApiCallback<Void> callback) {
+        manageMenuItemService.deleteMenuItem(itemId, new ManageMenuItemService.ApiCallback<Void>() {
+            @Override
+            public void onSuccess(Void result) {
+                callback.onSuccess(result);
+            }
+
+            @Override
+            public void onError(String errorMessage) {
+                callback.onError(errorMessage);
+            }
+        });
+    }
 
 
     public interface DatabaseCallback<T> {
