@@ -7,6 +7,7 @@ import com.example.quickbyte.API.DTO.MenuItemDTO;
 import com.example.quickbyte.API.Services.BusinessInfoService;
 import com.example.quickbyte.API.Services.ManageMenuItemService;
 import com.example.quickbyte.API.Services.MenuItemService;
+import com.example.quickbyte.API.Services.UserService;
 import java.util.*;
 
 public class Facade {
@@ -25,16 +26,19 @@ public class Facade {
 
     // Menu Item Information
     private MenuItemService menuItemService;
-
     private ManageMenuItemService manageMenuItemService;
-
     private List<MenuItem> fullMenu;
+
+
+    // User Information
+    private UserService userService;
 
 
     private Facade() {
         businessInfoService = BusinessInfoService.getInstance();
         menuItemService = MenuItemService.getInstance();
         manageMenuItemService = ManageMenuItemService.getInstance();
+        userService = UserService.getInstance();
     }
 
     public static synchronized Facade getInstance() {
@@ -66,26 +70,8 @@ public class Facade {
         return businessSecColor;
     }
 
-    /* Put in database methods*/
-    public void putBusinessName(String inputBusinessName) {
-        this.businessName = inputBusinessName;
-    }
+    public List<MenuItem> getFullMenu() {return fullMenu;}
 
-    public void putBusinessSlogan(String slogan) {
-        this.businessSlogan = slogan;
-    }
-
-    public void putBusinessLogo(String logo) {
-        this.businessLogo = logo;
-    }
-
-    public void putBusinessPrimColor(String color) {
-        this.businessPrimColor = color;
-    }
-
-    public void putBusinessSecColor(String color) {
-        this.businessSecColor = color;
-    }
 
     public void getBusinessInfo(int businessId, final DatabaseCallback<BusinessInfoDTO> callback) {
         businessInfoService.getBusinessInfo(businessId, new BusinessInfoService.ApiCallback<BusinessInfoDTO>() {
@@ -124,9 +110,6 @@ public class Facade {
         this.businessPrimColor = businessInfo.getPrimaryColor();
         this.businessSecColor = businessInfo.getSecondaryColor();
     }
-
-
-    public List<MenuItem> getFullMenu() {return fullMenu;}
 
     public void getAllItems(final MenuItemService.ApiCallback<List<MenuItem>> callback) {
         menuItemService.getAllItems(new MenuItemService.ApiCallback<List<MenuItem>>() {
@@ -188,6 +171,9 @@ public class Facade {
             }
         });
     }
+
+
+    
 
 
     public interface DatabaseCallback<T> {
