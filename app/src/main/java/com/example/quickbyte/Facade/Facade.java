@@ -5,6 +5,7 @@ import com.example.quickbyte.API.DTO.CreateMenuItemDTO;
 import com.example.quickbyte.API.DTO.MenuItem;
 import com.example.quickbyte.API.DTO.MenuItemDTO;
 import com.example.quickbyte.API.DTO.UserDTO;
+import com.example.quickbyte.API.DTO.UserCreationRequestDTO;
 import com.example.quickbyte.API.Services.BusinessInfoService;
 import com.example.quickbyte.API.Services.ManageMenuItemService;
 import com.example.quickbyte.API.Services.MenuItemService;
@@ -194,6 +195,21 @@ public class Facade {
     }
 
 
+    public void createUser(UserCreationRequestDTO userCreationRequest, final UserService.ApiCallback<UserDTO> callback)
+    {
+        userService.createUser(userCreationRequest, new UserService.ApiCallback<UserDTO>() {
+            @Override
+            public void onSuccess(UserDTO result) {
+                loggedInUser = result;
+                callback.onSuccess(result);
+            }
+
+            @Override
+            public void onError(String errorMessage) {
+                callback.onError(errorMessage);
+            }
+        });
+    }
 
 
 
