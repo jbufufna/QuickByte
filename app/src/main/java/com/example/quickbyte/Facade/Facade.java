@@ -4,6 +4,7 @@ import com.example.quickbyte.API.DTO.BusinessInfoDTO;
 import com.example.quickbyte.API.DTO.BusinessOwnerDTO;
 import com.example.quickbyte.API.DTO.CreateBusinessOwnerDTO;
 import com.example.quickbyte.API.DTO.CreateMenuItemDTO;
+import com.example.quickbyte.API.DTO.LoginRequestDTO;
 import com.example.quickbyte.API.DTO.MenuItem;
 import com.example.quickbyte.API.DTO.MenuItemDTO;
 import com.example.quickbyte.API.DTO.UserDTO;
@@ -266,6 +267,24 @@ public class Facade {
             }
         });
     }
+
+
+    public void loginBusinessOwner(LoginRequestDTO loginRequest, final BusinessOwnerService.ApiCallback<BusinessOwnerDTO> callback)
+    {
+        businessOwnerService.loginBusinessOwner(loginRequest, new BusinessOwnerService.ApiCallback<BusinessOwnerDTO>() {
+            @Override
+            public void onSuccess(BusinessOwnerDTO result) {
+                updateLoggedInOwner(result);
+                callback.onSuccess(result);
+            }
+
+            @Override
+            public void onError(String errorMessage) {
+                callback.onError(errorMessage);
+            }
+        });
+    }
+
 
     public void updateBusinessOwner(int ownerId, CreateBusinessOwnerDTO updateOwner, final BusinessOwnerService.ApiCallback<BusinessOwnerDTO> callback)
     {
