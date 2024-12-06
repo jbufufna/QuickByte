@@ -22,27 +22,23 @@ public class Facade {
 
     // Business Information
     private BusinessInfoService businessInfoService;
-    private String businessName;
-    private String businessSlogan;
-    private String businessLogo;
-    private String businessPrimColor;
-    private String businessSecColor;
+    private BusinessInfoDTO businessInfo = new BusinessInfoDTO();
 
 
     // Menu Item Information
     private MenuItemService menuItemService;
     private ManageMenuItemService manageMenuItemService;
-    private List<MenuItem> fullMenu;
+    private List<MenuItem> fullMenu = new ArrayList<MenuItem>();
 
 
     // User Information
     private UserService userService;
-    private UserDTO loggedInUser;
+    private UserDTO loggedInUser = new UserDTO();
 
 
     // Business Owner Information
     private BusinessOwnerService businessOwnerService;
-    private BusinessOwnerDTO loggedInOwner;
+    private BusinessOwnerDTO loggedInOwner = new BusinessOwnerDTO();
 
 
     private Facade() {
@@ -61,39 +57,79 @@ public class Facade {
     }
 
     /*Get from database methods: */
-    public String getBusinessName() {
-        //businessName = "Example Business Name";
-        return businessName;
+    // Used to grab information from the facade after calls to the database have been done
+
+    public BusinessInfoDTO getBusinessInfoVar() {return businessInfo;}
+
+    public List<MenuItem> getFullMenuVar() {return fullMenu;}
+
+    public UserDTO getLoggedInUserVar() {return loggedInUser;}
+
+    public BusinessOwnerDTO getLoggedInOwnerVar() {return loggedInOwner;}
+
+
+    /*Update database methods: */
+
+    // Called internally after we are retrieving an update to a business info
+    private void updateBusinessInfo(BusinessInfoDTO businessInfo) {
+        this.businessInfo.setBusinessName(businessInfo.getBusinessName());
+        this.businessInfo.setSlogan(businessInfo.getSlogan());
+        this.businessInfo.setLogoUrl(businessInfo.getLogoUrl());
+        this.businessInfo.setPrimaryColor(businessInfo.getPrimaryColor());
+        this.businessInfo.setSecondaryColor(businessInfo.getSecondaryColor());
     }
 
-    public String getBusinessSlogan() {
-        return businessSlogan;
+
+    // Called internally after we are retrieving an update to the full menu
+    private void updateFullMenu(List<MenuItem> fullMenu){
+        this.fullMenu.clear();
+
+        for (int i = 0; i < fullMenu.size(); ++i)
+        {
+            MenuItem origItem = fullMenu.get(i);
+
+            MenuItem copyItem = new MenuItem(origItem.getItemId(), origItem.getName(),
+                    origItem.getDescription(), origItem.getPrice(), origItem.getImageUrl(), origItem.isAvailable());
+            this.fullMenu.add(copyItem);
+        }
     }
 
-    public String getBusinessLogo() {
-        return businessLogo;
+    // Called internally after we are retrieving an update to the logged in user
+    private void updatedLoggedInUser(UserDTO loggedInUser)
+    {
+        this.loggedInUser.setUserId(loggedInUser.getUserId());
+        this.loggedInUser.setUsername(loggedInUser.getUsername());
+        this.loggedInUser.setEmail(loggedInUser.getEmail());
+        this.loggedInUser.setFirstName(loggedInUser.getFirstName());
+        this.loggedInUser.setLastName(loggedInUser.getLastName());
+        this.loggedInUser.setPhoneNumber(loggedInUser.getPhoneNumber());
+        this.loggedInUser.setIsActive(loggedInUser.getIsActive());
+        this.loggedInUser.setLoyaltyPoints(loggedInUser.getLoyaltyPoints());
+        this.loggedInUser.setCardNumber(loggedInUser.getCardNumber());
+        this.loggedInUser.setExpiryMonth(loggedInUser.getExpiryMonth());
+        this.loggedInUser.setExpiryYear(loggedInUser.getExpiryYear());
+        this.loggedInUser.setCvv(loggedInUser.getCvv());
+        this.loggedInUser.setIsDefaultCard(loggedInUser.getIsDefaultCard());
     }
 
-    public String getBusinessPrimColor() {
-        return businessPrimColor;
+    // Called internally after we are retrieving an update to the logged in owner
+    private void updateLoggedInOwner(BusinessOwnerDTO loggedInOwner)
+    {
+        this.loggedInOwner.setOwnerId(loggedInOwner.getOwnerId());
+        this.loggedInOwner.setUsername(loggedInOwner.getUsername());
+        this.loggedInOwner.setEmail(loggedInOwner.getEmail());
+        this.loggedInOwner.setPasswordHash(loggedInOwner.getPasswordHash());
+        this.loggedInOwner.setContactNumber(loggedInOwner.getContactNumber());
+        this.loggedInOwner.setCreatedAt(loggedInOwner.getCreatedAt());
     }
 
-    public String getBusinessSecColor() {
-        return businessSecColor;
-    }
 
-    public List<MenuItem> getFullMenu() {return fullMenu;}
-
-    public UserDTO getLoggedInUser() {return loggedInUser;}
-
-    public BusinessOwnerDTO getLoggedInOwner() {return loggedInOwner;}
-
-
-    public void getBusinessInfo(int businessId, final DatabaseCallback<BusinessInfoDTO> callback) {
-        businessInfoService.getBusinessInfo(businessId, new BusinessInfoService.ApiCallback<BusinessInfoDTO>() {
+    // Call the database to get the latest business info
+    public void getBusinessInfo(final DatabaseCallback<BusinessInfoDTO> callback) {
+        businessInfoService.getBusinessInfo(1, new BusinessInfoService.ApiCallback<BusinessInfoDTO>() {
             @Override
             public void onSuccess(BusinessInfoDTO result) {
-                updateLocalBusinessInfoData(result);
+                updateBusinessInfo(result);
                 callback.onSuccess(result);
             }
 
@@ -108,7 +144,7 @@ public class Facade {
         businessInfoService.saveOrUpdateBusinessInfo(businessInfo, new BusinessInfoService.ApiCallback<BusinessInfoDTO>() {
             @Override
             public void onSuccess(BusinessInfoDTO result) {
-                updateLocalBusinessInfoData(result);
+                updateBusinessInfo(result);
                 callback.onSuccess(result);
             }
 
@@ -119,19 +155,11 @@ public class Facade {
         });
     }
 
-    private void updateLocalBusinessInfoData(BusinessInfoDTO businessInfo) {
-        this.businessName = businessInfo.getBusinessName();
-        this.businessSlogan = businessInfo.getSlogan();
-        this.businessLogo = businessInfo.getLogoUrl();
-        this.businessPrimColor = businessInfo.getPrimaryColor();
-        this.businessSecColor = businessInfo.getSecondaryColor();
-    }
-
     public void getAllItems(final MenuItemService.ApiCallback<List<MenuItem>> callback) {
         menuItemService.getAllItems(new MenuItemService.ApiCallback<List<MenuItem>>() {
             @Override
             public void onSuccess(List<MenuItem> result) {
-                fullMenu = result;
+                updateFullMenu(result);
                 callback.onSuccess(result);
             }
 
@@ -194,7 +222,7 @@ public class Facade {
         userService.loginUser(username, password, new UserService.ApiCallback<UserDTO>() {
             @Override
             public void onSuccess(UserDTO result) {
-                loggedInUser = result;
+                updatedLoggedInUser(result);
                 callback.onSuccess(result);
             }
 
@@ -211,7 +239,7 @@ public class Facade {
         userService.createUser(userCreationRequest, new UserService.ApiCallback<UserDTO>() {
             @Override
             public void onSuccess(UserDTO result) {
-                loggedInUser = result;
+                updatedLoggedInUser(result);
                 callback.onSuccess(result);
             }
 
@@ -228,7 +256,7 @@ public class Facade {
         userService.updateUser(userId, userDTO, new UserService.ApiCallback<UserDTO>() {
             @Override
             public void onSuccess(UserDTO result) {
-                loggedInUser = result;
+                updatedLoggedInUser(result);
                 callback.onSuccess(result);
             }
 
@@ -244,7 +272,7 @@ public class Facade {
         businessOwnerService.updateBusinessOwner(ownerId, updateOwner, new BusinessOwnerService.ApiCallback<BusinessOwnerDTO>() {
             @Override
             public void onSuccess(BusinessOwnerDTO result) {
-                loggedInOwner = result;
+                updateLoggedInOwner(result);
                 callback.onSuccess(result);
             }
 

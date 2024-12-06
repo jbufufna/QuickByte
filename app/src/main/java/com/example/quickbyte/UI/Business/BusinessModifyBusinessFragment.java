@@ -52,8 +52,7 @@ public class BusinessModifyBusinessFragment extends Fragment {
     }
 
     private void fetchBusinessInfo() {
-        int businessId = 1;
-        facade.getBusinessInfo(businessId, new Facade.DatabaseCallback<BusinessInfoDTO>() {
+        facade.getBusinessInfo(new Facade.DatabaseCallback<BusinessInfoDTO>() {
             @Override
             public void onSuccess(BusinessInfoDTO result) {
                 populateUI(result);
