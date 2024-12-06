@@ -84,6 +84,7 @@ public class BusinessOwnerService {
         });
     }
 
+
     public void getBusinessOwnerById(int ownerId, final ApiCallback<BusinessOwnerDTO> callback) {
         Call<BusinessOwnerDTO> call = _businessOwnerService.getBusinessOwnerById(ownerId);
         call.enqueue(new Callback<BusinessOwnerDTO>() {
