@@ -2,6 +2,7 @@ package com.example.quickbyte.API.IServices;
 
 import com.example.quickbyte.API.DTO.BusinessOwnerDTO;
 import com.example.quickbyte.API.DTO.CreateBusinessOwnerDTO;
+import com.example.quickbyte.API.DTO.LoginRequestDTO;
 
 import java.util.List;
 
@@ -24,4 +25,8 @@ public interface IBusinessOwnerService {
 
     @POST("api/business-owners")
     Call<BusinessOwnerDTO> createBusinessOwner(@Body CreateBusinessOwnerDTO newOwner);
+
+    @POST("api/business-owners/login")
+    Call<BusinessOwnerDTO> loginBusinessOwner(@Body LoginRequestDTO loginRequest);
+
 }
