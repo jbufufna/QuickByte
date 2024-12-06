@@ -77,12 +77,12 @@ public class BusinessModifyBusinessFragment extends Fragment {
 
     private void saveBusinessInfo() {
         BusinessInfoDTO businessInfo = new BusinessInfoDTO(
-                "1", // Owner ID
                 binding.textInputEditTextBizName.getText().toString(),
                 "http://example.com/logo.png", // Actual URL
                 binding.textInputEditTextBizSlogan.getText().toString(),
                 "#FF5733", // Primary color
-                "#33FF57"  // Secondary color
+                "#33FF57",  // Secondary color
+                "1" // Owner ID
         );
 
         facade.saveBusinessInfo(businessInfo, new Facade.DatabaseCallback<BusinessInfoDTO>() {
