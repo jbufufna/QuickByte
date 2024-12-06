@@ -1,12 +1,15 @@
 package com.example.quickbyte.Facade;
 
 import com.example.quickbyte.API.DTO.BusinessInfoDTO;
+import com.example.quickbyte.API.DTO.BusinessOwnerDTO;
+import com.example.quickbyte.API.DTO.CreateBusinessOwnerDTO;
 import com.example.quickbyte.API.DTO.CreateMenuItemDTO;
 import com.example.quickbyte.API.DTO.MenuItem;
 import com.example.quickbyte.API.DTO.MenuItemDTO;
 import com.example.quickbyte.API.DTO.UserDTO;
 import com.example.quickbyte.API.DTO.UserCreationRequestDTO;
 import com.example.quickbyte.API.Services.BusinessInfoService;
+import com.example.quickbyte.API.Services.BusinessOwnerService;
 import com.example.quickbyte.API.Services.ManageMenuItemService;
 import com.example.quickbyte.API.Services.MenuItemService;
 import com.example.quickbyte.API.Services.UserService;
@@ -37,11 +40,17 @@ public class Facade {
     private UserDTO loggedInUser;
 
 
+    // Business Owner Information
+    private BusinessOwnerService businessOwnerService;
+    private BusinessOwnerDTO loggedInOwner;
+
+
     private Facade() {
         businessInfoService = BusinessInfoService.getInstance();
         menuItemService = MenuItemService.getInstance();
         manageMenuItemService = ManageMenuItemService.getInstance();
         userService = UserService.getInstance();
+        businessOwnerService = BusinessOwnerService.getInstance();
     }
 
     public static synchronized Facade getInstance() {
@@ -76,6 +85,8 @@ public class Facade {
     public List<MenuItem> getFullMenu() {return fullMenu;}
 
     public UserDTO getLoggedInUser() {return loggedInUser;}
+
+    public BusinessOwnerDTO getLoggedInOwner() {return loggedInOwner;}
 
 
     public void getBusinessInfo(int businessId, final DatabaseCallback<BusinessInfoDTO> callback) {
@@ -201,6 +212,39 @@ public class Facade {
             @Override
             public void onSuccess(UserDTO result) {
                 loggedInUser = result;
+                callback.onSuccess(result);
+            }
+
+            @Override
+            public void onError(String errorMessage) {
+                callback.onError(errorMessage);
+            }
+        });
+    }
+
+
+    public void updateUser(int userId, UserDTO userDTO, final UserService.ApiCallback<UserDTO> callback)
+    {
+        userService.updateUser(userId, userDTO, new UserService.ApiCallback<UserDTO>() {
+            @Override
+            public void onSuccess(UserDTO result) {
+                loggedInUser = result;
+                callback.onSuccess(result);
+            }
+
+            @Override
+            public void onError(String errorMessage) {
+                callback.onError(errorMessage);
+            }
+        });
+    }
+
+    public void updateBusinessOwner(int ownerId, CreateBusinessOwnerDTO updateOwner, final BusinessOwnerService.ApiCallback<BusinessOwnerDTO> callback)
+    {
+        businessOwnerService.updateBusinessOwner(ownerId, updateOwner, new BusinessOwnerService.ApiCallback<BusinessOwnerDTO>() {
+            @Override
+            public void onSuccess(BusinessOwnerDTO result) {
+                loggedInOwner = result;
                 callback.onSuccess(result);
             }
 
