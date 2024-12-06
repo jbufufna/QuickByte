@@ -9,7 +9,6 @@ import retrofit2.Call;
 import retrofit2.http.*;
 
 public interface IOrderService {
-
     @GET("api/orders")
     Call<List<OrderDTO>> getAllOrders();
 
