@@ -104,7 +104,123 @@ public class UserService {
         });
     }
 
+    public void updateUser(int userId, UserDTO userDTO, final ApiCallback<UserDTO> callback) {
+        Call<UserDTO> call = _userService.updateUser(userId, userDTO);
+        call.enqueue(new Callback<UserDTO>() {
+            @Override
+            public void onResponse(Call<UserDTO> call, Response<UserDTO> response) {
+                if (response.isSuccessful()) {
+                    callback.onSuccess(response.body());
+                } else {
+                    callback.onError("Failed to update user: " + response.message());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UserDTO> call, Throwable t) {
+                callback.onError("Network error: " + t.getMessage());
+            }
+        });
+    }
+
+    public void deleteUser(int userId, final ApiCallback<Void> callback) {
+        Call<Void> call = _userService.deleteUser(userId);
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()) {
+                    callback.onSuccess(null);
+                } else {
+                    callback.onError("Failed to delete user: " + response.message());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                callback.onError("Network error: " + t.getMessage());
+            }
+        });
+    }
+
+    public void getUserByUsername(String username, final ApiCallback<UserDTO> callback) {
+        Call<UserDTO> call = _userService.getUserByUsername(username);
+        call.enqueue(new Callback<UserDTO>() {
+            @Override
+            public void onResponse(Call<UserDTO> call, Response<UserDTO> response) {
+                if (response.isSuccessful()) {
+                    callback.onSuccess(response.body());
+                } else {
+                    callback.onError("Failed to get user: " + response.message());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UserDTO> call, Throwable t) {
+                callback.onError("Network error: " + t.getMessage());
+            }
+        });
+    }
+
+    public void isUsernameTaken(String username, final ApiCallback<Boolean> callback) {
+        Call<Boolean> call = _userService.isUsernameTaken(username);
+        call.enqueue(new Callback<Boolean>() {
+            @Override
+            public void onResponse(Call<Boolean> call, Response<Boolean> response) {
+                if (response.isSuccessful()) {
+                    callback.onSuccess(response.body());
+                } else {
+                    callback.onError("Failed to check username: " + response.message());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Boolean> call, Throwable t) {
+                callback.onError("Network error: " + t.getMessage());
+            }
+        });
+    }
+
+    public void isEmailTaken(String email, final ApiCallback<Boolean> callback) {
+        Call<Boolean> call = _userService.isEmailTaken(email);
+        call.enqueue(new Callback<Boolean>() {
+            @Override
+            public void onResponse(Call<Boolean> call, Response<Boolean> response) {
+                if (response.isSuccessful()) {
+                    callback.onSuccess(response.body());
+                } else {
+                    callback.onError("Failed to check email: " + response.message());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Boolean> call, Throwable t) {
+                callback.onError("Network error: " + t.getMessage());
+            }
+        });
+    }
+
+    public void searchUsers(String searchTerm, final ApiCallback<List<UserDTO>> callback) {
+        Call<List<UserDTO>> call = _userService.searchUsers(searchTerm);
+        call.enqueue(new Callback<List<UserDTO>>() {
+            @Override
+            public void onResponse(Call<List<UserDTO>> call, Response<List<UserDTO>> response) {
+                if (response.isSuccessful()) {
+                    callback.onSuccess(response.body());
+                } else {
+                    callback.onError("Failed to search users: " + response.message());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<UserDTO>> call, Throwable t) {
+                callback.onError("Network error: " + t.getMessage());
+            }
+        });
+    }
+
     // Add other methods for updateUser, deleteUser, etc.
+
+
 
     public interface ApiCallback<T> {
         void onSuccess(T result);
