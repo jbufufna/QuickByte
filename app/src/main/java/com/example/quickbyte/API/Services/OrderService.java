@@ -140,6 +140,25 @@ public class OrderService {
         });
     }
 
+    public void getOrdersByUserId(int userId, final ApiCallback<List<OrderDTO>> callback) {
+        Call<List<OrderDTO>> call = _orderService.getOrdersByUserId(userId);
+        call.enqueue(new Callback<List<OrderDTO>>() {
+            @Override
+            public void onResponse(Call<List<OrderDTO>> call, Response<List<OrderDTO>> response) {
+                if (response.isSuccessful()) {
+                    callback.onSuccess(response.body());
+                } else {
+                    callback.onError("Failed to get orders by user ID: " + response.message());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<OrderDTO>> call, Throwable t) {
+                callback.onError("Network error: " + t.getMessage());
+            }
+        });
+    }
+
     public interface ApiCallback<T> {
         void onSuccess(T result);
         void onError(String errorMessage);
