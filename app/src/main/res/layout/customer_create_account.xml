@@ -71,9 +71,9 @@
         android:layout_width="194dp"
         android:layout_height="48dp"
         android:hint="Password"
-        app:layout_constraintEnd_toEndOf="@+id/editInputPassword"
-        app:layout_constraintStart_toStartOf="@+id/editInputPassword"
-        app:layout_constraintTop_toBottomOf="@+id/editInputPassword" />
+        app:layout_constraintEnd_toEndOf="@+id/textInputPassword"
+        app:layout_constraintStart_toStartOf="@+id/textInputPassword"
+        app:layout_constraintTop_toBottomOf="@+id/textInputPassword" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/editTextAccInfoCCCSV"
@@ -85,7 +85,7 @@
         app:layout_constraintTop_toBottomOf="@+id/editText12" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/editInputPassword"
+        android:id="@+id/textInputPassword"
         android:layout_width="194dp"
         android:layout_height="48dp"
         android:hint="Email"
@@ -118,7 +118,7 @@
         android:text="Email:"
         app:layout_constraintBottom_toTopOf="@+id/editTextAccInfoPassword"
         app:layout_constraintEnd_toEndOf="@+id/textView"
-        app:layout_constraintTop_toTopOf="@+id/editInputPassword" />
+        app:layout_constraintTop_toTopOf="@+id/textInputPassword" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/editTextAccInfoCCNum"
@@ -162,7 +162,7 @@
         android:layout_height="23dp"
         android:layout_marginEnd="16dp"
         android:text="Username:"
-        app:layout_constraintBottom_toTopOf="@+id/editInputPassword"
+        app:layout_constraintBottom_toTopOf="@+id/textInputPassword"
         app:layout_constraintEnd_toStartOf="@+id/textInputEditText"
         app:layout_constraintTop_toTopOf="@+id/textInputEditText"
         app:layout_constraintVertical_bias=".5" />

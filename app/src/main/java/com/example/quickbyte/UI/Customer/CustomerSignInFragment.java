@@ -7,6 +7,11 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
+
+import com.example.quickbyte.API.DTO.BusinessOwnerDTO;
+import com.example.quickbyte.API.DTO.UserDTO;
+import com.example.quickbyte.API.Services.BusinessOwnerService;
+import com.example.quickbyte.API.Services.UserService;
 import com.example.quickbyte.R;
 import com.example.quickbyte.databinding.CustomerSignInBinding;
 
@@ -20,7 +25,9 @@ import com.example.quickbyte.Facade.Facade;
 public class CustomerSignInFragment extends Fragment {
 
     private CustomerSignInBinding binding;
-    private BusinessInfoService businessInfoService;
+    private BusinessInfoService businessinfoservice;
+    private BusinessOwnerService businessownerservice;
+    private UserService userservice;
     private Facade facade;
 
     @Override
@@ -44,8 +51,14 @@ public class CustomerSignInFragment extends Fragment {
 
         // Place order button logic with conditional navigation
         binding.btnSignInSignIn.setOnClickListener(v -> {
-            boolean condition;
+
             String userNameInput = binding.textInputUsername.getText().toString();
+            String passwordInput = binding.textInputPassword.getText().toString();
+
+            attemptLogin(userNameInput, passwordInput);
+
+            /*boolean condition;
+
             if(userNameInput.equals("admin")) {
                 condition = false;
             } else {
@@ -61,6 +74,8 @@ public class CustomerSignInFragment extends Fragment {
                 NavHostFragment.findNavController(CustomerSignInFragment.this)
                         .navigate(R.id.action_customerSignInFragment_to_businessIncomingOrdersFragment);
             }
+
+             */
         });
     }
 
@@ -80,5 +95,57 @@ public class CustomerSignInFragment extends Fragment {
 
     private void populateUI(BusinessInfoDTO businessInfo) {
         binding.getRoot().setBackgroundColor(Color.parseColor(businessInfo.getPrimaryColor()));
+    }
+
+    private void attemptLogin(String username, String password){
+        boolean inputValidated = validateInput(username, password);
+        final boolean userAccount[] = {false};
+
+        if(inputValidated) {
+
+            facade.loginBusinessOwner(username, password, new BusinessOwnerService.ApiCallback<BusinessOwnerDTO>() {
+                @Override
+                public void onSuccess(BusinessOwnerDTO result) {
+                    // Navigate to Home Page: User logged in
+                    NavHostFragment.findNavController(CustomerSignInFragment.this)
+                            .navigate(R.id.action_customerSignInFragment_to_businessIncomingOrdersFragment);
+                }
+
+                @Override
+                public void onError(String errorMessage) {
+                    //Toast.makeText(getContext(), "Business: " + errorMessage, Toast.LENGTH_SHORT).show();
+                    userAccount[0] = true;
+
+                    if(userAccount[0]) {
+                        facade.loginUser(username, password, new UserService.ApiCallback<UserDTO>() {
+                            @Override
+                            public void onSuccess(UserDTO result) {
+                                // Navigate to Home Page: User logged in
+                                NavHostFragment.findNavController(CustomerSignInFragment.this)
+                                        .navigate(R.id.action_customerSignInFragment_to_customerHomePageFragment);
+                            }
+
+                            @Override
+                            public void onError(String errorMessage) {
+                                Toast.makeText(getContext(), errorMessage, Toast.LENGTH_SHORT).show();
+                                userAccount[0] = true;
+                            }
+                        });
+                    }
+                }
+            });
+        }
+    }
+
+    private boolean validateInput(String username, String password) {
+        if (username.trim().isEmpty()) {
+            Toast.makeText(getContext(), "Username is required.", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (password.trim().isEmpty()) {
+            Toast.makeText(getContext(), "Password is required.", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
     }
 }
