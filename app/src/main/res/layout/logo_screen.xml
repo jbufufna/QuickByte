@@ -7,7 +7,7 @@
     tools:context=".UI.LogoScreenFragment">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imageViewLogo"
         android:layout_width="264dp"
         android:layout_height="264dp"
         android:scaleType="fitCenter"
@@ -21,7 +21,7 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/textView46"
+        android:id="@+id/textViewLogoScreenBizName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Quick Bytes"
@@ -29,11 +29,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewLogo"
         app:layout_constraintVertical_bias="0.192" />
 
     <TextView
-        android:id="@+id/textView47"
+        android:id="@+id/textViewLogoScreenBizSlogan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Slogan Goes Here"
@@ -41,7 +41,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView46"
+        app:layout_constraintTop_toBottomOf="@+id/textViewLogoScreenBizName"
         app:layout_constraintVertical_bias="0.439" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
