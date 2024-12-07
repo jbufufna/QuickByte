@@ -2,6 +2,7 @@ package com.example.quickbyte.API.DTO;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class OrderDTO {
@@ -76,6 +77,21 @@ public class OrderDTO {
 
     public List<OrderItemDTO> getOrderItems() {
         return orderItems;
+    }
+
+    public List<OrderItemDTO> getOrderItemsDeepCopy() {
+        List<OrderItemDTO> deepCopy = new ArrayList<OrderItemDTO>();
+
+        for (int i = 0; i < orderItems.size(); ++i)
+        {
+            OrderItemDTO origItem = orderItems.get(i);
+
+            OrderItemDTO copyItem = new OrderItemDTO(origItem.getOrderItemId(), origItem.getOrderItemId(),
+                    origItem.getQuantity(), origItem.getUnitPrice(), origItem.getSubtotal());
+            deepCopy.add(copyItem);
+        }
+
+        return deepCopy;
     }
 
     public void setOrderItems(List<OrderItemDTO> orderItems) {

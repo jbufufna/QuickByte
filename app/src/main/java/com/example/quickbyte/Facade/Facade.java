@@ -4,15 +4,18 @@ import com.example.quickbyte.API.DTO.BusinessInfoDTO;
 import com.example.quickbyte.API.DTO.BusinessOwnerDTO;
 import com.example.quickbyte.API.DTO.CreateBusinessOwnerDTO;
 import com.example.quickbyte.API.DTO.CreateMenuItemDTO;
+import com.example.quickbyte.API.DTO.CreateOrderDTO;
 import com.example.quickbyte.API.DTO.LoginRequestDTO;
 import com.example.quickbyte.API.DTO.MenuItem;
 import com.example.quickbyte.API.DTO.MenuItemDTO;
 import com.example.quickbyte.API.DTO.UserDTO;
+import com.example.quickbyte.API.DTO.OrderDTO;
 import com.example.quickbyte.API.DTO.UserCreationRequestDTO;
 import com.example.quickbyte.API.Services.BusinessInfoService;
 import com.example.quickbyte.API.Services.BusinessOwnerService;
 import com.example.quickbyte.API.Services.ManageMenuItemService;
 import com.example.quickbyte.API.Services.MenuItemService;
+import com.example.quickbyte.API.Services.OrderService;
 import com.example.quickbyte.API.Services.UserService;
 import java.util.*;
 
@@ -42,12 +45,19 @@ public class Facade {
     private BusinessOwnerDTO loggedInOwner = new BusinessOwnerDTO();
 
 
+    // Order Information
+    private OrderService orderService;
+    private List<OrderDTO> allOrders = new ArrayList<OrderDTO>();
+
+
+
     private Facade() {
         businessInfoService = BusinessInfoService.getInstance();
         menuItemService = MenuItemService.getInstance();
         manageMenuItemService = ManageMenuItemService.getInstance();
         userService = UserService.getInstance();
         businessOwnerService = BusinessOwnerService.getInstance();
+        orderService = OrderService.getInstance();
     }
 
     public static synchronized Facade getInstance() {
@@ -122,6 +132,22 @@ public class Facade {
         this.loggedInOwner.setPasswordHash(loggedInOwner.getPasswordHash());
         this.loggedInOwner.setContactNumber(loggedInOwner.getContactNumber());
         this.loggedInOwner.setCreatedAt(loggedInOwner.getCreatedAt());
+    }
+
+
+    // Called internally after we are retrieving an update to all orders
+    private void updateAllOrders(List<OrderDTO> allOrders){
+        this.allOrders.clear();
+
+        for (int i = 0; i < allOrders.size(); ++i)
+        {
+            OrderDTO origOrder = allOrders.get(i);
+
+            OrderDTO copyOrder = new OrderDTO(origOrder.getOrderId(), origOrder.getUserId(),
+                    origOrder.getOrderDate(), origOrder.getTotalAmount(), origOrder.getStatus(),
+                    origOrder.getEstimatedPickupTime(), origOrder.getOrderItemsDeepCopy());
+            this.allOrders.add(copyOrder);
+        }
     }
 
 
@@ -292,6 +318,39 @@ public class Facade {
             @Override
             public void onSuccess(BusinessOwnerDTO result) {
                 updateLoggedInOwner(result);
+                callback.onSuccess(result);
+            }
+
+            @Override
+            public void onError(String errorMessage) {
+                callback.onError(errorMessage);
+            }
+        });
+    }
+
+
+    public void getAllOrders(final OrderService.ApiCallback<List<OrderDTO>> callback)
+    {
+        orderService.getAllOrders(new OrderService.ApiCallback<List<OrderDTO>>() {
+            @Override
+            public void onSuccess(List<OrderDTO> result) {
+                updateAllOrders(result);
+                callback.onSuccess(result);
+            }
+
+            @Override
+            public void onError(String errorMessage) {
+                callback.onError(errorMessage);
+            }
+        });
+    }
+
+
+    public void createOrderWithItems(CreateOrderDTO orderDTO, final OrderService.ApiCallback<OrderDTO> callback)
+    {
+        orderService.createOrderWithItems(orderDTO, new OrderService.ApiCallback<OrderDTO>() {
+            @Override
+            public void onSuccess(OrderDTO result) {
                 callback.onSuccess(result);
             }
 
