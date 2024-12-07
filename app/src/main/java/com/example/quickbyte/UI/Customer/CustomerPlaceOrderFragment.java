@@ -13,13 +13,21 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.example.quickbyte.R;
 import com.example.quickbyte.databinding.CustomerPlaceOrderBinding;
+
+import android.widget.Toast;
+import com.bumptech.glide.Glide;
+import android.graphics.Color;
+import com.example.quickbyte.API.DTO.BusinessInfoDTO;
+import com.example.quickbyte.API.Services.BusinessInfoService;
+import com.example.quickbyte.Facade.Facade;
 
 public class CustomerPlaceOrderFragment extends Fragment {
 
     private CustomerPlaceOrderBinding binding;
+    private BusinessInfoService businessInfoService;
+    private Facade facade;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -30,12 +38,15 @@ public class CustomerPlaceOrderFragment extends Fragment {
         addOrderItems();
 
         //TODO: do math to calculate Time Estimate, Subtotal, Tax, and Total amounts
-
+        facade = Facade.getInstance();
         return binding.getRoot();
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        // Fetch and display business information
+        fetchBusinessInfo();
 
         binding.btnBackToHome.setOnClickListener(v ->
                 NavHostFragment.findNavController(CustomerPlaceOrderFragment.this)
@@ -130,5 +141,23 @@ public class CustomerPlaceOrderFragment extends Fragment {
             // Add CardView to the LinearLayout container
             cardContainer.addView(cardView);
         }
+    }
+
+    private void fetchBusinessInfo() {
+        facade.getBusinessInfo(new Facade.DatabaseCallback<BusinessInfoDTO>() {
+            @Override
+            public void onSuccess(BusinessInfoDTO result) {
+                populateUI(result);
+            }
+
+            @Override
+            public void onError(String errorMessage) {
+                Toast.makeText(getContext(), "Error fetching business info: " + errorMessage, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void populateUI(BusinessInfoDTO businessInfo) {
+        binding.getRoot().setBackgroundColor(Color.parseColor(businessInfo.getPrimaryColor()));
     }
 }

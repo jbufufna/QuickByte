@@ -1,5 +1,6 @@
 package com.example.quickbyte.UI.Business;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -73,6 +74,7 @@ public class BusinessModifyBusinessFragment extends Fragment {
                 .placeholder(R.drawable.error_image)
                 .error(R.drawable.error_image) // Error drawable
                 .into(binding.imageViewBizImage);
+        binding.getRoot().setBackgroundColor(Color.parseColor(businessInfo.getPrimaryColor()));
     }
 
     private void saveBusinessInfo() {

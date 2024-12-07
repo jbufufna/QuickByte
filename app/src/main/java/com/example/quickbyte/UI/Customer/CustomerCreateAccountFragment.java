@@ -9,25 +9,35 @@ import androidx.navigation.fragment.NavHostFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.example.quickbyte.R;
 import com.example.quickbyte.databinding.CustomerCreateAccountBinding;
 
-
+import android.widget.Toast;
+import com.bumptech.glide.Glide;
+import android.graphics.Color;
+import com.example.quickbyte.API.DTO.BusinessInfoDTO;
+import com.example.quickbyte.API.Services.BusinessInfoService;
+import com.example.quickbyte.Facade.Facade;
 
 public class CustomerCreateAccountFragment extends Fragment {
 
     private CustomerCreateAccountBinding binding;
+    private BusinessInfoService businessInfoService;
+    private Facade facade;
 
    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
        binding = com.example.quickbyte.databinding.CustomerCreateAccountBinding.inflate(inflater, container, false);
+       facade = Facade.getInstance();
        return binding.getRoot();
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        // Fetch and display business information
+        fetchBusinessInfo();
 
         binding.btnCreateAccCreateAcc.setOnClickListener(v ->
                 NavHostFragment.findNavController(CustomerCreateAccountFragment.this)
@@ -39,5 +49,23 @@ public class CustomerCreateAccountFragment extends Fragment {
                         .navigate(R.id.action_customerCreateAccountFragment_to_customerSignInFragment)
         );
 
+    }
+
+    private void fetchBusinessInfo() {
+        facade.getBusinessInfo(new Facade.DatabaseCallback<BusinessInfoDTO>() {
+            @Override
+            public void onSuccess(BusinessInfoDTO result) {
+                populateUI(result);
+            }
+
+            @Override
+            public void onError(String errorMessage) {
+                Toast.makeText(getContext(), "Error fetching business info: " + errorMessage, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void populateUI(BusinessInfoDTO businessInfo) {
+        binding.getRoot().setBackgroundColor(Color.parseColor(businessInfo.getPrimaryColor()));
     }
 }

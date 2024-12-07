@@ -1,5 +1,6 @@
 package com.example.quickbyte.UI;
 
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import com.example.quickbyte.databinding.LogoScreenBinding;
 
 import android.widget.Toast;
 import com.bumptech.glide.Glide;
+import android.graphics.Color;
 import com.example.quickbyte.API.DTO.BusinessInfoDTO;
 import com.example.quickbyte.API.Services.BusinessInfoService;
 import com.example.quickbyte.Facade.Facade;
@@ -66,5 +68,6 @@ public class LogoScreenFragment extends Fragment {
                 .placeholder(R.drawable.error_image)
                 .error(R.drawable.error_image) // Error drawable
                 .into(binding.imageViewLogo);
+        binding.getRoot().setBackgroundColor(Color.parseColor(businessInfo.getPrimaryColor()));
     }
 }

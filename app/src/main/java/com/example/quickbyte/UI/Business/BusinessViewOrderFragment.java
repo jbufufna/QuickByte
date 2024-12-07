@@ -13,22 +13,27 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.example.quickbyte.R;
-import com.example.quickbyte.UI.Customer.CustomerHomePageFragment;
-import com.example.quickbyte.UI.Customer.CustomerSignInFragment;
 import com.example.quickbyte.databinding.BusinessViewOrderBinding;
-import com.example.quickbyte.databinding.CustomerSignInBinding;
+
+import android.widget.Toast;
+import com.bumptech.glide.Glide;
+import android.graphics.Color;
+import com.example.quickbyte.API.DTO.BusinessInfoDTO;
+import com.example.quickbyte.API.Services.BusinessInfoService;
+import com.example.quickbyte.Facade.Facade;
 
 public class BusinessViewOrderFragment extends Fragment {
 
     private BusinessViewOrderBinding binding;
+    private BusinessInfoService businessInfoService;
+    private Facade facade;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = BusinessViewOrderBinding.inflate(inflater, container, false);
-
+        facade = Facade.getInstance();
         getOrderItems();
 
         return binding.getRoot();
@@ -36,6 +41,9 @@ public class BusinessViewOrderFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        // Fetch and display business information
+        fetchBusinessInfo();
 
         binding.btnOrderItemsBack.setOnClickListener(v ->
                 NavHostFragment.findNavController(BusinessViewOrderFragment.this)
@@ -126,5 +134,23 @@ public class BusinessViewOrderFragment extends Fragment {
             // Add CardView to the LinearLayout container
             cardContainer.addView(cardView);
         }
+    }
+
+    private void fetchBusinessInfo() {
+        facade.getBusinessInfo(new Facade.DatabaseCallback<BusinessInfoDTO>() {
+            @Override
+            public void onSuccess(BusinessInfoDTO result) {
+                populateUI(result);
+            }
+
+            @Override
+            public void onError(String errorMessage) {
+                Toast.makeText(getContext(), "Error fetching business info: " + errorMessage, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void populateUI(BusinessInfoDTO businessInfo) {
+        binding.getRoot().setBackgroundColor(Color.parseColor(businessInfo.getPrimaryColor()));
     }
 }
