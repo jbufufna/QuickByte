@@ -18,7 +18,7 @@ public class UserCreationRequestDTO {
 
     // Constructor with all fields
     public UserCreationRequestDTO(String username, String email, String password,
-                                  String firstName, String lastName, String phoneNumber, String cardNumber, int expiryMonth, int expiryYear, Boolean isDefaultCard, int cvv) {
+                                  String firstName, String lastName, String phoneNumber, String cardNumber, int expiryMonth, int expiryYear, int cvv, Boolean isDefaultCard) {
         this.username = username;
         this.email = email;
         this.password = password;

@@ -11,7 +11,6 @@ import androidx.navigation.fragment.NavHostFragment;
 import com.example.quickbyte.API.DTO.BusinessOwnerDTO;
 import com.example.quickbyte.API.DTO.UserDTO;
 import com.example.quickbyte.API.Services.BusinessOwnerService;
-import com.example.quickbyte.API.Services.UserService;
 import com.example.quickbyte.R;
 import com.example.quickbyte.databinding.CustomerSignInBinding;
 
@@ -20,6 +19,7 @@ import com.bumptech.glide.Glide;
 import android.graphics.Color;
 import com.example.quickbyte.API.DTO.BusinessInfoDTO;
 import com.example.quickbyte.API.Services.BusinessInfoService;
+import com.example.quickbyte.API.Services.UserService;
 import com.example.quickbyte.Facade.Facade;
 
 public class CustomerSignInFragment extends Fragment {
@@ -56,26 +56,6 @@ public class CustomerSignInFragment extends Fragment {
             String passwordInput = binding.textInputPassword.getText().toString();
 
             attemptLogin(userNameInput, passwordInput);
-
-            /*boolean condition;
-
-            if(userNameInput.equals("admin")) {
-                condition = false;
-            } else {
-                condition = true;
-            }
-
-            if (condition) {
-                // Navigate to Home Page: User logged in
-                NavHostFragment.findNavController(CustomerSignInFragment.this)
-                        .navigate(R.id.action_customerSignInFragment_to_customerHomePageFragment);
-            } else {
-                // Navigate to IncomingOrders: Business/admin logged in
-                NavHostFragment.findNavController(CustomerSignInFragment.this)
-                        .navigate(R.id.action_customerSignInFragment_to_businessIncomingOrdersFragment);
-            }
-
-             */
         });
     }
 
