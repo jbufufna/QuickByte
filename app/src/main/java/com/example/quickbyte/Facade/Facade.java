@@ -295,8 +295,9 @@ public class Facade {
     }
 
 
-    public void loginBusinessOwner(LoginRequestDTO loginRequest, final BusinessOwnerService.ApiCallback<BusinessOwnerDTO> callback)
+    public void loginBusinessOwner(String username, String password, final BusinessOwnerService.ApiCallback<BusinessOwnerDTO> callback)
     {
+        LoginRequestDTO loginRequest = new LoginRequestDTO(username, password);
         businessOwnerService.loginBusinessOwner(loginRequest, new BusinessOwnerService.ApiCallback<BusinessOwnerDTO>() {
             @Override
             public void onSuccess(BusinessOwnerDTO result) {
