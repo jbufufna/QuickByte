@@ -10,15 +10,21 @@ public class ScrollObserver {
      * Observes downward scrolling on a ScrollView and triggers a callback every X pixels.
      *
      * @param scrollView   The ScrollView to observe.
-     * @param threshold    The pixel threshold to trigger the callback.
+     * @param scrollHeight The threshold scroll height in pixels (size of each card).
      * @param callback     The callback to execute every X pixels scrolled downward.
      */
-    public static void observeDownward(ScrollView scrollView, int threshold, OnScrollCallback callback) {
+    public static void observeDownward(ScrollView scrollView, int scrollHeight, OnScrollCallback callback) {
+        // Do nothing if the scrollHeight is less than or equal to 0
+        if (scrollHeight <= 0) {
+            return;
+        }
+
+        // Set scroll listener on ScrollView
         scrollView.setOnScrollChangeListener(new View.OnScrollChangeListener() {
             @Override
             public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
                 if (callback != null && scrollY > oldScrollY) { // Only trigger on downward scroll
-                    if (scrollY - lastTriggeredY >= threshold) {
+                    if (scrollY - lastTriggeredY >= scrollHeight) {
                         // Trigger the callback
                         callback.onScroll(scrollX, scrollY, oldScrollX, oldScrollY);
 
@@ -28,5 +34,10 @@ public class ScrollObserver {
                 }
             }
         });
+    }
+
+    // Interface for the callback
+    public interface OnScrollCallback {
+        void onScroll(int scrollX, int scrollY, int oldScrollX, int oldScrollY);
     }
 }

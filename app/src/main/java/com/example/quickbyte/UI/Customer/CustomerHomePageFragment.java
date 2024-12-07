@@ -26,8 +26,10 @@ import com.example.quickbyte.Facade.Facade;
 public class CustomerHomePageFragment extends Fragment {
 
     private CustomerHomePageBinding binding;
-    private BusinessInfoService businessInfoService;
+    private int cardHeight = 0;
     private Facade facade;
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -98,6 +100,10 @@ public class CustomerHomePageFragment extends Fragment {
             cardView.setUseCompatPadding(true);
             cardView.setContentPadding(16, 16, 16, 16);
             cardView.setPreventCornerOverlap(true);
+
+            if (i == 0){
+                cardHeight = cardView.getHeight();
+            }
 
             // Create a horizontal LinearLayout for CardView contents
             LinearLayout cardContent = new LinearLayout(requireContext());
