@@ -26,4 +26,7 @@ public interface IOrderService {
 
     @PATCH("api/orders/{orderId}/status")
     Call<Void> updateOrderStatus(@Path("orderId") int orderId, @Query("status") String status);
+
+    @GET("api/orders/user/{userId}")
+    Call<List<OrderDTO>> getOrdersByUserId(@Path("userId") int userId);
 }
