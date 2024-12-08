@@ -52,16 +52,6 @@ public class CustomerHomePageFragment extends Fragment {
         getMenuItems();
 
 
-        ScrollView myScrollView = binding.scrollView;
-
-        // loading items as we scroll (based on card height)
-        ScrollObserver.observeDownward(myScrollView, cardHeight, new ScrollObserver.OnScrollCallback() {
-            @Override
-            public void onScrollChanged() {
-                loadTopCardImage();
-            }
-        });
-
         return binding.getRoot();
     }
 
@@ -83,6 +73,16 @@ public class CustomerHomePageFragment extends Fragment {
 
         //TODO: Missing button action to item description page
 
+
+        ScrollView myScrollView = binding.scrollView;
+
+        // loading items as we scroll (based on card height)
+        ScrollObserver.observeDownward(myScrollView, cardHeight, new ScrollObserver.OnScrollCallback() {
+            @Override
+            public void onScrollChanged() {
+                loadTopCardImage();
+            }
+        });
 
     }
 
