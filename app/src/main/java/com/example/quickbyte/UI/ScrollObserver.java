@@ -20,6 +20,7 @@ public class ScrollObserver {
             return;
         }
 
+        System.out.println("Linear layout height: " + scrollView.getChildAt(0).getHeight());
 
         // Make sure the listener is added after the layout is complete
         scrollView.post(new Runnable() {
