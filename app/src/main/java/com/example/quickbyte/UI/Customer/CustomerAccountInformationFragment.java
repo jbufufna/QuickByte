@@ -94,20 +94,20 @@ public class CustomerAccountInformationFragment extends Fragment {
     }
 
     private void saveAccountInfo(){
-        UserDTO loggedInUserVar = facade.getLoggedInUserVar();
+        UserDTO loggedInUserVarSave = facade.getLoggedInUserVar();
 
-        loggedInUserVar.setUsername(binding.editTextAccInfoUsername.getText().toString());
-        loggedInUserVar.setPasswordHash(binding.editTextAccInfoPassword.getText().toString());
-        loggedInUserVar.setEmail(binding.editTextAccInfoEmail.getText().toString());
-        loggedInUserVar.setFirstName(binding.editTextAccInfoFirstName.getText().toString());
-        loggedInUserVar.setLastName(binding.editTextAccInfoCCLastName.getText().toString());
-        loggedInUserVar.setCardNumber(binding.editTextAccInfoCCNum.getText().toString());
-        loggedInUserVar.setExpiryMonth(Integer.parseInt(binding.editTextAccInfoCCExpMo.getText().toString()));
-        loggedInUserVar.setExpiryYear(Integer.parseInt(binding.editTextAccInfoCCExpYr.getText().toString()));
-        loggedInUserVar.setCvv(Integer.parseInt(binding.editTextAccInfoCCCSV.getText().toString()));
-        loggedInUserVar.setPhoneNumber(binding.editTextAccInfoPhoneNum.getText().toString());
+        loggedInUserVarSave.setUsername(binding.editTextAccInfoUsername.getText().toString());
+        loggedInUserVarSave.setPasswordHash(binding.editTextAccInfoPassword.getText().toString());
+        loggedInUserVarSave.setEmail(binding.editTextAccInfoEmail.getText().toString());
+        loggedInUserVarSave.setFirstName(binding.editTextAccInfoFirstName.getText().toString());
+        loggedInUserVarSave.setLastName(binding.editTextAccInfoCCLastName.getText().toString());
+        loggedInUserVarSave.setCardNumber(binding.editTextAccInfoCCNum.getText().toString());
+        loggedInUserVarSave.setExpiryMonth(Integer.parseInt(binding.editTextAccInfoCCExpMo.getText().toString()));
+        loggedInUserVarSave.setExpiryYear(Integer.parseInt(binding.editTextAccInfoCCExpYr.getText().toString()));
+        loggedInUserVarSave.setCvv(Integer.parseInt(binding.editTextAccInfoCCCSV.getText().toString()));
+        loggedInUserVarSave.setPhoneNumber(binding.editTextAccInfoPhoneNum.getText().toString());
 
-        facade.updateUser(loggedInUserVar.getUserId(),loggedInUserVar, new UserService.ApiCallback<UserDTO>(){
+        facade.updateUser(loggedInUserVarSave.getUserId(),loggedInUserVarSave, new UserService.ApiCallback<UserDTO>(){
 
             @Override
             public void onSuccess(UserDTO result) {
