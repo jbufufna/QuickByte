@@ -1,6 +1,8 @@
 package com.example.quickbyte.UI.Business;
 
 
+import static com.example.quickbyte.Globalvariables.incomingOrderIdSelected;
+
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -61,6 +63,8 @@ public class BusinessIncomingOrdersFragment extends Fragment {
 
         // Fetch and display business information
         fetchBusinessInfo();
+
+        System.out.println("Global variable = " + String.valueOf(incomingOrderIdSelected));
 
         binding.btnIncomingMenu.setOnClickListener(v ->
                 NavHostFragment.findNavController(BusinessIncomingOrdersFragment.this)
@@ -191,10 +195,14 @@ public class BusinessIncomingOrdersFragment extends Fragment {
             cardView.addView(cardContent);
 
             // Set an OnClickListener for the CardView
-            cardView.setOnClickListener(v ->
+            int finalI = i;
+            cardView.setOnClickListener(v -> {
+
+                    incomingOrderIdSelected = Integer.parseInt(Orders.get(finalI).getOrderId().toString());
                     NavHostFragment.findNavController(BusinessIncomingOrdersFragment.this)
-                            .navigate(R.id.action_businessIncomingOrdersFragment_to_businessViewOrderFragment)
-            );
+                            .navigate(R.id.action_businessIncomingOrdersFragment_to_businessViewOrderFragment);
+                    System.out.println("Global variable = " + String.valueOf(incomingOrderIdSelected));
+            });
 
             // Add CardView to the LinearLayout container
             cardContainer.addView(cardView);
