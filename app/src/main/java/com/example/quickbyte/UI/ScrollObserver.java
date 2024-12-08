@@ -7,18 +7,7 @@ import com.example.quickbyte.Facade.Facade;
 
 public class ScrollObserver {
 
-    private static ScrollObserver instance;
-
-    private static int lastTriggeredY = 0;
-
-
-    public static synchronized ScrollObserver getInstance() {
-        if (instance == null) {
-            instance = new ScrollObserver();
-        }
-        return instance;
-    }
-
+    private int lastTriggeredY = 0;
 
     /**
      * Observes downward scrolling on a ScrollView and triggers a callback every X pixels.

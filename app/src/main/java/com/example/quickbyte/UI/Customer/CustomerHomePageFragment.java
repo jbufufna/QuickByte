@@ -33,7 +33,7 @@ import java.util.ArrayList;
 public class CustomerHomePageFragment extends Fragment {
 
     private CustomerHomePageBinding binding;
-    private int cardHeight = 200;
+    private int cardHeight = 190;
     private Facade facade;
 
 
@@ -50,7 +50,7 @@ public class CustomerHomePageFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = com.example.quickbyte.databinding.CustomerHomePageBinding.inflate(inflater, container, false);
         facade = Facade.getInstance();
-        scrollObserver = ScrollObserver.getInstance();
+        scrollObserver = new ScrollObserver();
 
 
         // Add menu items dynamically
