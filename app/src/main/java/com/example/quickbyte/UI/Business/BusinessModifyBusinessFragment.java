@@ -28,6 +28,8 @@ public class BusinessModifyBusinessFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = BusinessModifyBusinessBinding.inflate(inflater, container, false);
         facade = Facade.getInstance();
+
+
         return binding.getRoot();
     }
 

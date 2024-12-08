@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.navigation.fragment.NavHostFragment;
+
+import com.example.quickbyte.API.DTO.UserDTO;
 import com.example.quickbyte.R;
 import com.example.quickbyte.databinding.CustomerAccountInformationBinding;
 
@@ -36,17 +38,21 @@ public class CustomerAccountInformationFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Fetch and display business information
         fetchBusinessInfo();
+        // Fetch and display business information
+
+        populateAccountInfo();
+
+        // getUserInfo();
 
         binding.btnAccInfoBack.setOnClickListener(v ->
                 NavHostFragment.findNavController(CustomerAccountInformationFragment.this)
                         .navigate(R.id.action_customerAccountInformationFragment_to_customerHomePageFragment)
         );
 
-        //binding.btnAccInfoSaveChanges.setOnClickListener(v ->
-                //TODO: Send changes to Server
-        //);
+        /*binding.btnAccInfoSaveChanges.setOnClickListener(v ->
+
+        );*/
     }
 
     private void fetchBusinessInfo() {
@@ -65,5 +71,23 @@ public class CustomerAccountInformationFragment extends Fragment {
 
     private void populateUI(BusinessInfoDTO businessInfo) {
         binding.getRoot().setBackgroundColor(Color.parseColor(businessInfo.getPrimaryColor()));
+    }
+
+    private void populateAccountInfo(){
+        UserDTO loggedInUserVar = facade.getLoggedInUserVar();
+
+        binding.editTextAccInfoUsername.setText(loggedInUserVar.getUsername().toString());
+        //binding.editTextAccInfoPassword.setText(loggedInUserVar.getPasswordHash().toString());
+        binding.editTextAccInfoEmail.setText(loggedInUserVar.getEmail().toString());
+        binding.editTextAccInfoFirstName.setText(loggedInUserVar.getFirstName().toString());
+        binding.editTextAccInfoCCLastName.setText(loggedInUserVar.getLastName().toString());
+        //binding.editTextAccInfoCCNum.setText(loggedInUserVar.getCardNumber().toString());
+        binding.editTextAccInfoCCExpMo.setText(String.valueOf(loggedInUserVar.getExpiryMonth()));
+        binding.editTextAccInfoCCExpYr.setText(String.valueOf(loggedInUserVar.getExpiryYear()));
+        binding.editTextAccInfoCCCSV.setText(String.valueOf(loggedInUserVar.getCvv()));
+        binding.editTextAccInfoPhoneNum.setText(loggedInUserVar.getPhoneNumber().toString());
+
+
+
     }
 }

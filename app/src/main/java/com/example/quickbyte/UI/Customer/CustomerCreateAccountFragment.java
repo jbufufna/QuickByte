@@ -24,6 +24,8 @@ import com.example.quickbyte.API.Services.BusinessInfoService;
 import com.example.quickbyte.API.Services.UserService;
 import com.example.quickbyte.Facade.Facade;
 
+//import android.util.Log;
+
 public class CustomerCreateAccountFragment extends Fragment {
 
     private CustomerCreateAccountBinding binding;
@@ -36,6 +38,8 @@ public class CustomerCreateAccountFragment extends Fragment {
                              Bundle savedInstanceState) {
        binding = com.example.quickbyte.databinding.CustomerCreateAccountBinding.inflate(inflater, container, false);
        facade = Facade.getInstance();
+
+
        return binding.getRoot();
     }
 
@@ -96,6 +100,10 @@ public class CustomerCreateAccountFragment extends Fragment {
             true
 
         );
+
+
+        int tempvar = Integer.parseInt(binding.editTextCreateAccCCExpMo.getText().toString());
+        Toast.makeText(getContext(), String.valueOf(tempvar), Toast.LENGTH_SHORT).show();
 
         //createUser(UserCreationRequestDTO userCreationRequest, final UserService.ApiCallback<UserDTO> callback)
         //new UserService.ApiCallback<UserDTO>()
