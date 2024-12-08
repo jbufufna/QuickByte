@@ -51,7 +51,7 @@ public class BusinessModifyBusinessFragment extends Fragment {
             }
         });
 
-        binding.btnBizInfoGetChanges.setOnClickListener(v -> fetchBusinessInfo());
+        //binding.btnBizInfoGetChanges.setOnClickListener(v -> fetchBusinessInfo());
     }
 
     private void fetchBusinessInfo() {

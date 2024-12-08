@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.quickbyte.API.DTO.UserDTO;
+import com.example.quickbyte.API.Services.UserService;
 import com.example.quickbyte.R;
 import com.example.quickbyte.databinding.CustomerAccountInformationBinding;
 
@@ -50,9 +51,10 @@ public class CustomerAccountInformationFragment extends Fragment {
                         .navigate(R.id.action_customerAccountInformationFragment_to_customerHomePageFragment)
         );
 
-        /*binding.btnAccInfoSaveChanges.setOnClickListener(v ->
-
-        );*/
+        binding.btnAccInfoSaveChanges.setOnClickListener(v -> {
+                    saveAccountInfo();
+                }
+        );
     }
 
     private void fetchBusinessInfo() {
@@ -81,12 +83,42 @@ public class CustomerAccountInformationFragment extends Fragment {
         binding.editTextAccInfoEmail.setText(loggedInUserVar.getEmail().toString());
         binding.editTextAccInfoFirstName.setText(loggedInUserVar.getFirstName().toString());
         binding.editTextAccInfoCCLastName.setText(loggedInUserVar.getLastName().toString());
-        //binding.editTextAccInfoCCNum.setText(loggedInUserVar.getCardNumber().toString());
+        binding.editTextAccInfoCCNum.setText(loggedInUserVar.getCardNumber().toString());
         binding.editTextAccInfoCCExpMo.setText(String.valueOf(loggedInUserVar.getExpiryMonth()));
         binding.editTextAccInfoCCExpYr.setText(String.valueOf(loggedInUserVar.getExpiryYear()));
         binding.editTextAccInfoCCCSV.setText(String.valueOf(loggedInUserVar.getCvv()));
         binding.editTextAccInfoPhoneNum.setText(loggedInUserVar.getPhoneNumber().toString());
 
+
+
+    }
+
+    private void saveAccountInfo(){
+        UserDTO loggedInUserVar = facade.getLoggedInUserVar();
+
+        loggedInUserVar.setUsername(binding.editTextAccInfoUsername.getText().toString());
+        loggedInUserVar.setPasswordHash(binding.editTextAccInfoPassword.getText().toString());
+        loggedInUserVar.setEmail(binding.editTextAccInfoEmail.getText().toString());
+        loggedInUserVar.setFirstName(binding.editTextAccInfoFirstName.getText().toString());
+        loggedInUserVar.setLastName(binding.editTextAccInfoCCLastName.getText().toString());
+        loggedInUserVar.setCardNumber(binding.editTextAccInfoCCNum.getText().toString());
+        loggedInUserVar.setExpiryMonth(Integer.parseInt(binding.editTextAccInfoCCExpMo.getText().toString()));
+        loggedInUserVar.setExpiryYear(Integer.parseInt(binding.editTextAccInfoCCExpYr.getText().toString()));
+        loggedInUserVar.setCvv(Integer.parseInt(binding.editTextAccInfoCCCSV.getText().toString()));
+        loggedInUserVar.setPhoneNumber(binding.editTextAccInfoPhoneNum.getText().toString());
+
+        facade.updateUser(loggedInUserVar.getUserId(),loggedInUserVar, new UserService.ApiCallback<UserDTO>(){
+
+            @Override
+            public void onSuccess(UserDTO result) {
+                Toast.makeText(getContext(), "Account information updated.", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onError(String errorMessage) {
+                Toast.makeText(getContext(), errorMessage, Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
     }

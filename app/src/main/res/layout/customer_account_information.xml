@@ -133,13 +133,11 @@
         android:id="@+id/textViewAccInfoCCCSV2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:text="Phone Number:"
         android:textAlignment="textEnd"
         app:layout_constraintBottom_toBottomOf="@+id/editTextAccInfoPhoneNum"
         app:layout_constraintEnd_toEndOf="@+id/textViewAccInfoCCCSV"
-        app:layout_constraintTop_toTopOf="@+id/editTextAccInfoPhoneNum"
-        app:layout_constraintVertical_bias="0.49" />
+        app:layout_constraintTop_toTopOf="@+id/editTextAccInfoPhoneNum" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/editTextAccInfoCCExpMo"
