@@ -110,24 +110,6 @@ public class CustomerHomePageFragment extends Fragment {
 
         int initialLoadCards = 0; // how many cards we initially load (depends on size of scrollView and cards)
 
-        int[] itemImages = {
-                R.drawable.burger, //burger is the local image
-                R.drawable.burger,
-                R.drawable.burger,
-                R.drawable.burger,
-                R.drawable.burger,
-                R.drawable.burger,
-                R.drawable.burger,
-                R.drawable.burger,
-                R.drawable.burger,
-                R.drawable.burger,
-                R.drawable.burger,
-                R.drawable.burger,
-                R.drawable.burger,
-                R.drawable.burger,
-                R.drawable.burger,
-                R.drawable.burger
-        };
 
         for (int i = 0; i < fullMenu.size(); i++) {
 
@@ -204,16 +186,19 @@ public class CustomerHomePageFragment extends Fragment {
                             .navigate(R.id.action_customerHomePageFragment_to_customerViewItemFragment)
             );
 
+            // Add CardView to the LinearLayout container
+            cardContainer.addView(cardView);
+
             if (i == 0) {
                 cardHeight = cardView.getHeight();
+
+                System.out.println("Height: " + cardHeight);
+
 
                 initialLoadCards = binding.scrollView.getHeight() / cardHeight; // now we actually know how many cards to initially load
 
                 System.out.println("Initially loading " + initialLoadCards + " out of " + fullMenu.size() + " cards");
             }
-
-            // Add CardView to the LinearLayout container
-            cardContainer.addView(cardView);
         }
     }
 
