@@ -28,6 +28,8 @@ public class ScrollObserver {
      * @param callback     The callback to execute every X pixels scrolled downward.
      */
     public void observeDownward(ScrollView scrollView, int scrollHeight, OnScrollCallback callback) {
+        System.out.println("Linear layout height: " + scrollView.getChildAt(0).getHeight());
+
         // Do nothing if the scrollHeight is less than or equal to 0
         if (scrollHeight <= 0) {
             return;
