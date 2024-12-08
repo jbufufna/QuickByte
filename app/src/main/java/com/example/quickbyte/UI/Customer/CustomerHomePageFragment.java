@@ -108,7 +108,7 @@ public class CustomerHomePageFragment extends Fragment {
 
         LinearLayout cardContainer = binding.cardContainer; // The LinearLayout inside the ScrollView
 
-        int initialLoadCards = 0; // how many cards we initially load (depends on size of scrollView and cards)
+        int initialLoadCards = 1; // how many cards we initially load (depends on size of scrollView and cards)
 
 
         for (int i = 0; i < fullMenu.size(); i++) {
@@ -140,7 +140,7 @@ public class CustomerHomePageFragment extends Fragment {
                     100  // Image height
             ));
 
-            if (i <= initialLoadCards) // we only put images into the first page of cards, the rest will be loaded dynamically
+            if (i < initialLoadCards) // we only put images into the first page of cards, the rest will be loaded dynamically
             {
                 // add the image now
                 loadImageToImageView(imageView, fullMenu.get(i).getImageUrl());
