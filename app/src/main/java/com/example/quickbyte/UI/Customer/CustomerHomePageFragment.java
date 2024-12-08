@@ -190,7 +190,7 @@ public class CustomerHomePageFragment extends Fragment {
             cardContainer.addView(cardView);
 
             if (i == 0) {
-                cardHeight = 100;
+                cardHeight = 200; // approximate card height
 
                 initialLoadCards = binding.scrollView.getHeight() / cardHeight; // now we actually know how many cards to initially load
 
