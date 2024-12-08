@@ -215,6 +215,8 @@ public class CustomerHomePageFragment extends Fragment {
         } else {
             // Handle the case where the resource was not found
             System.out.println("Error locating image: " + imageUrl);
+
+            imageView.setImageResource(R.drawable.error_image);
         }
     }
 
