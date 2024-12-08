@@ -14,6 +14,7 @@ public class ScrollObserver {
      * @param scrollHeight The threshold scroll height in pixels (size of each card).
      * @param callback     The callback to execute every X pixels scrolled downward.
      */
+
     public static void observeDownward(ScrollView scrollView, int scrollHeight, OnScrollCallback callback) {
         // Do nothing if the scrollHeight is less than or equal to 0
         if (scrollHeight <= 0) {
@@ -24,6 +25,8 @@ public class ScrollObserver {
             @Override
             public void onScrollChanged() {
                 int scrollY = scrollView.getScrollY(); // Get current scroll position
+
+                System.out.println("Scrolled down");  // Only print if scrolling downward
 
                 if (scrollY > lastTriggeredY) {
                     System.out.println("Scrolled down");  // Only print if scrolling downward
