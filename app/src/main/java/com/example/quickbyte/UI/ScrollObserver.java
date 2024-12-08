@@ -20,13 +20,19 @@ public class ScrollObserver {
             return;
         }
 
-        scrollView.getViewTreeObserver().addOnScrollChangedListener(() -> {
-            int scrollY = scrollView.getScrollY(); // Get current scroll position
+        // Set scroll listener on ScrollView
+        scrollView.setOnScrollChangeListener(new View.OnScrollChangeListener() {
+            @Override
+            public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+                if (callback != null && scrollY > oldScrollY) { // Only trigger on downward scroll
+                    if (scrollY - lastTriggeredY >= scrollHeight) {
+                        // Trigger the callback
+                        callback.onScroll(scrollX, scrollY, oldScrollX, oldScrollY);
 
-            System.out.println("Scrolled down");
-
-            if (scrollY >= scrollHeight) {
-                callback.onScroll(scrollView.getScrollX(), scrollY, 0, scrollY);
+                        // Update the last triggered position
+                        lastTriggeredY = scrollY;
+                    }
+                }
             }
         });
     }
