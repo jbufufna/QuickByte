@@ -33,7 +33,7 @@ import java.util.ArrayList;
 public class CustomerHomePageFragment extends Fragment {
 
     private CustomerHomePageBinding binding;
-    private int cardHeight = 0;
+    private int cardHeight = 200;
     private Facade facade;
 
 
@@ -113,7 +113,7 @@ public class CustomerHomePageFragment extends Fragment {
 
         LinearLayout cardContainer = binding.cardContainer; // The LinearLayout inside the ScrollView
 
-        int initialLoadCards = 1; // how many cards we initially load (depends on size of scrollView and cards)
+        int initialLoadCards = binding.scrollView.getHeight() / cardHeight; // how many cards we initially load (depends on size of scrollView and cards)
 
 
         for (int i = 0; i < fullMenu.size(); i++) {
@@ -193,14 +193,6 @@ public class CustomerHomePageFragment extends Fragment {
 
             // Add CardView to the LinearLayout container
             cardContainer.addView(cardView);
-
-            if (i == 0) {
-                cardHeight = 200; // approximate card height
-
-                initialLoadCards = binding.scrollView.getHeight() / cardHeight; // now we actually know how many cards to initially load
-
-                System.out.println("Initially loading " + initialLoadCards + " out of " + fullMenu.size() + " cards");
-            }
         }
     }
 
