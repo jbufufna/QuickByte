@@ -3,9 +3,22 @@ package com.example.quickbyte.UI;
 import android.view.ViewTreeObserver;
 import android.widget.ScrollView;
 
+import com.example.quickbyte.Facade.Facade;
+
 public class ScrollObserver {
 
+    private static ScrollObserver instance;
+
     private static int lastTriggeredY = 0;
+
+
+    public static synchronized ScrollObserver getInstance() {
+        if (instance == null) {
+            instance = new ScrollObserver();
+        }
+        return instance;
+    }
+
 
     /**
      * Observes downward scrolling on a ScrollView and triggers a callback every X pixels.
@@ -14,7 +27,7 @@ public class ScrollObserver {
      * @param scrollHeight The threshold scroll height in pixels (size of each card).
      * @param callback     The callback to execute every X pixels scrolled downward.
      */
-    public static void observeDownward(ScrollView scrollView, int scrollHeight, OnScrollCallback callback) {
+    public void observeDownward(ScrollView scrollView, int scrollHeight, OnScrollCallback callback) {
         // Do nothing if the scrollHeight is less than or equal to 0
         if (scrollHeight <= 0) {
             return;

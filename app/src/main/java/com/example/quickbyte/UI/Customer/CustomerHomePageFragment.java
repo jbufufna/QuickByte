@@ -37,6 +37,9 @@ public class CustomerHomePageFragment extends Fragment {
     private Facade facade;
 
 
+    private ScrollObserver scrollObserver;
+
+
     // The card proxies which will be loaded as the user scrolls (the initial page of cards is preloaded)
     private List<Pair<ImageView, String>> imageProxyList = new ArrayList<Pair<ImageView, String>>();
 
@@ -47,6 +50,8 @@ public class CustomerHomePageFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = com.example.quickbyte.databinding.CustomerHomePageBinding.inflate(inflater, container, false);
         facade = Facade.getInstance();
+        scrollObserver = ScrollObserver.getInstance();
+
 
         // Add menu items dynamically
         getMenuItems();
@@ -77,7 +82,7 @@ public class CustomerHomePageFragment extends Fragment {
         ScrollView myScrollView = binding.scrollView;
 
         // loading items as we scroll (based on card height)
-        ScrollObserver.observeDownward(myScrollView, cardHeight, new ScrollObserver.OnScrollCallback() {
+        scrollObserver.observeDownward(myScrollView, cardHeight, new ScrollObserver.OnScrollCallback() {
             @Override
             public void onScrollChanged() {
                 loadTopCardImage();
