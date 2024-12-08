@@ -55,9 +55,9 @@ public class CustomerHomePageFragment extends Fragment {
         ScrollView myScrollView = binding.scrollView;
 
         // loading items as we scroll (based on card height)
-        ScrollObserver.observeDownward(binding.cardContainer, cardHeight, new ScrollObserver.OnScrollCallback() {
+        ScrollObserver.observeDownward(myScrollView, cardHeight, new ScrollObserver.OnScrollCallback() {
             @Override
-            public void onScroll(int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+            public void onScrollChanged() {
                 loadTopCardImage();
             }
         });

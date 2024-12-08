@@ -1,7 +1,7 @@
 package com.example.quickbyte.UI;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.ScrollView;
-import android.widget.LinearLayout;
 
 public class ScrollObserver {
 
@@ -14,24 +14,22 @@ public class ScrollObserver {
      * @param scrollHeight The threshold scroll height in pixels (size of each card).
      * @param callback     The callback to execute every X pixels scrolled downward.
      */
-    public static void observeDownward(LinearLayout scrollView, int scrollHeight, OnScrollCallback callback) {
+    public static void observeDownward(ScrollView scrollView, int scrollHeight, OnScrollCallback callback) {
         // Do nothing if the scrollHeight is less than or equal to 0
         if (scrollHeight <= 0) {
             return;
         }
 
-        // Set scroll listener on ScrollView
-        scrollView.setOnScrollChangeListener(new View.OnScrollChangeListener() {
+        scrollView.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
             @Override
-            public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-                if (callback != null && scrollY > oldScrollY) { // Only trigger on downward scroll
-                    if (scrollY - lastTriggeredY >= scrollHeight) {
-                        // Trigger the callback
-                        callback.onScroll(scrollX, scrollY, oldScrollX, oldScrollY);
+            public void onScrollChanged() {
+                int scrollY = scrollView.getScrollY(); // Get current scroll position
 
-                        // Update the last triggered position
-                        lastTriggeredY = scrollY;
-                    }
+                if (scrollY > lastTriggeredY) {
+                    System.out.println("Scrolled down");  // Only print if scrolling downward
+                    lastTriggeredY = scrollY;  // Update last scroll position to current
+
+                    callback.onScrollChanged();
                 }
             }
         });
@@ -39,6 +37,6 @@ public class ScrollObserver {
 
     // Interface for the callback
     public interface OnScrollCallback {
-        void onScroll(int scrollX, int scrollY, int oldScrollX, int oldScrollY);
+        void onScrollChanged();
     }
 }
