@@ -20,10 +20,13 @@ public class ScrollObserver {
             return;
         }
 
+
         // Make sure the listener is added after the layout is complete
         scrollView.post(new Runnable() {
             @Override
             public void run() {
+                System.out.println("Linear layout height: " + scrollView.getChildAt(0).getHeight());
+
                 scrollView.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
                     @Override
                     public void onScrollChanged() {
