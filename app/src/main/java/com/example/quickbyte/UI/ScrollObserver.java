@@ -1,6 +1,7 @@
 package com.example.quickbyte.UI;
 import android.view.View;
 import android.widget.ScrollView;
+import android.widget.LinearLayout;
 
 public class ScrollObserver {
 
@@ -13,7 +14,7 @@ public class ScrollObserver {
      * @param scrollHeight The threshold scroll height in pixels (size of each card).
      * @param callback     The callback to execute every X pixels scrolled downward.
      */
-    public static void observeDownward(ScrollView scrollView, int scrollHeight, OnScrollCallback callback) {
+    public static void observeDownward(LinearLayout scrollView, int scrollHeight, OnScrollCallback callback) {
         // Do nothing if the scrollHeight is less than or equal to 0
         if (scrollHeight <= 0) {
             return;
