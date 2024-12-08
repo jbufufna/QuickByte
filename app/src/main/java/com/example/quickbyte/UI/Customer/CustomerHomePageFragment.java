@@ -11,23 +11,34 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.ScrollView;
 import android.widget.ImageView;
 import androidx.cardview.widget.CardView;
+
+import com.example.quickbyte.API.DTO.MenuItem;
+import com.example.quickbyte.API.Services.MenuItemService;
 import com.example.quickbyte.R;
 import com.example.quickbyte.databinding.CustomerHomePageBinding;
 
 import android.widget.Toast;
-import com.bumptech.glide.Glide;
 import android.graphics.Color;
 import com.example.quickbyte.API.DTO.BusinessInfoDTO;
-import com.example.quickbyte.API.Services.BusinessInfoService;
 import com.example.quickbyte.Facade.Facade;
+import com.example.quickbyte.UI.ScrollObserver;
+import java.util.*;
+import androidx.core.util.Pair;
+
+import java.util.ArrayList;
 
 public class CustomerHomePageFragment extends Fragment {
 
     private CustomerHomePageBinding binding;
     private int cardHeight = 0;
     private Facade facade;
+
+
+    // The card proxies which will be loaded as the user scrolls (the initial page of cards is preloaded)
+    private List<Pair<ImageView, String>> imageProxyList = new ArrayList<Pair<ImageView, String>>();
 
 
 
@@ -38,7 +49,18 @@ public class CustomerHomePageFragment extends Fragment {
         facade = Facade.getInstance();
 
         // Add menu items dynamically
-        addMenuItems();
+        getMenuItems();
+
+
+        ScrollView myScrollView = binding.scrollView;
+
+        // loading items as we scroll (based on card height)
+        ScrollObserver.observeDownward(myScrollView, cardHeight, new ScrollObserver.OnScrollCallback() {
+            @Override
+            public void onScroll(int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+                loadTopCardImage();
+            }
+        });
 
         return binding.getRoot();
     }
@@ -64,12 +86,30 @@ public class CustomerHomePageFragment extends Fragment {
 
     }
 
-    private void addMenuItems() {
+    private void getMenuItems() {
+        facade.getAllItems(new MenuItemService.ApiCallback<List<MenuItem>>() {
+            @Override
+            public void onSuccess(List<MenuItem> result) {
+                loadMenuItems(result);
+            }
+
+            @Override
+            public void onError(String errorMessage) {
+                Toast.makeText(getContext(), errorMessage, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+
+
+    private void loadMenuItems(List<MenuItem> fullMenu)
+    {
+        imageProxyList.clear();
+
         LinearLayout cardContainer = binding.cardContainer; // The LinearLayout inside the ScrollView
 
-        // Sample data for menu items
-        String[] itemNames = {"Burger", "Pizza", "Pasta", "Salad", "Burger", "Pizza", "Pasta", "Salad", "Burger", "Pizza", "Pasta", "Salad", "Burger", "Pizza", "Pasta", "Salad"};
-        double[] itemPrices = {5.99, 8.99, 7.49, 6.99, 12.99, 13.99, 14.99, 15.99, 5.99, 8.99, 7.49, 6.99, 12.99, 13.99, 14.99, 15.99};
+        int initialLoadCards = 0; // how many cards we initially load (depends on size of scrollView and cards)
+
         int[] itemImages = {
                 R.drawable.burger, //burger is the local image
                 R.drawable.burger,
@@ -89,7 +129,8 @@ public class CustomerHomePageFragment extends Fragment {
                 R.drawable.burger
         };
 
-        for (int i = 0; i < itemNames.length; i++) {
+        for (int i = 0; i < fullMenu.size(); i++) {
+
             // Create a new CardView
             CardView cardView = new CardView(requireContext());
             cardView.setLayoutParams(new LinearLayout.LayoutParams(
@@ -101,10 +142,6 @@ public class CustomerHomePageFragment extends Fragment {
             cardView.setContentPadding(16, 16, 16, 16);
             cardView.setPreventCornerOverlap(true);
 
-            if (i == 0){
-                cardHeight = cardView.getHeight();
-            }
-
             // Create a horizontal LinearLayout for CardView contents
             LinearLayout cardContent = new LinearLayout(requireContext());
             cardContent.setOrientation(LinearLayout.HORIZONTAL);
@@ -113,14 +150,27 @@ public class CustomerHomePageFragment extends Fragment {
                     LinearLayout.LayoutParams.WRAP_CONTENT));
             cardContent.setPadding(8, 8, 8, 8);
 
+
             // Add ImageView for the item image
             ImageView imageView = new ImageView(requireContext());
             imageView.setLayoutParams(new LinearLayout.LayoutParams(
                     100, // Image width
                     100  // Image height
             ));
-            imageView.setImageResource(itemImages[i]); // Set image resource
+
+            if (i <= initialLoadCards) // we only put images into the first page of cards, the rest will be loaded dynamically
+            {
+                // add the image now
+                loadImageToImageView(imageView, fullMenu.get(i).getImageUrl());
+            }
+            else // store the card and image url to be loaded later
+            {
+                imageProxyList.add(new Pair<ImageView, String>(imageView, fullMenu.get(i).getImageUrl()));
+            }
+
             cardContent.addView(imageView);
+
+
 
             // Add a vertical LinearLayout for item name and price
             LinearLayout textContainer = new LinearLayout(requireContext());
@@ -132,13 +182,13 @@ public class CustomerHomePageFragment extends Fragment {
 
             // Add TextView for item name
             TextView itemName = new TextView(requireContext());
-            itemName.setText(itemNames[i]);
+            itemName.setText(fullMenu.get(i).getName());
             itemName.setTextSize(18);
             textContainer.addView(itemName);
 
             // Add TextView for item price
             TextView itemPrice = new TextView(requireContext());
-            itemPrice.setText(String.format("$%.2f", itemPrices[i]));
+            itemPrice.setText(String.format("$%.2f", fullMenu.get(i).getPrice()));
             itemPrice.setTextSize(16);
             textContainer.addView(itemPrice);
 
@@ -154,10 +204,56 @@ public class CustomerHomePageFragment extends Fragment {
                             .navigate(R.id.action_customerHomePageFragment_to_customerViewItemFragment)
             );
 
+            if (i == 0) {
+                cardHeight = cardView.getHeight();
+
+                initialLoadCards = binding.scrollView.getHeight() / cardHeight; // now we actually know how many cards to initially load
+
+                System.out.println("Initially loading " + initialLoadCards + " out of " + fullMenu.size() + " cards");
+            }
+
             // Add CardView to the LinearLayout container
             cardContainer.addView(cardView);
         }
     }
+
+
+    private void loadImageToImageView(ImageView imageView, String imageUrl)
+    {
+        // Get the resource ID dynamically
+        int resId = getContext().getResources().getIdentifier(imageUrl, "drawable", getContext().getPackageName());
+
+        // Check if the resource exists
+        if (resId != 0) {
+            // Use the resource ID to load the image
+            imageView.setImageResource(resId);
+        } else {
+            // Handle the case where the resource was not found
+            System.out.println("Error locating image: " + imageUrl);
+        }
+    }
+
+
+    private void loadTopCardImage()
+    {
+        System.out.println("Scrolled past threshold, loading one card");
+
+        if (!imageProxyList.isEmpty())
+        {
+            // grab the top most pair
+            ImageView imageView = imageProxyList.get(0).first;
+            String imageUrl = imageProxyList.get(0).second;
+
+            // load the image
+            loadImageToImageView(imageView, imageUrl);
+
+            // remove the top most pair
+            imageProxyList.remove(0);
+        }
+
+    }
+
+
 
     private void fetchBusinessInfo() {
         facade.getBusinessInfo(new Facade.DatabaseCallback<BusinessInfoDTO>() {
