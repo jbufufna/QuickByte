@@ -37,6 +37,7 @@ import com.example.quickbyte.API.Services.BusinessInfoService;
 import com.example.quickbyte.Facade.Facade;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -190,6 +191,8 @@ public class CustomerPlaceOrderFragment extends Fragment {
         }
 
         BigDecimal orderTax = orderSubtotal.multiply(BigDecimal.valueOf(0.06));
+        orderTax = orderTax.setScale(2, RoundingMode.CEILING);
+
         BigDecimal orderTotal = orderSubtotal.add(orderTax);
 
         binding.textViewPlaceOrderSubtotalNumber.setText("$" + orderSubtotal.toString());
