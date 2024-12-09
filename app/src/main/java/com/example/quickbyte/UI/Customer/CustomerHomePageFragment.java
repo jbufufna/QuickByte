@@ -78,7 +78,6 @@ public class CustomerHomePageFragment extends Fragment {
                         .navigate(R.id.action_customerHomePageFragment_to_customerAccountInformationFragment)
         );
 
-        //TODO: Missing button action to item description page
 
 
         ScrollView myScrollView = binding.scrollView;

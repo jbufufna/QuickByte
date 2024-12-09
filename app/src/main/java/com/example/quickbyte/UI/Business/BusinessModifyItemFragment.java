@@ -1,6 +1,6 @@
 package com.example.quickbyte.UI.Business;
 
-import static com.example.quickbyte.Globalvariables.bizModifyMenuItemid;
+import static com.example.quickbyte.Globalvariables.bizModifyMenuItem;
 
 import android.os.Bundle;
 
@@ -19,7 +19,6 @@ import com.example.quickbyte.databinding.BusinessModifyItemBinding;
 
 import android.widget.ImageView;
 import android.widget.Toast;
-import com.bumptech.glide.Glide;
 import android.graphics.Color;
 import com.example.quickbyte.API.DTO.BusinessInfoDTO;
 import com.example.quickbyte.API.Services.BusinessInfoService;
@@ -30,7 +29,6 @@ import java.math.BigDecimal;
 public class BusinessModifyItemFragment extends Fragment {
 
     private BusinessModifyItemBinding binding;
-    private BusinessInfoService businessInfoService;
     private Facade facade;
 
     @Override
@@ -83,11 +81,10 @@ public class BusinessModifyItemFragment extends Fragment {
     }
 
     private void populateItemParameters(){
-        binding.textInputEditBizModifyItemName.setText(bizModifyMenuItemid.getName());
-        binding.editTextBizModifyItemPrice.setText(String.valueOf(bizModifyMenuItemid.getPrice()));
-        binding.textInputEditBizModifyItemDesc.setText(bizModifyMenuItemid.getDescription());
-        loadImageToImageView(binding.imageViewItemImage, bizModifyMenuItemid.getImageUrl());
-        //binding.editTextBizModifyPrepTime.setText(bizModifyMenuItemid.get());
+        binding.textInputEditBizModifyItemName.setText(bizModifyMenuItem.getName());
+        binding.editTextBizModifyItemPrice.setText(String.valueOf(bizModifyMenuItem.getPrice()));
+        binding.textInputEditBizModifyItemDesc.setText(bizModifyMenuItem.getDescription());
+        loadImageToImageView(binding.imageViewItemImage, bizModifyMenuItem.getImageUrl());
     }
 
     private void loadImageToImageView(ImageView imageView, String imageUrl)
@@ -109,7 +106,7 @@ public class BusinessModifyItemFragment extends Fragment {
 
     private void updateItemParameters(){
         MenuItemDTO menuitem = new MenuItemDTO();
-        menuitem.setItemId(bizModifyMenuItemid.getItemId());
+        menuitem.setItemId(bizModifyMenuItem.getItemId());
         menuitem.setCategoryId(1);
         menuitem.setName(binding.textInputEditBizModifyItemName.getText().toString());
         menuitem.setDescription(binding.textInputEditBizModifyItemDesc.getText().toString());

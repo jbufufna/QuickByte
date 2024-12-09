@@ -45,24 +45,6 @@ public class OrderService {
         });
     }
 
-    public void getOrderById(int orderId, final ApiCallback<OrderDTO> callback) {
-        Call<OrderDTO> call = _orderService.getOrderById(orderId);
-        call.enqueue(new Callback<OrderDTO>() {
-            @Override
-            public void onResponse(Call<OrderDTO> call, Response<OrderDTO> response) {
-                if (response.isSuccessful()) {
-                    callback.onSuccess(response.body());
-                } else {
-                    callback.onError("Failed to get order: " + response.message());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<OrderDTO> call, Throwable t) {
-                callback.onError("Network error: " + t.getMessage());
-            }
-        });
-    }
 
     public void createOrderWithItems(CreateOrderDTO orderDTO, final ApiCallback<OrderDTO> callback) {
         Call<OrderDTO> call = _orderService.createOrderWithItems(orderDTO);
@@ -83,81 +65,6 @@ public class OrderService {
         });
     }
 
-    public void updateOrder(int orderId, OrderDTO updateOrder, final ApiCallback<OrderDTO> callback) {
-        Call<OrderDTO> call = _orderService.updateOrder(orderId, updateOrder);
-        call.enqueue(new Callback<OrderDTO>() {
-            @Override
-            public void onResponse(Call<OrderDTO> call, Response<OrderDTO> response) {
-                if (response.isSuccessful()) {
-                    callback.onSuccess(response.body());
-                } else {
-                    callback.onError("Failed to update order: " + response.message());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<OrderDTO> call, Throwable t) {
-                callback.onError("Network error: " + t.getMessage());
-            }
-        });
-    }
-
-    public void deleteOrder(int orderId, final ApiCallback<Void> callback) {
-        Call<Void> call = _orderService.deleteOrder(orderId);
-        call.enqueue(new Callback<Void>() {
-            @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
-                if (response.isSuccessful()) {
-                    callback.onSuccess(null);
-                } else {
-                    callback.onError("Failed to delete order: " + response.message());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Void> call, Throwable t) {
-                callback.onError("Network error: " + t.getMessage());
-            }
-        });
-    }
-
-    public void updateOrderStatus(int orderId, String status, final ApiCallback<Void> callback) {
-        Call<Void> call = _orderService.updateOrderStatus(orderId, status);
-        call.enqueue(new Callback<Void>() {
-            @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
-                if (response.isSuccessful()) {
-                    callback.onSuccess(null);
-                } else {
-                    callback.onError("Failed to update order status: " + response.message());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Void> call, Throwable t) {
-                callback.onError("Network error: " + t.getMessage());
-            }
-        });
-    }
-
-    public void getOrdersByUserId(int userId, final ApiCallback<List<OrderDTO>> callback) {
-        Call<List<OrderDTO>> call = _orderService.getOrdersByUserId(userId);
-        call.enqueue(new Callback<List<OrderDTO>>() {
-            @Override
-            public void onResponse(Call<List<OrderDTO>> call, Response<List<OrderDTO>> response) {
-                if (response.isSuccessful()) {
-                    callback.onSuccess(response.body());
-                } else {
-                    callback.onError("Failed to get orders by user ID: " + response.message());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<OrderDTO>> call, Throwable t) {
-                callback.onError("Network error: " + t.getMessage());
-            }
-        });
-    }
 
     public interface ApiCallback<T> {
         void onSuccess(T result);

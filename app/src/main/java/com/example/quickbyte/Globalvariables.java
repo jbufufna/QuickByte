@@ -9,7 +9,7 @@ public class Globalvariables {
     public static OrderDTO incomingOrderSelected;
 
     //Global variable for Business_Modify Menu Item selection
-    public static MenuItem bizModifyMenuItemid;
+    public static MenuItem bizModifyMenuItem;
 
     //Global variable for Customer_Menu Item selection
     //public static int customerViewMenuItemId = 0;

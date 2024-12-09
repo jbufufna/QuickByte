@@ -26,7 +26,6 @@ import com.example.quickbyte.Facade.Facade;
 public class CustomerViewItemFragment extends Fragment {
 
     private CustomerViewItemBinding binding;
-    private BusinessInfoService businessInfoService;
     private Facade facade;
     private CartManager cartmanager;
 
@@ -34,9 +33,6 @@ public class CustomerViewItemFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = com.example.quickbyte.databinding.CustomerViewItemBinding.inflate(inflater, container, false);
-
-        //TODO: On page loading load current amount for item into amount
-        // TODO: amount should always start as whatever is in the singleton (default = 0)
 
         facade = Facade.getInstance();
         cartmanager = CartManager.getInstance();
@@ -58,7 +54,6 @@ public class CustomerViewItemFragment extends Fragment {
         );
 
         binding.btnViewItemAddToCart.setOnClickListener(v -> {
-            //TODO: when add to cart pressed, take new amount and replace it in current order singleton.
             cartmanager.updateItemQuantity(customerViewMenuItem, Integer.parseInt(binding.editTextNumberDecimal.getText().toString()));
 
             System.out.println(" saved item quantity: " + cartmanager.getItemQuantity(customerViewMenuItem));

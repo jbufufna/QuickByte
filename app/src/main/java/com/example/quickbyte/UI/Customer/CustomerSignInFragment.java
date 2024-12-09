@@ -25,9 +25,6 @@ import com.example.quickbyte.Facade.Facade;
 public class CustomerSignInFragment extends Fragment {
 
     private CustomerSignInBinding binding;
-    private BusinessInfoService businessinfoservice;
-    private BusinessOwnerService businessownerservice;
-    private UserService userservice;
     private Facade facade;
 
     @Override
@@ -79,7 +76,6 @@ public class CustomerSignInFragment extends Fragment {
 
     private void attemptLogin(String username, String password){
         boolean inputValidated = validateInput(username, password);
-        final boolean userAccount[] = {false};
 
         if(inputValidated) {
 
@@ -93,25 +89,20 @@ public class CustomerSignInFragment extends Fragment {
 
                 @Override
                 public void onError(String errorMessage) {
-                    //Toast.makeText(getContext(), "Business: " + errorMessage, Toast.LENGTH_SHORT).show();
-                    userAccount[0] = true;
 
-                    if(userAccount[0]) {
-                        facade.loginUser(username, password, new UserService.ApiCallback<UserDTO>() {
-                            @Override
-                            public void onSuccess(UserDTO result) {
-                                // Navigate to Home Page: User logged in
-                                NavHostFragment.findNavController(CustomerSignInFragment.this)
-                                        .navigate(R.id.action_customerSignInFragment_to_customerHomePageFragment);
-                            }
+                    facade.loginUser(username, password, new UserService.ApiCallback<UserDTO>() {
+                        @Override
+                        public void onSuccess(UserDTO result) {
+                            // Navigate to Home Page: User logged in
+                            NavHostFragment.findNavController(CustomerSignInFragment.this)
+                                    .navigate(R.id.action_customerSignInFragment_to_customerHomePageFragment);
+                        }
 
-                            @Override
-                            public void onError(String errorMessage) {
-                                Toast.makeText(getContext(), errorMessage, Toast.LENGTH_SHORT).show();
-                                userAccount[0] = true;
-                            }
-                        });
-                    }
+                        @Override
+                        public void onError(String errorMessage) {
+                            Toast.makeText(getContext(), errorMessage, Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 }
             });
         }

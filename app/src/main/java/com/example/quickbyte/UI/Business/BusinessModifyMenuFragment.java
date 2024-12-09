@@ -1,6 +1,6 @@
 package com.example.quickbyte.UI.Business;
 
-import static com.example.quickbyte.Globalvariables.bizModifyMenuItemid;
+import static com.example.quickbyte.Globalvariables.bizModifyMenuItem;
 
 
 import android.os.Bundle;
@@ -22,7 +22,6 @@ import android.widget.TextView;
 import com.example.quickbyte.API.DTO.MenuItem;
 import com.example.quickbyte.API.Services.MenuItemService;
 import com.example.quickbyte.R;
-import com.example.quickbyte.UI.Customer.CustomerHomePageFragment;
 import com.example.quickbyte.UI.ScrollObserver;
 import com.example.quickbyte.databinding.BusinessModifyMenuBinding;
 
@@ -187,8 +186,8 @@ public class BusinessModifyMenuFragment extends Fragment {
             // Set an OnClickListener for the CardView
             cardView.setOnClickListener(v -> {
 
-                bizModifyMenuItemid = fullMenu.get(finalI);
-                System.out.println("bizModifyMenuItemid = " + bizModifyMenuItemid);
+                bizModifyMenuItem = fullMenu.get(finalI);
+                System.out.println("bizModifyMenuItemid = " + bizModifyMenuItem);
                 NavHostFragment.findNavController(BusinessModifyMenuFragment.this)
                         .navigate(R.id.action_businessModifyMenuFragment_to_businessModifyItemFragment);
             });

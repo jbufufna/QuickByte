@@ -215,21 +215,6 @@ public class Facade {
     }
 
 
-    public void createMenuItem(CreateMenuItemDTO createMenuItemDTO, final ManageMenuItemService.ApiCallback<MenuItemDTO> callback) {
-        manageMenuItemService.createMenuItem(createMenuItemDTO, new ManageMenuItemService.ApiCallback<MenuItemDTO>() {
-            @Override
-            public void onSuccess(MenuItemDTO result) {
-                callback.onSuccess(result);
-            }
-
-            @Override
-            public void onError(String errorMessage) {
-                callback.onError(errorMessage);
-            }
-        });
-    }
-
-
     public void updateMenuItem(MenuItemDTO menuItemDTO, final ManageMenuItemService.ApiCallback<MenuItemDTO> callback) {
         manageMenuItemService.updateMenuItem(menuItemDTO, new ManageMenuItemService.ApiCallback<MenuItemDTO>() {
             @Override
@@ -244,20 +229,6 @@ public class Facade {
         });
     }
 
-
-    public void deleteMenuItem(int itemId, final MenuItemService.ApiCallback<Void> callback) {
-        manageMenuItemService.deleteMenuItem(itemId, new ManageMenuItemService.ApiCallback<Void>() {
-            @Override
-            public void onSuccess(Void result) {
-                callback.onSuccess(result);
-            }
-
-            @Override
-            public void onError(String errorMessage) {
-                callback.onError(errorMessage);
-            }
-        });
-    }
 
 
     public void loginUser(String username, String password, final UserService.ApiCallback<UserDTO> callback)
@@ -328,22 +299,6 @@ public class Facade {
         });
     }
 
-
-    public void updateBusinessOwner(int ownerId, CreateBusinessOwnerDTO updateOwner, final BusinessOwnerService.ApiCallback<BusinessOwnerDTO> callback)
-    {
-        businessOwnerService.updateBusinessOwner(ownerId, updateOwner, new BusinessOwnerService.ApiCallback<BusinessOwnerDTO>() {
-            @Override
-            public void onSuccess(BusinessOwnerDTO result) {
-                updateLoggedInOwner(result);
-                callback.onSuccess(result);
-            }
-
-            @Override
-            public void onError(String errorMessage) {
-                callback.onError(errorMessage);
-            }
-        });
-    }
 
 
     public void getAllOrders(final OrderService.ApiCallback<List<OrderDTO>> callback)
