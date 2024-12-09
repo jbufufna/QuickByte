@@ -1,5 +1,7 @@
 package com.example.quickbyte.UI.Customer;
 
+import static com.example.quickbyte.Globalvariables.customerViewMenuItemId;
+
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -65,6 +67,8 @@ public class CustomerHomePageFragment extends Fragment {
 
         // Fetch and display business information
         fetchBusinessInfo();
+
+        System.out.println("customerViewMenuItemId = " + customerViewMenuItemId);
 
         binding.btnGoToCart.setOnClickListener(v ->
                 NavHostFragment.findNavController(CustomerHomePageFragment.this)
@@ -185,11 +189,16 @@ public class CustomerHomePageFragment extends Fragment {
             // Add card content to CardView
             cardView.addView(cardContent);
 
+            int finalI = i;
             // Set an OnClickListener for the CardView
-            cardView.setOnClickListener(v ->
-                    NavHostFragment.findNavController(CustomerHomePageFragment.this)
-                            .navigate(R.id.action_customerHomePageFragment_to_customerViewItemFragment)
-            );
+            cardView.setOnClickListener(v -> {
+
+                customerViewMenuItemId = fullMenu.get(finalI).getItemId();
+                NavHostFragment.findNavController(CustomerHomePageFragment.this)
+                        .navigate(R.id.action_customerHomePageFragment_to_customerViewItemFragment);
+
+                System.out.println("customerViewMenuItemId = " + customerViewMenuItemId);
+            });
 
             // Add CardView to the LinearLayout container
             cardContainer.addView(cardView);
