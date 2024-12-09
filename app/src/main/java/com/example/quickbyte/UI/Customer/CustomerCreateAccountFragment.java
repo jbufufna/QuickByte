@@ -29,8 +29,6 @@ import com.example.quickbyte.Facade.Facade;
 public class CustomerCreateAccountFragment extends Fragment {
 
     private CustomerCreateAccountBinding binding;
-    private BusinessInfoService businessInfoService;
-    private UserService userservice;
     private Facade facade;
 
    @Override
@@ -105,9 +103,6 @@ public class CustomerCreateAccountFragment extends Fragment {
         int tempvar = Integer.parseInt(binding.editTextCreateAccCCExpMo.getText().toString());
         Toast.makeText(getContext(), String.valueOf(tempvar), Toast.LENGTH_SHORT).show();
 
-        //createUser(UserCreationRequestDTO userCreationRequest, final UserService.ApiCallback<UserDTO> callback)
-        //new UserService.ApiCallback<UserDTO>()
-        //new Facade.DatabaseCallback<UserDTO>()
 
         facade.createUser(usercreationrequest, new UserService.ApiCallback<UserDTO>() {
             @Override

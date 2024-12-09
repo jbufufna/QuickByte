@@ -33,17 +33,15 @@ import java.util.List;
 public class BusinessIncomingOrdersFragment extends Fragment {
 
     private BusinessIncomingOrdersBinding binding;
-    private BusinessInfoService businessInfoService;
     private Facade facade;
 
-    //private UserService userservice;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = com.example.quickbyte.databinding.BusinessIncomingOrdersBinding.inflate(inflater, container, false);
         facade = Facade.getInstance();
-        //userservice = UserService.getInstance();
+
 
         getOrders();
 
@@ -86,7 +84,7 @@ public class BusinessIncomingOrdersFragment extends Fragment {
     }
 
     private void getOrders() {
-        //facade.getAllItems(new OrderService.ApiCallback<List<OrderDTO>>() {
+
         facade.getAllOrders(new OrderService.ApiCallback<List<OrderDTO>>() {
             @Override
             public void onSuccess(List<OrderDTO> result) {
@@ -102,15 +100,9 @@ public class BusinessIncomingOrdersFragment extends Fragment {
     }
 
 
-    //List<MenuItem> fullMenu
     private void loadOrders(List<OrderDTO> Orders)
     {
-        //imageProxyList.clear();
-
         LinearLayout cardContainer = binding.cardContainer; // The LinearLayout inside the ScrollView
-
-        //int initialLoadCards = binding.scrollView.getHeight() / cardHeight; // how many cards we initially load (depends on size of scrollView and cards)
-
 
         for (int i = 0; i < Orders.size(); i++) {
 
@@ -132,28 +124,6 @@ public class BusinessIncomingOrdersFragment extends Fragment {
                     LinearLayout.LayoutParams.MATCH_PARENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT));
             cardContent.setPadding(8, 8, 8, 8);
-
-            /*
-            // Add ImageView for the item image
-            ImageView imageView = new ImageView(requireContext());
-            imageView.setLayoutParams(new LinearLayout.LayoutParams(
-                    100, // Image width
-                    100  // Image height
-            ));
-
-            if (i < initialLoadCards) // we only put images into the first page of cards, the rest will be loaded dynamically
-            {
-                // add the image now
-                loadImageToImageView(imageView, fullMenu.get(i).getImageUrl());
-            }
-            else // store the card and image url to be loaded later
-            {
-                imageProxyList.add(new Pair<ImageView, String>(imageView, fullMenu.get(i).getImageUrl()));
-            }
-
-            cardContent.addView(imageView);
-            */
-
 
             // Add a vertical LinearLayout for item name and price
             LinearLayout textContainer = new LinearLayout(requireContext());

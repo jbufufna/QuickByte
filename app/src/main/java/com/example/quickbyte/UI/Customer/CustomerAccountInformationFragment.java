@@ -24,7 +24,6 @@ import com.example.quickbyte.Facade.Facade;
 public class CustomerAccountInformationFragment extends Fragment {
 
     private CustomerAccountInformationBinding binding;
-    private BusinessInfoService businessInfoService;
     private Facade facade;
 
     @Override
@@ -43,8 +42,6 @@ public class CustomerAccountInformationFragment extends Fragment {
         // Fetch and display business information
 
         populateAccountInfo();
-
-        // getUserInfo();
 
         binding.btnAccInfoBack.setOnClickListener(v ->
                 NavHostFragment.findNavController(CustomerAccountInformationFragment.this)

@@ -21,7 +21,6 @@ import com.example.quickbyte.databinding.BusinessModifyBusinessBinding;
 public class BusinessModifyBusinessFragment extends Fragment {
 
     private BusinessModifyBusinessBinding binding;
-    private BusinessInfoService businessInfoService;
     private Facade facade;
 
     @Override
@@ -51,7 +50,6 @@ public class BusinessModifyBusinessFragment extends Fragment {
             }
         });
 
-        //binding.btnBizInfoGetChanges.setOnClickListener(v -> fetchBusinessInfo());
     }
 
     private void fetchBusinessInfo() {
