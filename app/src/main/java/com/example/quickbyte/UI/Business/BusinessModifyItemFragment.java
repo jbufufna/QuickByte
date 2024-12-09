@@ -11,6 +11,9 @@ import androidx.navigation.fragment.NavHostFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.quickbyte.API.DTO.MenuItemDTO;
+import com.example.quickbyte.API.Services.ManageMenuItemService;
 import com.example.quickbyte.R;
 import com.example.quickbyte.databinding.BusinessModifyItemBinding;
 
@@ -21,6 +24,8 @@ import android.graphics.Color;
 import com.example.quickbyte.API.DTO.BusinessInfoDTO;
 import com.example.quickbyte.API.Services.BusinessInfoService;
 import com.example.quickbyte.Facade.Facade;
+
+import java.math.BigDecimal;
 
 public class BusinessModifyItemFragment extends Fragment {
 
@@ -33,6 +38,7 @@ public class BusinessModifyItemFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = com.example.quickbyte.databinding.BusinessModifyItemBinding.inflate(inflater, container, false);
         facade = Facade.getInstance();
+        populateItemParameters();
         return binding.getRoot();
     }
 
@@ -42,12 +48,20 @@ public class BusinessModifyItemFragment extends Fragment {
         // Fetch and display business information
         fetchBusinessInfo();
 
-        populateItemParameters();
 
-        binding.btnModifyItemBack.setOnClickListener(v ->
-                NavHostFragment.findNavController(BusinessModifyItemFragment.this)
-                        .navigate(R.id.action_businessModifyItemFragment_to_businessModifyMenuFragment2)
-        );
+
+        binding.btnModifyItemSave.setOnClickListener(v -> {
+
+            //Save changes
+            updateItemParameters();
+            NavHostFragment.findNavController(BusinessModifyItemFragment.this)
+                    .navigate(R.id.action_businessModifyItemFragment_to_businessModifyMenuFragment2);
+        });
+
+        binding.btnModifyItemBack.setOnClickListener(v -> {
+            NavHostFragment.findNavController(BusinessModifyItemFragment.this)
+                    .navigate(R.id.action_businessModifyItemFragment_to_businessModifyMenuFragment2);
+        });
     }
 
     private void fetchBusinessInfo() {
@@ -74,8 +88,6 @@ public class BusinessModifyItemFragment extends Fragment {
         binding.textInputEditBizModifyItemDesc.setText(bizModifyMenuItemid.getDescription());
         loadImageToImageView(binding.imageViewItemImage, bizModifyMenuItemid.getImageUrl());
         //binding.editTextBizModifyPrepTime.setText(bizModifyMenuItemid.get());
-
-
     }
 
     private void loadImageToImageView(ImageView imageView, String imageUrl)
@@ -93,5 +105,30 @@ public class BusinessModifyItemFragment extends Fragment {
 
             imageView.setImageResource(R.drawable.error_image);
         }
+    }
+
+    private void updateItemParameters(){
+        MenuItemDTO menuitem = new MenuItemDTO();
+        menuitem.setItemId(bizModifyMenuItemid.getItemId());
+        menuitem.setCategoryId(1);
+        menuitem.setName(binding.textInputEditBizModifyItemName.getText().toString());
+        menuitem.setDescription(binding.textInputEditBizModifyItemDesc.getText().toString());
+        //System.out.println("5 " + Double.parseDouble(binding.textViewItemPrice.getText().toString()));
+        menuitem.setPrice(BigDecimal.valueOf(10.00));
+        //menuitem.setPrice(BigDecimal.valueOf(Long.valueOf(binding.textViewItemPrice.getText().toString(), 2)));
+        menuitem.setIsAvailable(true);
+        menuitem.setImageUrl("burger");
+        //menuitem.
+        facade.updateMenuItem(menuitem, new ManageMenuItemService.ApiCallback<MenuItemDTO>() {
+            @Override
+            public void onSuccess(MenuItemDTO result) {
+                Toast.makeText(getContext(), "Menu Item successfully updated!", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onError(String errorMessage) {
+                Toast.makeText(getContext(), errorMessage, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
