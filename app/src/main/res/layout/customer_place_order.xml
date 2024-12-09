@@ -43,11 +43,13 @@
         android:id="@+id/textViewPlaceOrderSubtotal"
         android:layout_width="71dp"
         android:layout_height="25dp"
+        android:layout_marginStart="119dp"
+        android:layout_marginTop="61dp"
         android:text="Subtotal:"
         android:textAlignment="textEnd"
         android:textSize="16sp"
-        tools:layout_editor_absoluteX="119dp"
-        tools:layout_editor_absoluteY="519dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView" />
 
     <TextView
         android:id="@+id/textViewPlaceOrderTax"
@@ -105,10 +107,13 @@
         android:id="@+id/textViewPlaceOrderSubtotalNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginEnd="129dp"
         android:text="$00.00"
         app:layout_constraintBottom_toBottomOf="@+id/textViewPlaceOrderSubtotal"
-        app:layout_constraintTop_toTopOf="@+id/textViewPlaceOrderSubtotal"
-        tools:layout_editor_absoluteX="238dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewPlaceOrderSubtotal"
+        app:layout_constraintTop_toTopOf="@+id/textViewPlaceOrderSubtotal" />
 
     <TextView
         android:id="@+id/textViewPlaceOrderTaxNumber"
