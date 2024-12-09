@@ -1,6 +1,6 @@
 package com.example.quickbyte.UI.Customer;
 
-import static com.example.quickbyte.Globalvariables.customerViewMenuItemId;
+import static com.example.quickbyte.Globalvariables.customerViewMenuItem;
 
 import android.os.Bundle;
 
@@ -18,7 +18,6 @@ import com.example.quickbyte.databinding.CustomerViewItemBinding;
 
 import android.widget.ImageView;
 import android.widget.Toast;
-import com.bumptech.glide.Glide;
 import android.graphics.Color;
 import com.example.quickbyte.API.DTO.BusinessInfoDTO;
 import com.example.quickbyte.API.Services.BusinessInfoService;
@@ -60,9 +59,9 @@ public class CustomerViewItemFragment extends Fragment {
 
         binding.btnViewItemAddToCart.setOnClickListener(v -> {
             //TODO: when add to cart pressed, take new amount and replace it in current order singleton.
-            cartmanager.updateItemQuantity(customerViewMenuItemId, Integer.parseInt(binding.editTextNumberDecimal.getText().toString()));
+            cartmanager.updateItemQuantity(customerViewMenuItem, Integer.parseInt(binding.editTextNumberDecimal.getText().toString()));
 
-            System.out.println(" saved item quantity: " + cartmanager.getItemQuantity(customerViewMenuItemId));
+            System.out.println(" saved item quantity: " + cartmanager.getItemQuantity(customerViewMenuItem));
 
             NavHostFragment.findNavController(CustomerViewItemFragment.this)
                     .navigate(R.id.action_customerViewItemFragment_to_customerHomePageFragment);
@@ -88,11 +87,11 @@ public class CustomerViewItemFragment extends Fragment {
     }
 
     private void populateItemParameters(){
-        binding.textViewItemName.setText(customerViewMenuItemId.getName());
-        binding.textViewItemPriceNumber.setText("$" + customerViewMenuItemId.getPrice().toString());
-        binding.textViewItemDescription.setText(customerViewMenuItemId.getDescription());
-        loadImageToImageView(binding.imageViewItemImage, customerViewMenuItemId.getImageUrl());
-        binding.editTextNumberDecimal.setText(String.valueOf(cartmanager.getItemQuantity(customerViewMenuItemId)));
+        binding.textViewItemName.setText(customerViewMenuItem.getName());
+        binding.textViewItemPriceNumber.setText("$" + customerViewMenuItem.getPrice().toString());
+        binding.textViewItemDescription.setText(customerViewMenuItem.getDescription());
+        loadImageToImageView(binding.imageViewItemImage, customerViewMenuItem.getImageUrl());
+        binding.editTextNumberDecimal.setText(String.valueOf(cartmanager.getItemQuantity(customerViewMenuItem)));
 
     }
 

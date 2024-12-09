@@ -1,6 +1,6 @@
 package com.example.quickbyte.UI.Customer;
 
-import static com.example.quickbyte.Globalvariables.customerViewMenuItemId;
+import static com.example.quickbyte.Globalvariables.customerViewMenuItem;
 
 import android.os.Bundle;
 
@@ -67,8 +67,6 @@ public class CustomerHomePageFragment extends Fragment {
 
         // Fetch and display business information
         fetchBusinessInfo();
-
-        System.out.println("customerViewMenuItemId = " + customerViewMenuItemId);
 
         binding.btnGoToCart.setOnClickListener(v ->
                 NavHostFragment.findNavController(CustomerHomePageFragment.this)
@@ -194,8 +192,8 @@ public class CustomerHomePageFragment extends Fragment {
             // Set an OnClickListener for the CardView
             cardView.setOnClickListener(v -> {
 
-                customerViewMenuItemId = fullMenu.get(finalI);
-                System.out.println("var1 = " + customerViewMenuItemId);
+                customerViewMenuItem = fullMenu.get(finalI);
+                System.out.println("var1 = " + customerViewMenuItem);
                 //customerViewMenuItemId = fullMenu.get(finalI).getItemId();
                 NavHostFragment.findNavController(CustomerHomePageFragment.this)
                         .navigate(R.id.action_customerHomePageFragment_to_customerViewItemFragment);

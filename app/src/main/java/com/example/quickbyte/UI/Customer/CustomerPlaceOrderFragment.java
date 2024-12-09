@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.core.util.Pair;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
@@ -12,8 +13,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
+
+import com.example.quickbyte.API.DTO.MenuItem;
+import com.example.quickbyte.Common.managers.CartManager;
 import com.example.quickbyte.R;
+import com.example.quickbyte.UI.ScrollObserver;
 import com.example.quickbyte.databinding.CustomerPlaceOrderBinding;
 
 import android.widget.Toast;
@@ -23,22 +29,36 @@ import com.example.quickbyte.API.DTO.BusinessInfoDTO;
 import com.example.quickbyte.API.Services.BusinessInfoService;
 import com.example.quickbyte.Facade.Facade;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CustomerPlaceOrderFragment extends Fragment {
 
     private CustomerPlaceOrderBinding binding;
-    private BusinessInfoService businessInfoService;
+    private int cardHeight = 190;
     private Facade facade;
+
+
+    private ScrollObserver scrollObserver;
+
+    // The card proxies which will be loaded as the user scrolls (the initial page of cards is preloaded)
+    private List<Pair<ImageView, String>> imageProxyList = new ArrayList<Pair<ImageView, String>>();
+
+    private CartManager cartManager;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = com.example.quickbyte.databinding.CustomerPlaceOrderBinding.inflate(inflater, container, false);
+        facade = Facade.getInstance();
+        cartManager = CartManager.getInstance();
+        scrollObserver = new ScrollObserver();
 
         //Add order items to dynamically
-        addOrderItems();
+        getOrderItems();
 
-        //TODO: do math to calculate Time Estimate, Subtotal, Tax, and Total amounts
-        facade = Facade.getInstance();
+        //TODO: do math calculate Subtotal, Tax, and Total amounts
+
         return binding.getRoot();
     }
 
@@ -57,36 +77,31 @@ public class CustomerPlaceOrderFragment extends Fragment {
                 NavHostFragment.findNavController(CustomerPlaceOrderFragment.this)
                         .navigate(R.id.action_customerPlaceOrderFragment_to_customerHomePageFragment)
         );
+
+
+        ScrollView myScrollView = binding.scrollView;
+
+        // loading items as we scroll (based on card height)
+        scrollObserver.observeDownward(myScrollView, cardHeight, new ScrollObserver.OnScrollCallback() {
+            @Override
+            public void onScrollChanged() {
+                loadTopCardImage();
+            }
+        });
     }
 
-    private void addOrderItems() {
+    private void getOrderItems() {
+        imageProxyList.clear();
+
         LinearLayout cardContainer = binding.cardContainer; // The LinearLayout inside the ScrollView
 
-        //TODO: Call function to get orders from singleton? here
+        int initialLoadCards = binding.scrollView.getHeight() / cardHeight; // how many cards we initially load (depends on size of scrollView and cards)
 
-        // Sample data for menu items
-        String[] itemNames = {"Burger", "Pizza", "Pasta", "Salad", "Burger", "Pizza", "Pasta", "Salad", "Burger", "Pizza", "Pasta", "Salad", "Burger", "Pizza", "Pasta", "Salad"};
-        double[] itemQuantities = {5, 8, 7, 6, 12, 13, 14, 15, 5, 8, 7, 6, 12, 13, 14, 15};
-        int[] itemImages = {
-                R.drawable.burger, //burger is the local image
-                R.drawable.burger,
-                R.drawable.burger,
-                R.drawable.burger,
-                R.drawable.burger,
-                R.drawable.burger,
-                R.drawable.burger,
-                R.drawable.burger,
-                R.drawable.burger,
-                R.drawable.burger,
-                R.drawable.burger,
-                R.drawable.burger,
-                R.drawable.burger,
-                R.drawable.burger,
-                R.drawable.burger,
-                R.drawable.burger
-        };
 
-        for (int i = 0; i < itemNames.length; i++) {
+        List<MenuItem> orderItems = new ArrayList<MenuItem>(cartManager.getCartItems().keySet());
+        List<Integer> orderItemQuantity = new ArrayList<Integer>(cartManager.getCartItems().values());
+
+        for (int i = 0; i < orderItems.size(); i++) {
             // Create a new CardView
             CardView cardView = new CardView(requireContext());
             cardView.setLayoutParams(new LinearLayout.LayoutParams(
@@ -106,6 +121,27 @@ public class CustomerPlaceOrderFragment extends Fragment {
                     LinearLayout.LayoutParams.WRAP_CONTENT));
             cardContent.setPadding(8, 8, 8, 8);
 
+
+            // Add ImageView for the item image
+            ImageView imageView = new ImageView(requireContext());
+            imageView.setLayoutParams(new LinearLayout.LayoutParams(
+                    100, // Image width
+                    100  // Image height
+            ));
+
+            if (i < initialLoadCards) // we only put images into the first page of cards, the rest will be loaded dynamically
+            {
+                // add the image now
+                loadImageToImageView(imageView, orderItems.get(i).getImageUrl());
+            }
+            else // store the card and image url to be loaded later
+            {
+                imageProxyList.add(new Pair<ImageView, String>(imageView, orderItems.get(i).getImageUrl()));
+            }
+
+            cardContent.addView(imageView);
+
+
             // Add a vertical LinearLayout for item name and Quantity
             LinearLayout textContainer = new LinearLayout(requireContext());
             textContainer.setOrientation(LinearLayout.VERTICAL);
@@ -116,13 +152,13 @@ public class CustomerPlaceOrderFragment extends Fragment {
 
             // Add TextView for item name
             TextView itemName = new TextView(requireContext());
-            itemName.setText(itemNames[i]);
+            itemName.setText(orderItems.get(i).getName());
             itemName.setTextSize(18);
             textContainer.addView(itemName);
 
             // Add TextView for item quantity
             TextView itemPrice = new TextView(requireContext());
-            itemPrice.setText("Quantity: " + (int) itemQuantities[i]);
+            itemPrice.setText("Quantity: " + (int) orderItemQuantity.get(i));
             itemPrice.setTextSize(16);
             textContainer.addView(itemPrice);
 
@@ -132,15 +168,47 @@ public class CustomerPlaceOrderFragment extends Fragment {
             // Add card content to CardView
             cardView.addView(cardContent);
 
-            // Set an OnClickListener for the CardView
-            cardView.setOnClickListener(v ->
-                    NavHostFragment.findNavController(CustomerPlaceOrderFragment.this)
-                            .navigate(R.id.action_customerPlaceOrderFragment_to_customerHomePageFragment)
-            );
-
             // Add CardView to the LinearLayout container
             cardContainer.addView(cardView);
         }
+    }
+
+
+    private void loadImageToImageView(ImageView imageView, String imageUrl)
+    {
+        // Get the resource ID dynamically
+        int resId = getContext().getResources().getIdentifier(imageUrl, "drawable", getContext().getPackageName());
+
+        // Check if the resource exists
+        if (resId != 0) {
+            // Use the resource ID to load the image
+            imageView.setImageResource(resId);
+        } else {
+            // Handle the case where the resource was not found
+            System.out.println("Error locating image: " + imageUrl);
+
+            imageView.setImageResource(R.drawable.error_image);
+        }
+    }
+
+
+    private void loadTopCardImage()
+    {
+        System.out.println("Scrolled past threshold, loading one card");
+
+        if (!imageProxyList.isEmpty())
+        {
+            // grab the top most pair
+            ImageView imageView = imageProxyList.get(0).first;
+            String imageUrl = imageProxyList.get(0).second;
+
+            // load the image
+            loadImageToImageView(imageView, imageUrl);
+
+            // remove the top most pair
+            imageProxyList.remove(0);
+        }
+
     }
 
     private void fetchBusinessInfo() {

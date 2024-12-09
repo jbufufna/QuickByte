@@ -4,6 +4,8 @@ import com.example.quickbyte.API.DTO.MenuItem;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.*;
+import androidx.core.util.Pair;
 
 public class CartManager {
 
@@ -35,6 +37,7 @@ public class CartManager {
     }
 
     public Map<MenuItem, Integer> getCartItems() {
-        return new HashMap<>(cartItems);
+        return cartItems;
     }
+
 }

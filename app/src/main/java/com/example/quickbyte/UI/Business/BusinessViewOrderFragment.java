@@ -128,7 +128,7 @@ public class BusinessViewOrderFragment extends Fragment {
 
             cardContent.addView(imageView);
 
-            // Add a vertical LinearLayout for item name and price
+            // Add a vertical LinearLayout for item name and quantity
             LinearLayout textContainer = new LinearLayout(requireContext());
             textContainer.setOrientation(LinearLayout.VERTICAL);
             textContainer.setLayoutParams(new LinearLayout.LayoutParams(
@@ -154,7 +154,7 @@ public class BusinessViewOrderFragment extends Fragment {
                         new Pair<ImageView, Integer>(imageView, orderItems.get(i).getMenuItemId())));
             }
 
-            // Add TextView for item price
+            // Add TextView for item quantity
             TextView itemPrice = new TextView(requireContext());
             itemPrice.setText("Quantity: " + (int)orderItems.get(i).getQuantity());
             itemPrice.setTextSize(16);

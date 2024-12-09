@@ -16,7 +16,7 @@ public class Globalvariables {
 
     /*  DTO Global Variables  */
 
-    public static MenuItem customerViewMenuItemId;
+    public static MenuItem customerViewMenuItem;
 
 
 
