@@ -52,8 +52,8 @@ public class BusinessViewOrderFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = BusinessViewOrderBinding.inflate(inflater, container, false);
         facade = Facade.getInstance();
-
         scrollObserver = new ScrollObserver();
+
 
         populateOrderParameters(incomingOrderSelected.getOrderItems());
 
@@ -92,8 +92,7 @@ public class BusinessViewOrderFragment extends Fragment {
 
         LinearLayout cardContainer = binding.cardContainer; // The LinearLayout inside the ScrollView
 
-        int initialLoadCards = binding.scrollView.getHeight() / cardHeight; // how many cards we initially load (depends on size of scrollView and cards)
-        initialLoadCards = 7;
+        int initialLoadCards = 7; // how many cards we initially load (depends on size of scrollView and cards)
 
         System.out.println("Need to load " + orderItems.size() + " items");
 
