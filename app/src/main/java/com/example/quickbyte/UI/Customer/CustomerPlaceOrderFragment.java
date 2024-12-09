@@ -18,7 +18,12 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.example.quickbyte.API.DTO.CreateOrderDTO;
+import com.example.quickbyte.API.DTO.CreateOrderItemDTO;
 import com.example.quickbyte.API.DTO.MenuItem;
+import com.example.quickbyte.API.DTO.OrderDTO;
+import com.example.quickbyte.API.DTO.UserDTO;
+import com.example.quickbyte.API.Services.OrderService;
 import com.example.quickbyte.Common.managers.CartManager;
 import com.example.quickbyte.R;
 import com.example.quickbyte.UI.ScrollObserver;
@@ -76,10 +81,13 @@ public class CustomerPlaceOrderFragment extends Fragment {
                         .navigate(R.id.action_customerPlaceOrderFragment_to_customerHomePageFragment)
         );
 
-        binding.btnPlaceOrder.setOnClickListener(v ->
-                NavHostFragment.findNavController(CustomerPlaceOrderFragment.this)
-                        .navigate(R.id.action_customerPlaceOrderFragment_to_customerHomePageFragment)
-        );
+        binding.btnPlaceOrder.setOnClickListener(v -> {
+
+            // place the actual order
+            placeOrder();
+            NavHostFragment.findNavController(CustomerPlaceOrderFragment.this)
+                    .navigate(R.id.action_customerPlaceOrderFragment_to_customerHomePageFragment);
+        });
 
 
         ScrollView myScrollView = binding.scrollView;
@@ -226,6 +234,41 @@ public class CustomerPlaceOrderFragment extends Fragment {
         }
 
     }
+
+
+    private void placeOrder()
+    {
+        List<MenuItem> orderItems = new ArrayList<MenuItem>(cartManager.getCartItems().keySet());
+        List<Integer> orderItemsQuantity = new ArrayList<Integer>(cartManager.getCartItems().values());
+
+        List<CreateOrderItemDTO> createOrderItems = new ArrayList<CreateOrderItemDTO>();
+
+        for (int i = 0; i < orderItems.size(); ++i)
+        {
+            CreateOrderItemDTO createOrderItem = new CreateOrderItemDTO(orderItems.get(i).getItemId(),
+                    orderItemsQuantity.get(i));
+
+            createOrderItems.add(createOrderItem);
+        }
+
+        UserDTO loggedInUserVar = facade.getLoggedInUserVar();
+
+        CreateOrderDTO createOrder = new CreateOrderDTO(loggedInUserVar.getUserId(), createOrderItems);
+
+
+        facade.createOrderWithItems(createOrder, new OrderService.ApiCallback<OrderDTO>() {
+            @Override
+            public void onSuccess(OrderDTO result) {
+                cartManager.clearCart();
+            }
+
+            @Override
+            public void onError(String errorMessage) {
+                Toast.makeText(getContext(), errorMessage, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
 
     private void fetchBusinessInfo() {
         facade.getBusinessInfo(new Facade.DatabaseCallback<BusinessInfoDTO>() {

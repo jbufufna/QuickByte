@@ -40,4 +40,8 @@ public class CartManager {
         return cartItems;
     }
 
+    public void clearCart() {
+        cartItems.clear();
+    }
+
 }
