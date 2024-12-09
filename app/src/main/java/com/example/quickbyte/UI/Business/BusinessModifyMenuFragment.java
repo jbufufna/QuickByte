@@ -1,6 +1,7 @@
 package com.example.quickbyte.UI.Business;
 
-import static com.example.quickbyte.Globalvariables.customerViewMenuItemId;
+import static com.example.quickbyte.Globalvariables.bizModifyMenuItemid;
+
 
 import android.os.Bundle;
 
@@ -182,10 +183,13 @@ public class BusinessModifyMenuFragment extends Fragment {
             int finalI = i;
 
             // Set an OnClickListener for the CardView
-            cardView.setOnClickListener(v ->
-                    NavHostFragment.findNavController(BusinessModifyMenuFragment.this)
-                            .navigate(R.id.action_businessModifyMenuFragment_to_businessModifyItemFragment)
-            );
+            cardView.setOnClickListener(v -> {
+
+                bizModifyMenuItemid = fullMenu.get(finalI);
+                System.out.println("bizModifyMenuItemid = " + bizModifyMenuItemid);
+                NavHostFragment.findNavController(BusinessModifyMenuFragment.this)
+                        .navigate(R.id.action_businessModifyMenuFragment_to_businessModifyItemFragment);
+            });
 
             // Add CardView to the LinearLayout container
             cardContainer.addView(cardView);

@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import com.example.quickbyte.R;
 import com.example.quickbyte.databinding.BusinessModifyItemBinding;
 
+import android.widget.ImageView;
 import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import android.graphics.Color;
@@ -41,6 +42,8 @@ public class BusinessModifyItemFragment extends Fragment {
         // Fetch and display business information
         fetchBusinessInfo();
 
+        populateItemParameters();
+
         binding.btnModifyItemBack.setOnClickListener(v ->
                 NavHostFragment.findNavController(BusinessModifyItemFragment.this)
                         .navigate(R.id.action_businessModifyItemFragment_to_businessModifyMenuFragment2)
@@ -63,5 +66,32 @@ public class BusinessModifyItemFragment extends Fragment {
 
     private void populateUI(BusinessInfoDTO businessInfo) {
         binding.getRoot().setBackgroundColor(Color.parseColor(businessInfo.getPrimaryColor()));
+    }
+
+    private void populateItemParameters(){
+        binding.textInputEditBizModifyItemName.setText(bizModifyMenuItemid.getName());
+        binding.editTextBizModifyItemPrice.setText(String.valueOf(bizModifyMenuItemid.getPrice()));
+        binding.textInputEditBizModifyItemDesc.setText(bizModifyMenuItemid.getDescription());
+        loadImageToImageView(binding.imageViewItemImage, bizModifyMenuItemid.getImageUrl());
+        //binding.editTextBizModifyPrepTime.setText(bizModifyMenuItemid.get());
+
+
+    }
+
+    private void loadImageToImageView(ImageView imageView, String imageUrl)
+    {
+        // Get the resource ID dynamically
+        int resId = getContext().getResources().getIdentifier(imageUrl, "drawable", getContext().getPackageName());
+
+        // Check if the resource exists
+        if (resId != 0) {
+            // Use the resource ID to load the image
+            imageView.setImageResource(resId);
+        } else {
+            // Handle the case where the resource was not found
+            System.out.println("Error locating image: " + imageUrl);
+
+            imageView.setImageResource(R.drawable.error_image);
+        }
     }
 }
