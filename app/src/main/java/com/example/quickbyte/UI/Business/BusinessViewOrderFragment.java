@@ -92,6 +92,7 @@ public class BusinessViewOrderFragment extends Fragment {
 
         int initialLoadCards = binding.scrollView.getHeight() / cardHeight; // how many cards we initially load (depends on size of scrollView and cards)
 
+        System.out.println("Need to load " + orderItems.size() + " items");
 
         for (int i = 0; i < orderItems.size(); ++i)
         {
@@ -171,6 +172,7 @@ public class BusinessViewOrderFragment extends Fragment {
 
     private void databaseGetCardInfo(TextView textView, ImageView imageView, Integer menuItemID)
     {
+        System.out.println("Fetching item from database");
         facade.getItemById(menuItemID, new MenuItemService.ApiCallback<MenuItem>() {
             @Override
             public void onSuccess(MenuItem result) {
@@ -187,6 +189,8 @@ public class BusinessViewOrderFragment extends Fragment {
 
     private void loadMenuItemToCard(TextView textView, ImageView imageView, MenuItem item)
     {
+        System.out.println("Loading in card");
+
         loadTextToTextView(textView, item.getName());
         loadImageToImageView(imageView, item.getImageUrl());
     }
