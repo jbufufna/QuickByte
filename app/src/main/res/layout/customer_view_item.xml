@@ -28,8 +28,8 @@
 
     <TextView
         android:id="@+id/textViewItemName"
-        android:layout_width="318dp"
-        android:layout_height="53dp"
+        android:layout_width="373dp"
+        android:layout_height="87dp"
         android:text="Item Name"
         android:textAlignment="center"
         android:textSize="40sp"
@@ -82,10 +82,11 @@
         app:layout_constraintVertical_bias="0.801" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/textViewItemDescription"
         android:layout_width="298dp"
         android:layout_height="117dp"
         android:text="Item Description"
+        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias=".595"
@@ -101,7 +102,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.102"
+        app:layout_constraintVertical_bias="0.077"
         tools:srcCompat="@tools:sample/avatars" />
 
     <com.google.android.material.chip.ChipGroup
