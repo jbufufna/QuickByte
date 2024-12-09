@@ -26,6 +26,8 @@ import com.example.quickbyte.Facade.Facade;
 
 import java.math.BigDecimal;
 
+import android.util.Log;
+
 public class BusinessModifyItemFragment extends Fragment {
 
     private BusinessModifyItemBinding binding;
@@ -111,7 +113,20 @@ public class BusinessModifyItemFragment extends Fragment {
         menuitem.setName(binding.textInputEditBizModifyItemName.getText().toString());
         menuitem.setDescription(binding.textInputEditBizModifyItemDesc.getText().toString());
         //System.out.println("5 " + Double.parseDouble(binding.textViewItemPrice.getText().toString()));
-        menuitem.setPrice(BigDecimal.valueOf(10.00));
+        //menuitem.setPrice(BigDecimal.valueOf(10.00));
+
+        try {
+            String decimalString;
+            decimalString = binding.editTextBizModifyItemPrice.getText().toString();
+
+            BigDecimal bigDecimalvalue = new BigDecimal(decimalString);
+            System.out.println(bigDecimalvalue);
+            menuitem.setPrice(bigDecimalvalue);
+
+        } catch (Exception e) {
+            System.out.println("Failed to add bigDecimalvalie to menuitem.setPrice.");
+        }
+
         //menuitem.setPrice(BigDecimal.valueOf(Long.valueOf(binding.textViewItemPrice.getText().toString(), 2)));
         menuitem.setIsAvailable(true);
         menuitem.setImageUrl("burger");
