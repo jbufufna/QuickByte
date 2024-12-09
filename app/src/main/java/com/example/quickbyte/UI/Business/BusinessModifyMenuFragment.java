@@ -61,14 +61,16 @@ public class BusinessModifyMenuFragment extends Fragment {
         // Add menu items dynamically
         getMenuItems();
 
+        // Fetch and display business information
+        fetchBusinessInfo();
+
         return binding.getRoot();
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Fetch and display business information
-        fetchBusinessInfo();
+
 
         binding.btnModifyMenuBack.setOnClickListener(v ->
                 NavHostFragment.findNavController(BusinessModifyMenuFragment.this)
