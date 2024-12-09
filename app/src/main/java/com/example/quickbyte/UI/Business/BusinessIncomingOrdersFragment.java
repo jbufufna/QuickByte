@@ -1,36 +1,28 @@
 package com.example.quickbyte.UI.Business;
 
 
-import static com.example.quickbyte.Globalvariables.incomingOrderIdSelected;
+import static com.example.quickbyte.Globalvariables.incomingOrderSelected;
 
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
-import androidx.core.util.Pair;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
-import com.example.quickbyte.API.Services.MenuItemService;
 import com.example.quickbyte.API.Services.OrderService;
-import com.example.quickbyte.API.Services.UserService;
-import com.example.quickbyte.API.DTO.MenuItem;
-import com.example.quickbyte.API.DTO.UserDTO;
 import com.example.quickbyte.API.DTO.OrderDTO;
 import com.example.quickbyte.R;
-import com.example.quickbyte.UI.Customer.CustomerHomePageFragment;
 import com.example.quickbyte.databinding.BusinessIncomingOrdersBinding;
 
 import android.widget.Toast;
-import com.bumptech.glide.Glide;
 import android.graphics.Color;
 import com.example.quickbyte.API.DTO.BusinessInfoDTO;
 import com.example.quickbyte.API.Services.BusinessInfoService;
@@ -63,8 +55,6 @@ public class BusinessIncomingOrdersFragment extends Fragment {
 
         // Fetch and display business information
         fetchBusinessInfo();
-
-        System.out.println("Global variable = " + String.valueOf(incomingOrderIdSelected));
 
         binding.btnIncomingMenu.setOnClickListener(v ->
                 NavHostFragment.findNavController(BusinessIncomingOrdersFragment.this)
@@ -198,10 +188,10 @@ public class BusinessIncomingOrdersFragment extends Fragment {
             int finalI = i;
             cardView.setOnClickListener(v -> {
 
-                    incomingOrderIdSelected = Integer.parseInt(Orders.get(finalI).getOrderId().toString());
+                    incomingOrderSelected = Orders.get(finalI);
                     NavHostFragment.findNavController(BusinessIncomingOrdersFragment.this)
                             .navigate(R.id.action_businessIncomingOrdersFragment_to_businessViewOrderFragment);
-                    System.out.println("Global variable = " + String.valueOf(incomingOrderIdSelected));
+                    System.out.println("Global variable = " + String.valueOf(incomingOrderSelected));
             });
 
             // Add CardView to the LinearLayout container

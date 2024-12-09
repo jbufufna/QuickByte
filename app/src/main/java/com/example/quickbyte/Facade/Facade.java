@@ -199,6 +199,22 @@ public class Facade {
     }
 
 
+    public void getItemById(int itemId, final MenuItemService.ApiCallback<MenuItem> callback)
+    {
+        menuItemService.getItemById(itemId, new MenuItemService.ApiCallback<MenuItem>() {
+            @Override
+            public void onSuccess(MenuItem result) {
+                callback.onSuccess(result);
+            }
+
+            @Override
+            public void onError(String errorMessage) {
+                callback.onError(errorMessage);
+            }
+        });
+    }
+
+
     public void createMenuItem(CreateMenuItemDTO createMenuItemDTO, final ManageMenuItemService.ApiCallback<MenuItemDTO> callback) {
         manageMenuItemService.createMenuItem(createMenuItemDTO, new ManageMenuItemService.ApiCallback<MenuItemDTO>() {
             @Override

@@ -1,11 +1,12 @@
 package com.example.quickbyte;
 
 import com.example.quickbyte.API.DTO.MenuItem;
+import com.example.quickbyte.API.DTO.OrderDTO;
 
 public class Globalvariables {
 
     //Global variable for Business_IncomingOrders selection
-    public static int incomingOrderIdSelected = 0;
+    public static OrderDTO incomingOrderSelected;
 
     //Global variable for Business_Modify Menu Item selection
     public static MenuItem bizModifyMenuItemid;
