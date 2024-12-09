@@ -122,6 +122,7 @@ public class CustomerHomePageFragment extends Fragment {
 
         for (int i = 0; i < fullMenu.size(); i++) {
 
+
             // Create a new CardView
             CardView cardView = new CardView(requireContext());
             cardView.setLayoutParams(new LinearLayout.LayoutParams(
@@ -193,11 +194,13 @@ public class CustomerHomePageFragment extends Fragment {
             // Set an OnClickListener for the CardView
             cardView.setOnClickListener(v -> {
 
-                customerViewMenuItemId = fullMenu.get(finalI).getItemId();
+                customerViewMenuItemId = fullMenu.get(finalI);
+                System.out.println("var1 = " + customerViewMenuItemId);
+                //customerViewMenuItemId = fullMenu.get(finalI).getItemId();
                 NavHostFragment.findNavController(CustomerHomePageFragment.this)
                         .navigate(R.id.action_customerHomePageFragment_to_customerViewItemFragment);
 
-                System.out.println("customerViewMenuItemId = " + customerViewMenuItemId);
+                //System.out.println("customerViewMenuItemId = " + customerViewMenuItemId);
             });
 
             // Add CardView to the LinearLayout container
