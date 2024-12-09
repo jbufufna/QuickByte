@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -69,25 +70,23 @@ public class BusinessModifyBusinessFragment extends Fragment {
     private void populateUI(BusinessInfoDTO businessInfo) {
         binding.textInputEditTextBizName.setText(businessInfo.getBusinessName());
         binding.textInputEditTextBizSlogan.setText(businessInfo.getSlogan());
-        Glide.with(requireContext())
-                .load(businessInfo.getLogoUrl())
-                .placeholder(R.drawable.error_image)
-                .error(R.drawable.error_image) // Error drawable
-                .into(binding.imageViewBizImage);
+        loadImageToImageView(binding.imageViewBizImage, businessInfo.getLogoUrl());
+        binding.textInputEditTextBizPrimColor.setText(businessInfo.getPrimaryColor());
+        binding.textInputEditTextBizSecColor.setText(businessInfo.getSecondaryColor());
         binding.getRoot().setBackgroundColor(Color.parseColor(businessInfo.getPrimaryColor()));
     }
 
     private void saveBusinessInfo() {
-        BusinessInfoDTO businessInfo = new BusinessInfoDTO(
+        BusinessInfoDTO businessInfoTemp = new BusinessInfoDTO(
                 binding.textInputEditTextBizName.getText().toString(),
-                "http://example.com/logo.png", // Actual URL
+                "quickbyte_logo", // Actual URL
                 binding.textInputEditTextBizSlogan.getText().toString(),
-                "#FF5733", // Primary color
-                "#33FF57",  // Secondary color
+                binding.textInputEditTextBizPrimColor.getText().toString(), // Primary color
+                binding.textInputEditTextBizSecColor.getText().toString(),  // Secondary color
                 "1" // Owner ID
         );
 
-        facade.saveBusinessInfo(businessInfo, new Facade.DatabaseCallback<BusinessInfoDTO>() {
+        facade.saveBusinessInfo(businessInfoTemp, new Facade.DatabaseCallback<BusinessInfoDTO>() {
             @Override
             public void onSuccess(BusinessInfoDTO result) {
                 Toast.makeText(getContext(), "Business information saved.", Toast.LENGTH_SHORT).show();
@@ -110,5 +109,22 @@ public class BusinessModifyBusinessFragment extends Fragment {
             return false;
         }
         return true;
+    }
+
+    private void loadImageToImageView(ImageView imageView, String imageUrl)
+    {
+        // Get the resource ID dynamically
+        int resId = getContext().getResources().getIdentifier(imageUrl, "drawable", getContext().getPackageName());
+
+        // Check if the resource exists
+        if (resId != 0) {
+            // Use the resource ID to load the image
+            imageView.setImageResource(resId);
+        } else {
+            // Handle the case where the resource was not found
+            System.out.println("Error locating image: " + imageUrl);
+
+            imageView.setImageResource(R.drawable.error_image);
+        }
     }
 }

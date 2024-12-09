@@ -32,24 +32,40 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Business Name:"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/textInputEditTextBizName"
         app:layout_constraintEnd_toStartOf="@+id/textInputEditTextBizName"
-        app:layout_constraintHorizontal_bias="0.777"
+        app:layout_constraintHorizontal_bias="0.611"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.404" />
+        app:layout_constraintTop_toTopOf="@+id/textInputEditTextBizName"
+        app:layout_constraintVertical_bias="0.363" />
 
     <TextView
         android:id="@+id/textViewBizSlogan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Slogan:"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/textInputEditTextBizSlogan"
-        app:layout_constraintHorizontal_bias="0.88"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/textInputEditTextBizSlogan"
+        app:layout_constraintEnd_toEndOf="@+id/textViewBizName"
+        app:layout_constraintTop_toTopOf="@+id/textInputEditTextBizSlogan"
         app:layout_constraintVertical_bias="0.471" />
+
+    <TextView
+        android:id="@+id/textViewBizSlogan2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Primary Color:"
+        app:layout_constraintBottom_toBottomOf="@+id/textInputEditTextBizPrimColor"
+        app:layout_constraintEnd_toEndOf="@+id/textViewBizSlogan"
+        app:layout_constraintTop_toTopOf="@+id/textInputEditTextBizPrimColor" />
+
+    <TextView
+        android:id="@+id/textViewBizSlogan3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Secondary Color:"
+        app:layout_constraintBottom_toBottomOf="@+id/textInputEditTextBizSecColor"
+        app:layout_constraintEnd_toEndOf="@+id/textViewBizSlogan2"
+        app:layout_constraintTop_toTopOf="@+id/textInputEditTextBizSecColor" />
 
     <TextView
         android:id="@+id/textViewItemName"
@@ -73,7 +89,7 @@
         app:layout_constraintHorizontal_bias="0.797"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.401" />
+        app:layout_constraintVertical_bias="0.44" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/textInputEditTextBizSlogan"
@@ -81,11 +97,30 @@
         android:layout_height="41dp"
         android:hint="Slogan"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.792"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.472" />
+        app:layout_constraintEnd_toEndOf="@+id/textInputEditTextBizName"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textInputEditTextBizName"
+        app:layout_constraintTop_toBottomOf="@+id/textInputEditTextBizName"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/textInputEditTextBizPrimColor"
+        android:layout_width="194dp"
+        android:layout_height="41dp"
+        android:hint="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="@+id/textInputEditTextBizSlogan"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textInputEditTextBizSlogan"
+        app:layout_constraintTop_toBottomOf="@+id/textInputEditTextBizSlogan" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/textInputEditTextBizSecColor"
+        android:layout_width="194dp"
+        android:layout_height="41dp"
+        android:hint="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="@+id/textInputEditTextBizPrimColor"
+        app:layout_constraintStart_toStartOf="@+id/textInputEditTextBizPrimColor"
+        app:layout_constraintTop_toBottomOf="@+id/textInputEditTextBizPrimColor" />
 
     <ImageView
         android:id="@+id/imageViewBizImage"

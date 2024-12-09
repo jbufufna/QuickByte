@@ -11,6 +11,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import com.example.quickbyte.R;
 import com.example.quickbyte.databinding.LogoScreenBinding;
 
+import android.widget.ImageView;
 import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import android.graphics.Color;
@@ -63,11 +64,32 @@ public class LogoScreenFragment extends Fragment {
     private void populateUI(BusinessInfoDTO businessInfo) {
         binding.textViewLogoScreenBizName.setText(businessInfo.getBusinessName());
         binding.textViewLogoScreenBizSlogan.setText(businessInfo.getSlogan());
+        loadImageToImageView(binding.imageViewLogo, businessInfo.getLogoUrl());
+        /*
         Glide.with(requireContext())
                 .load(businessInfo.getLogoUrl())
                 .placeholder(R.drawable.error_image)
                 .error(R.drawable.error_image) // Error drawable
                 .into(binding.imageViewLogo);
+
+         */
         binding.getRoot().setBackgroundColor(Color.parseColor(businessInfo.getPrimaryColor()));
+    }
+
+    private void loadImageToImageView(ImageView imageView, String imageUrl)
+    {
+        // Get the resource ID dynamically
+        int resId = getContext().getResources().getIdentifier(imageUrl, "drawable", getContext().getPackageName());
+
+        // Check if the resource exists
+        if (resId != 0) {
+            // Use the resource ID to load the image
+            imageView.setImageResource(resId);
+        } else {
+            // Handle the case where the resource was not found
+            System.out.println("Error locating image: " + imageUrl);
+
+            imageView.setImageResource(R.drawable.error_image);
+        }
     }
 }
