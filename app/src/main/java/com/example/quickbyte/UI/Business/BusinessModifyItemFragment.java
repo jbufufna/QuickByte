@@ -54,8 +54,8 @@ public class BusinessModifyItemFragment extends Fragment {
 
             //Save changes
             updateItemParameters();
-            NavHostFragment.findNavController(BusinessModifyItemFragment.this)
-                    .navigate(R.id.action_businessModifyItemFragment_to_businessModifyMenuFragment2);
+            //NavHostFragment.findNavController(BusinessModifyItemFragment.this)
+            //        .navigate(R.id.action_businessModifyItemFragment_to_businessModifyMenuFragment2);
         });
 
         binding.btnModifyItemBack.setOnClickListener(v -> {
@@ -124,12 +124,11 @@ public class BusinessModifyItemFragment extends Fragment {
             menuitem.setPrice(bigDecimalvalue);
 
         } catch (Exception e) {
-            System.out.println("Failed to add bigDecimalvalie to menuitem.setPrice.");
+            System.out.println("Failed to add bigDecimalvalue to menuitem.setPrice.");
         }
 
-        //menuitem.setPrice(BigDecimal.valueOf(Long.valueOf(binding.textViewItemPrice.getText().toString(), 2)));
-        menuitem.setIsAvailable(true);
-        menuitem.setImageUrl("burger");
+        menuitem.setImageUrl(bizModifyMenuItem.getImageUrl());
+        menuitem.setIsAvailable(bizModifyMenuItem.isAvailable());
         //menuitem.
         facade.updateMenuItem(menuitem, new ManageMenuItemService.ApiCallback<MenuItemDTO>() {
             @Override
