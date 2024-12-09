@@ -1,5 +1,7 @@
 package com.example.quickbyte.UI.Customer;
 
+import static com.example.quickbyte.Globalvariables.customerViewMenuItem;
+
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -29,6 +31,7 @@ import com.example.quickbyte.API.DTO.BusinessInfoDTO;
 import com.example.quickbyte.API.Services.BusinessInfoService;
 import com.example.quickbyte.Facade.Facade;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -95,11 +98,13 @@ public class CustomerPlaceOrderFragment extends Fragment {
 
         LinearLayout cardContainer = binding.cardContainer; // The LinearLayout inside the ScrollView
 
-        int initialLoadCards = binding.scrollView.getHeight() / cardHeight; // how many cards we initially load (depends on size of scrollView and cards)
+        int initialLoadCards = 4; // how many cards we initially load (depends on size of scrollView and cards)
 
 
         List<MenuItem> orderItems = new ArrayList<MenuItem>(cartManager.getCartItems().keySet());
-        List<Integer> orderItemQuantity = new ArrayList<Integer>(cartManager.getCartItems().values());
+        List<Integer> orderItemsQuantity = new ArrayList<Integer>(cartManager.getCartItems().values());
+
+        BigDecimal orderSubtotal = BigDecimal.ZERO;
 
         for (int i = 0; i < orderItems.size(); i++) {
             // Create a new CardView
@@ -158,7 +163,7 @@ public class CustomerPlaceOrderFragment extends Fragment {
 
             // Add TextView for item quantity
             TextView itemPrice = new TextView(requireContext());
-            itemPrice.setText("Quantity: " + (int) orderItemQuantity.get(i));
+            itemPrice.setText("Quantity: " + (int) orderItemsQuantity.get(i));
             itemPrice.setTextSize(16);
             textContainer.addView(itemPrice);
 
@@ -170,7 +175,18 @@ public class CustomerPlaceOrderFragment extends Fragment {
 
             // Add CardView to the LinearLayout container
             cardContainer.addView(cardView);
+
+            // add to the order subtotal
+            BigDecimal itemSubtotal = orderItems.get(i).getPrice().multiply(BigDecimal.valueOf(orderItemsQuantity.get(i)));
+            orderSubtotal = orderSubtotal.add(itemSubtotal);
         }
+
+        BigDecimal orderTax = orderSubtotal.multiply(BigDecimal.valueOf(0.06));
+        BigDecimal orderTotal = orderSubtotal.add(orderTax);
+
+        binding.textViewPlaceOrderSubtotalNumber.setText("$" + orderSubtotal.toString());
+        binding.textViewPlaceOrderTaxNumber.setText("$" + orderTax.toString());
+        binding.textViewPlaceOrderTotalNumber.setText("$" + orderTotal.toString());
     }
 
 
