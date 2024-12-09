@@ -108,6 +108,14 @@ public class BusinessModifyBusinessFragment extends Fragment {
             Toast.makeText(getContext(), "Slogan is required.", Toast.LENGTH_SHORT).show();
             return false;
         }
+        if (binding.textInputEditTextBizPrimColor.getText().toString().trim().isEmpty()) {
+            Toast.makeText(getContext(), "Primary Color is required.", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (binding.textInputEditTextBizSecColor.getText().toString().trim().isEmpty()) {
+            Toast.makeText(getContext(), "Secondary Color is required.", Toast.LENGTH_SHORT).show();
+            return false;
+        }
         return true;
     }
 
